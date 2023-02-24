@@ -15,7 +15,6 @@ export class Client extends Compte {
     prenom: string;
     tel : string;
     dateNaissance : string;
-    reservations : Array<Reservations>;
     commandeJeux : Array<CommandeJeux>;
     civilite : string;
 
@@ -27,6 +26,51 @@ export class Client extends Compte {
         this.dateNaissance = dateNaissance;
         this.civilite = civilite;
     }
+}
+
+export class Reservation {
+    id: number;
+    dateRes: string;
+    heureRes: string; 
+    nbPersonne: number;
+    tableBar: TableBar;
+    client: Client;
+    jeu: Jeu;
+
+    constructor(id?:number, dateRes?:string, heureRes?:string, nbPersonne?:number, tableBar?:TableBar, client?:Client, jeu?:Jeu){
+        this.id = id;
+        this.dateRes = dateRes;
+        this.heureRes = heureRes;
+        this.nbPersonne = nbPersonne;
+        this.tableBar = tableBar;
+        this.client = client;
+        this.jeu = jeu;
+
+    }
+
+}
+
+export class TableBar {
+
+    id: number;
+    nbPersonne: number;
+    idTable: number;
+
+    constructor(id?:number, nbPersonne?:number, idTable?:number){
+        this.id = id;
+        this.nbPersonne = nbPersonne;
+        this.idTable = idTable;
+    }
+}
+    
+    export class Admin extends Compte {
+        
+
+        constructor(id?:number, mail?: string, password?:string) {
+            super(id, mail, password);
+           
+        }
+
 }
 
 
