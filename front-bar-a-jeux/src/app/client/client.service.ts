@@ -56,7 +56,7 @@ export class ClientService {
   private loadCivilites(): void {
     this.http.get<Array<string>>("http://localhost:8888/civilites").subscribe(resp => {
       resp.forEach(civ => {
-        this.civilites;
+        this.civilites = resp;
       });
     });
   }
