@@ -1,1 +1,90 @@
 <p>Menu Client</p>
+
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white display-6">Liste des clients</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Civilité</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Date de naissance</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let client of list()">
+                    <td>{{client.id}}</td>
+                    <td>{{client.civilite}}</td>
+                    <td>{{client.nom | uppercase}}</td>
+                    <td>{{client.prenom}}</td>
+                    <td>{{client.mail}}</td>
+                    <td>{{client.tel}}</td>
+                    <td>{{client.dateNaissance | date:"dd/MM/yyyy"}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(client.id)"><i
+                                    class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="remove(client.id)"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()"><i
+            class="bi bi-plus-square"></i></a>
+    </div>
+</div>
+
+<div class="card mt-3" *ngIf="formClient">
+    <div class="card-header bg-primary text-white display-6">Edition d'un client</div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formClient.id" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="civilite">Civilité:</label>
+            <select class="form-control" id="civilite" name="civilite" [(ngModel)]="formClient.civilite">
+                <option value="">Veuillez sélectionner une civilité</option>
+                <option *ngFor="let item of listCivilites() | keyvalue" [value]="item.key">{{item.value}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formStagiaire.nom" />
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formStagiaire.prenom" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label> <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formStagiaire.email" />
+        </div>
+        <div class="form-group">
+            <label for="dtNaissance">Date de naissance:</label> <input type="date" class="form-control" id="dtNaissance" name="dtNaissance" [(ngModel)]="formStagiaire.dtNaissance" />
+        </div>
+        <div class="form-group">
+            <label for="niveauEtude">Niveau d'étude:</label> <input type="text" class="form-control" id="niveauEtude" name="niveauEtude" [(ngModel)]="formStagiaire.niveauEtude" />
+        </div>
+        <div class="form-group">
+            <label for="ordinateur">Ordinateur:</label>
+            <select class="form-control" id="ordinateur" name="ordinateur" [(ngModel)]="formStagiaire.ordinateur.id">
+                <option value="">Veuillez sélectionner un ordinateur</option>
+                <option *ngFor="let ordi of listOrdinateurs()" [value]="ordi.id">{{ordi.id}} - {{ordi.marque}} - {{ordi.ram}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+            <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
+            <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+        </div>
+    </div>
+</div>
