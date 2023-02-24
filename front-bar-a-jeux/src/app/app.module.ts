@@ -12,6 +12,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule }from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomDatePipe } from './reservation/custom-date-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ClientComponent,
     AdminComponent,
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    CustomDatePipe
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import bar.exception.IdException;
@@ -53,16 +52,16 @@ public class ReservationService {
 			if (resa.getHeureRes() == null) {
 				throw new ReservationException("heure obligatoire");
 			}
-			if (resa.getClient() == null) {
-				throw new ReservationException("client obligatoire");
-			}
+//			if (resa.getClient() == null) {
+//				throw new ReservationException("client obligatoire");
+//			}
 			if (resa.getNbPersonne() == 0) {
 				throw new ReservationException("personne obligatoire");
 			}
-			if (resa.getTable() == null) {
-				//System.out.println("table obligatoire");
-				throw new ReservationException("table obligatoire");
-			}
+//			if (resa.getTable() == null) {
+//				//System.out.println("table obligatoire");
+//				throw new ReservationException("table obligatoire");
+//			}
 			// donner un jeu n'est pas obligatoire
 		}
 		
