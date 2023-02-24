@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import bar.model.Client;
 import bar.model.Views;
-import bar.repository.IClientRepository;
 import bar.service.ClientService;
 
 @RestController
@@ -27,8 +26,6 @@ public class ClientRestController {
 
 	@Autowired
 	private ClientService serviceService;
-	@Autowired
-	private IClientRepository clientRepo;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewClient.class)
