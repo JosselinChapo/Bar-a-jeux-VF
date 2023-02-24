@@ -15,7 +15,7 @@ export class Client extends Compte {
     prenom: string;
     tel : string;
     dateNaissance : string;
-    commandeJeux : Array<CommandeJeu>;
+    // commandeJeux : Array<CommandeJeux>;
     civilite : string;
 
     constructor(id?:number, mail?: string, password?:string, nom?: string, prenom?: string, tel?: string, dateNaissance?: string, civilite?: string) {
@@ -35,16 +35,16 @@ export class Reservation {
     nbPersonne: number;
     tableBar: TableBar;
     client: Client;
-    jeu: Jeu;
+    // jeu: Jeu;
 
-    constructor(id?:number, dateRes?:string, heureRes?:string, nbPersonne?:number, tableBar?:TableBar, client?:Client, jeu?:Jeu){
+    constructor(id?:number, dateRes?:string, heureRes?:string, nbPersonne?:number, tableBar?:TableBar, client?:Client){
         this.id = id;
         this.dateRes = dateRes;
         this.heureRes = heureRes;
         this.nbPersonne = nbPersonne;
         this.tableBar = tableBar;
         this.client = client;
-        this.jeu = jeu;
+        // this.jeu = jeu;
 
     }
 

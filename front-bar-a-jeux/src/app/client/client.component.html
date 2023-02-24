@@ -13,8 +13,6 @@
                     <th>Email</th>
                     <th>Date de naissance</th>
                     <th></th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
 
@@ -59,26 +57,19 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formStagiaire.nom" />
+            <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formClient.nom" />
         </div>
         <div class="form-group">
-            <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formStagiaire.prenom" />
+            <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formClient.prenom" />
         </div>
         <div class="form-group">
-            <label for="email">Email:</label> <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formStagiaire.email" />
+            <label for="mail">Email:</label> <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="formClient.mail" />
         </div>
         <div class="form-group">
-            <label for="dtNaissance">Date de naissance:</label> <input type="date" class="form-control" id="dtNaissance" name="dtNaissance" [(ngModel)]="formStagiaire.dtNaissance" />
+            <label for="tel">Téléphone:</label> <input type="text" class="form-control" id="tel" name="tel" [(ngModel)]="formClient.tel" />
         </div>
         <div class="form-group">
-            <label for="niveauEtude">Niveau d'étude:</label> <input type="text" class="form-control" id="niveauEtude" name="niveauEtude" [(ngModel)]="formStagiaire.niveauEtude" />
-        </div>
-        <div class="form-group">
-            <label for="ordinateur">Ordinateur:</label>
-            <select class="form-control" id="ordinateur" name="ordinateur" [(ngModel)]="formStagiaire.ordinateur.id">
-                <option value="">Veuillez sélectionner un ordinateur</option>
-                <option *ngFor="let ordi of listOrdinateurs()" [value]="ordi.id">{{ordi.id}} - {{ordi.marque}} - {{ordi.ram}}</option>
-            </select>
+            <label for="dateNaissance">Date de naissance:</label> <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="formClient.dateNaissance" />
         </div>
     </div>
     <div class="card-footer">
