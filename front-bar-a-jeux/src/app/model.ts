@@ -61,6 +61,15 @@ export class TableBar {
         this.nbPersonne = nbPersonne;
         this.idTable = idTable;
     }
+}
+    
+    export class Admin extends Compte {
+        
+
+        constructor(id?:number, mail?: string, password?:string) {
+            super(id, mail, password);
+           
+        }
 
 }
 
