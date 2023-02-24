@@ -40,7 +40,7 @@
 
 <nav>
     <div class="container">
-    <!-- <div class = "logo"><a href="#Accueil"><img src="image/logo_w.png" alt="logo du bar"></a></div> -->
+    <div class = "logo"><a [routerLink]="['/accueil']" routerLinkActive="active"><img src="assets/images/logo_w.png" alt="logo du bar"></a></div>
     <ul>
         <li><a [routerLink]="['/accueil']" routerLinkActive="active" id="accueil">ACCUEIL</a></li>
         <li><a [routerLink]="['/reservation']" routerLinkActive="active" id="reservation">RESERVATION</a></li>
