@@ -23,7 +23,7 @@ import bar.service.TableService;
 
 @SpringBootTest
 @Transactional
-@Rollback
+@Rollback(false)
 class DonneesInitBdd {
 
 	@Autowired
