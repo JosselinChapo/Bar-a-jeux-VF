@@ -23,16 +23,26 @@ export class AdminComponent {
   }
 
   save(): void {
-    // if(this.creaAdmin.id) { // UPDATE
-    //   this.adminService.update(this.creaAdmin);
-    // } else { // CREATE
+     if(this.creaAdmin.id) { // UPDATE
+      this.adminService.update(this.creaAdmin);
+    } else { // CREATE
       this.adminService.create(this.creaAdmin);
+    }
     this.cancel();
   }
 
-  // remove(id: number): void {
-  //   this.adminService.remove(id);
-  // }
+  
+
+  edit(id: number): void {
+    this.adminService.findById(id).subscribe(response => {
+      this.creaAdmin = response;
+    });
+  }
+
+
+   remove(id: number): void {
+    this.adminService.remove(id);
+   }
 
   cancel(): void {
     this.creaAdmin = null;
