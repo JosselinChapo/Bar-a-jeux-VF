@@ -8,6 +8,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
   {path: "", component: AccueilComponent, pathMatch: 'full'},
+  {path: "accueil", component: AccueilComponent},
   {path: "reservation", component: ReservationComponent},
   {path: "collection", component: CollectionComponent},
   {path: "client", component: ClientComponent},
