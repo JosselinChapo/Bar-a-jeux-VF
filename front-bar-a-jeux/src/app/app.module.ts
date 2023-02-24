@@ -9,6 +9,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { ClientComponent } from './client/client.component';
 import { AdminComponent } from './admin/admin.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HttpClientModule }from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
