@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>How to Disable Specific Dates in Bootstrap Datepicker using jQuery?</title>
+  <!-- Bootstrap Datepicker CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+</head>
+<body>
+  <div class="container">
+    <form action="">
+      <spam>Date</spam>
+      <input id="id_deadline" type="text" class="form-control datepicker" placeholder="Date" name="date">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Bootstrap 4 JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Bootstrap Datepicker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+
+var dateDisable="02-08-2023"
+var datesForDisable = ["01-30-2023", "02-05-2023", dateDisable]
+
+$('.datepicker').datepicker({
+  format: 'mm-dd-yyyy',
+  autoclose: true,
+  todayHighlight: true,
+  datesDisabled: datesForDisable,
+  startDate: "today"
+});
+</script>
+</body>
+</html>

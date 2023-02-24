@@ -1,0 +1,101 @@
+<html>
+<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+<style>
+
+:root {
+  --backcolor: #2C3531;
+  --fontcolor: #D1E8E2;
+  --hovercolor: #D9B08C;
+}
+
+
+
+ body {
+    font-family: 'Bebas Neue', sans-serif;
+    margin: 0;
+ }
+
+
+
+
+.container {
+
+    padding : 0 24px;
+    margin : auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height : 80px;
+    background-color: var(--backcolor);
+   }
+
+   .logo{
+     height: 90%;
+   }
+
+   img{
+    max-width: 100%;
+    max-height: 100%;
+    display:block;
+   }
+
+   ul {
+     display: flex;
+     align-items: center;
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     font-size: 150%;
+   }
+
+   li {
+     margin: 0 50px;
+
+   }
+
+   a{
+     text-decoration: none;
+     color: var(--fontcolor);
+   }
+
+  a:hover{
+    color:var(--hovercolor)
+  }
+
+  .fa {
+  color: var(--fontcolor);
+}
+  #collection{
+    text-decoration: underline;
+  }
+
+
+</style>
+</head>
+
+
+
+<body>
+      <nav>
+        <div class="container">
+          <div class = "logo"><a href="#Accueil"><img src="image/logo_w.png" alt="logo du bar"></a></div>
+         <ul>
+            <li><a href="#Accueil" id="accueil">ACCUEIL</a></li>
+            <li><a href="#Contact" id="contact">CONTACT</a></li>
+            <li><a href="#Reservation" id="reservation">RESERVATION</a></li>
+            <li><a href="#Collection" id="collection">COLLECTION</a></li>
+           <li><a href="#Panier" ><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a href="#Compte"><i class="fas fa-user"></i></a></li>
+         </ul>
+   </div>
+</nav>
+</body>
+</html>
