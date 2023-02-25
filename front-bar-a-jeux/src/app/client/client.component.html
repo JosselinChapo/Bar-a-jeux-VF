@@ -38,47 +38,8 @@
         </table>
     </div>
     <div class="card-footer">
-        <a class="btn btn-success btn-lg" (click)="add()"><i
-            class="bi bi-plus-square"></i></a>
+        <a class="btn btn-success btn-lg" (click)="add()" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription">Inscription</a>
     </div>
 </div>
 
-<div class="card mt-3" *ngIf="formClient">
-    <div class="card-header bg-primary text-white display-6">Edition d'un client</div>
-    <div class="card-body">
-        <div class="form-group">
-            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formClient.id" readonly/>
-        </div>
-        <div class="form-group">
-            <label for="civilite">Civilité:</label>
-            <select class="form-control" id="civilite" name="civilite" [(ngModel)]="formClient.civilite">
-                <option value="">Veuillez sélectionner une civilité</option>
-                <option *ngFor="let item of listCivilites() | keyvalue" [value]="item.key">{{item.value}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formClient.nom" />
-        </div>
-        <div class="form-group">
-            <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formClient.prenom" />
-        </div>
-        <div class="form-group">
-            <label for="mail">Email:</label> <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="formClient.mail" />
-        </div>
-        <div class="form-group">
-            <label for="password">Mot de passe:</label> <input type="password" class="form-control" id="password" name="password" [(ngModel)]="formClient.password" />
-        </div>
-        <div class="form-group">
-            <label for="tel">Téléphone:</label> <input type="text" class="form-control" id="tel" name="tel" [(ngModel)]="formClient.tel" />
-        </div>
-        <div class="form-group">
-            <label for="dateNaissance">Date de naissance:</label> <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="formClient.dateNaissance" />
-        </div>
-    </div>
-    <div class="card-footer">
-        <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
-            <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
-        </div>
-    </div>
-</div>
+
