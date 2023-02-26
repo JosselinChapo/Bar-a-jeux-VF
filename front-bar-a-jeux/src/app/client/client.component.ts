@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Client } from '../model';
 import { ClientService } from './client.service';
 
@@ -9,16 +9,15 @@ import { ClientService } from './client.service';
 })
 export class ClientComponent {
   formClient: Client = null;
+  currentClient : Client;
+  @Input('id')
+  id : number;
 
   constructor(private clientService: ClientService) {
   }
 
   list(): Array<Client> {
     return this.clientService.findAll();
-  }
-
-  add(): void {
-    this.formClient = new Client();
   }
 
   edit(id: number): void {
@@ -31,4 +30,10 @@ export class ClientComponent {
     this.clientService.remove(id);
   }
   
+clientPage() : void {
+  this.clientService.findById(this.id).subscribe(response => {
+this.currentClient = response;
+  });
+}
+
 }

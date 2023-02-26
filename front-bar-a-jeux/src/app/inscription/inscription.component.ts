@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { ClientService } from '../client/client.service';
 import { Client } from '../model';
 
@@ -10,30 +9,32 @@ import { Client } from '../model';
 })
 
 export class InscriptionComponent {
-  // @Input("client")
-  currentClient : Client;
-  formClientInscription: Client = null;
 
-  constructor(private router: Router, private clientService: ClientService) {
+  formClientInscription: Client = new Client();
+
+  constructor(private clientService: ClientService) {
+
   }
   
-
   listCivilites(): Array<string> {
     return this.clientService.findAllCivilite();
   }
   
+  test(){
+    this.listCivilites().forEach(element => {
+    console.log(element);
+  });
+  }
+  
   save(): void {
-    console.log(this.currentClient.id);
     if(this.formClientInscription.id) { // UPDATE
+      console.log(this.formClientInscription);
       this.clientService.update(this.formClientInscription);
     } else { // CREATE
+      console.log(this.formClientInscription);
       this.clientService.create(this.formClientInscription);
-    }
 
-    // this.cancel();
+    }
   }
 
-  // cancel(): void {
-  //   this.formClientInscription = null;
-  // }
 }
