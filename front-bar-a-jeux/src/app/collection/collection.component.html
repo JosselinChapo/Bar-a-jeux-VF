@@ -10,7 +10,7 @@
   
 
   <div class="search-bar">
-  <input type='text' placeholder="rechercher ..." class="form-control" style="margin-left: 20px;margin-right: 20px;">
+  <input type='text' placeholder="rechercher ..." class="form-control" style="margin-left: 20px;margin-right: 20px;" [(ngModel)]="recherche">
   </div>
 
   <div class="display-body">
@@ -75,7 +75,7 @@
 
 <div class="display-jeux">
     <div class="row card-group">
-        <div class="col-3"  *ngFor="let jeu of listJeux()">
+        <div class="col-3"  *ngFor="let jeu of search()">
             <div class="card" style="width: 18rem; margin-bottom: 1.2rem;">
                 <img src={{jeu.image}} class="card-img-top" style="margin-top: 10px;" alt="image d'un jeu">
             

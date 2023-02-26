@@ -8,11 +8,19 @@ import { JeuService } from './jeu.service';
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent {
-
+  recherche:string;
   formJeu: Jeu = null;
 
   constructor(private jeuService: JeuService) {
   } 
+
+  search(): Array<Jeu> {
+    if(this.recherche) {
+      return this.jeuService.findAllByNom(this.recherche);
+    } 
+
+    return this.jeuService.findAll();
+  }
 
   listJeux(): Array<Jeu> {
     return this.jeuService.findAll();
