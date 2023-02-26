@@ -1,111 +1,121 @@
-<div class="card mt-3">
-    <div class="card-header bg-primary text-white display-6">Liste des Jeux</div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Identifiant</th>
-                    <th>Nom</th>
-                    <th>Joueurs min</th>
-                    <th>Joueurs max</th>
-                    <th>Age min</th>
-                    <th>Durée</th>
-                    <th>Editeur</th>
-                    <th>Année</th>
-                    <th>Prix</th>
-                    <th>Image</th>
-                    <th>Type de jeu</th>
-                    <th>Stock</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
+<div class="bandeau">
+    <div class="flou">
+    <img src="assets/images/boardgame_library.jpg" alt="bandeau d'une collection de jeu de societé" style="height: 200px;">
+    </div>
+    <div class="page-title">
+    <h2>Collection</h2>
+    </div>
+  </div>
 
-            <tbody>
-                <tr *ngFor="let jeu of listJeux()">
-                    <td>{{jeu.id}}</td>
-                    <td>{{jeu.nom}}</td>
-                    <td>{{jeu.nbJoueurMin}}</td>
-                    <td>{{jeu.nbJoueurMax}}</td>
-                    <td>{{jeu.ageMin}}</td>
-                    <td>{{jeu.duree}}</td>
-                    <td>{{jeu.editeur}}</td>
-                    <td>{{jeu.annee}}</td>
-                    <td>{{jeu.prix}}</td>
-                    <td><p style="max-width: 40px;
-                        max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.image}}</p></td>
-                    <td><p style="max-width: 40px;
-                        max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.typeJeu}}</p></td>
-                    <td>{{jeu.stock}}</td>
-                    <td><p style="max-width: 40px;
-                    max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                    {{jeu.description}}</p></td>
-                    <td>
-                        <div class="btn-group btn-group-sm">
-                            <a class="btn btn-primary" (click)="editJeu(jeu.id)"><i
-                                    class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger" (click)="removeJeu(jeu.id)"><i class="bi bi-trash"></i></a>
+  
+
+  <div class="search-bar">
+  <input type='text' placeholder="rechercher ..." class="form-control" style="margin-left: 20px;margin-right: 20px;">
+  </div>
+
+  <div class="display-body">
+
+  <div class="display-filters">
+    <h3>Filtrer par:</h3><br>
+    <h2>NOMBRE DE JOUEURS:</h2>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <label class="form-check-label" for="inlineCheckbox1">1</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <label class="form-check-label" for="inlineCheckbox2">2</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+        <label class="form-check-label" for="inlineCheckbox3">3</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
+        <label class="form-check-label" for="inlineCheckbox4">4</label>
+      </div>
+      <div></div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option5">
+        <label class="form-check-label" for="inlineCheckbox5">5</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option6">
+        <label class="form-check-label" for="inlineCheckbox6">6</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option7">
+        <label class="form-check-label" for="inlineCheckbox7">7</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option8">
+        <label class="form-check-label" for="inlineCheckbox8">8</label>
+      </div><br><br>
+      <h2>DUREE DE JEU:</h2>
+      <select class="form-select">
+        <option selected>Durée d'une partie</option>
+        <option value="15">15min</option>
+        <option value="20">20min</option>
+        <option value="30">30min</option>
+        <option value="45">45min</option>
+        <option value="60">60min</option>
+        <option value="61">+ 60min</option>
+      </select><br>
+      <h2>TYPE DE JEU:</h2>
+      <select class="form-select">
+        <option selected>Type de jeu</option>
+        <option value="">ND</option>
+      </select><br>
+      <!-- <h2>PRIX:</h2>
+      <input type="range" value="15" min="1" max="100" oninput="this.nextElementSibling.value = this.value">
+      <output>15</output> -->
+
+  </div>
+
+
+<div class="display-jeux">
+    <div class="row card-group">
+        <div class="col-3"  *ngFor="let jeu of listJeux()">
+            <div class="card" style="width: 18rem; margin-bottom: 1.2rem;">
+                <img src={{jeu.image}} class="card-img-top" style="margin-top: 10px;" alt="image d'un jeu">
+            
+            <div class="card-body">
+                <h5 class="card-title" style="text-align: center;">{{jeu.nom}}</h5>
+                <p class="card-text" style="text-align: center;">{{jeu.editeur}} - {{jeu.annee}}</p>
+                <p class="card-text" style="text-align: center;"><i class="bi bi-dice-6-fill"></i>  {{jeu.typeJeu}}</p>
+                <div class="accordion accordion-flush">
+                    <div class="accordion-item">
+                    
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                          Description
+                        </button>
+                      
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            {{jeu.description}}
                         </div>
-                    </td>
-                </tr>
-            </tbody>
+                      </div>
+                    </div>
+                <!-- <a href="#" class="btn btn-primary">{{jeu.prix}} €</a> -->
+                </div>
+                <div class="post-it-joueur">
+                    <i class="bi bi-people"></i>
+                    {{jeu.nbJoueurMin}} à {{jeu.nbJoueurMax}}
+                </div>
 
-        </table>
+                <div class="post-it-duree">
+                    <i class="bi bi-clock"></i>
+                    {{jeu.duree}} min
+                </div>
+
+                <div class="post-it-age">
+                    + {{jeu.ageMin}} ans
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-footer">
-        <a class="btn btn-success btn-lg" (click)="addJeu()"><i
-            class="bi bi-plus-square"></i></a>
-    </div>
+
 </div>
-
-<div class="card mt-3" *ngIf="formJeu">
-    <div class="card-header bg-primary text-white display-6">Edition d'un stagiaire</div>
-    <div class="card-body">
-        <div class="form-group">
-            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formJeu.id" readonly/>
-        </div>
-        <div class="form-group">
-            <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formJeu.nom"/>
-        </div>
-        <div class="form-group">
-            <label for="nbJoueurMin">Nombre Joueur Min:</label> <input type="number" class="form-control" id="nbJoueurMin" name="nbJoueurMin" [(ngModel)]="formJeu.nbJoueurMin" />
-        </div>
-        <div class="form-group">
-            <label for="nbJoueurMax">Nombre Joueur Max:</label> <input type="number" class="form-control" id="nbJoueurMax" name="nbJoueurMax" [(ngModel)]="formJeu.nbJoueurMax" />
-        </div>
-        <div class="form-group">
-            <label for="ageMin">Age Min:</label> <input type="number" class="form-control" id="ageMin" name="ageMin" [(ngModel)]="formJeu.ageMin" />
-        </div>
-        <div class="form-group">
-            <label for="duree">Duree:</label> <input type="number" class="form-control" id="duree" name="duree" [(ngModel)]="formJeu.duree" />
-        </div>
-        <div class="form-group">
-            <label for="editeur">Editeur:</label> <input type="text" class="form-control" id="editeur" name="editeur" [(ngModel)]="formJeu.editeur" />
-        </div>
-        <div class="form-group">
-            <label for="annee">Annee:</label> <input type="text" class="form-control" id="annee" name="annee" [(ngModel)]="formJeu.annee" />
-        </div>
-        <div class="form-group">
-            <label for="prix">Prix:</label> <input type="number" class="form-control" id="prix" name="prix" [(ngModel)]="formJeu.prix" />
-        </div>
-        <div class="form-group">
-            <label for="image">Image:</label> <input type="text" class="form-control" id="image" name="image" [(ngModel)]="formJeu.image" />
-        </div>
-        <div class="form-group">
-            <label for="typeJeu">TypeJeu:</label> <input type="text" class="form-control" id="typeJeu" name="typeJeu" [(ngModel)]="formJeu.typeJeu" />
-        </div>
-        <div class="form-group">
-            <label for="stock">Stock:</label> <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="formJeu.stock" />
-        </div>
-        <div class="form-group">
-            <label for="description">Description:</label> <input type="text" class="form-control" id="description" name="description" [(ngModel)]="formJeu.description" />
-        </div>
-
-    </div>
-    <div class="card-footer">
-        <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" (click)="saveJeu()"><i class="bi bi-check-square-fill"></i></a>
-            <a class="btn btn-warning" (click)="cancelJeu()"><i class="bi bi-backspace-fill"></i></a>
-        </div>
-    </div>
+</div>
 </div>
 
