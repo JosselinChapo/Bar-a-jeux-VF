@@ -45,5 +45,10 @@ export class JeuService {
         this.jeux = resp;
       });
     }
+
+    findAllByNom(recherche :string): Array<Jeu> {
+      return this.jeux.filter(jeu => jeu.nom.indexOf(recherche) != -1);
+    }
+
   }
 
