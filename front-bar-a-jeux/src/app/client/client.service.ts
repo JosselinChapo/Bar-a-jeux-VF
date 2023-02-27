@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Client } from '../model';
+import { Client, Reservation } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,10 @@ export class ClientService {
     this.http.delete<void>("http://localhost:8888/client/" + id).subscribe(resp => {
       this.load();
     });
+  }
+
+  findAllReservationByIdClient(id? : number): Observable<Array<Reservation>> {
+    return this.http.get<Array<Reservation>>("http://localhost:8888/reservation/client/" + (id?id:""));
   }
 
 

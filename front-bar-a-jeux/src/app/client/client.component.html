@@ -1,11 +1,9 @@
-
-
 <!-- Sidebar -->
   <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="margin-top: 80px;">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <ul>
-          <li><a href="#">Mes réservations</a></li>
+          <li><a class="btn" (click)="ViewReservation(currentClient.id)">Mes réservations</a></li>
           <li><a href="#">Mes achats</a></li>
           <li><a href="#">Mes consommations</a></li>
           <li><a href="#">Mes informations</a></li>
@@ -26,38 +24,35 @@
   
   <br>
   <h1 class="bonjour">Bonjour {{currentClient.nom}}</h1>
-  <div class="container pt-4"></div>
-    <div class="card mt-3 col-md-10">
-      <div class="card-header" >Liste des clients</div>
+    <div class="container pt-4"></div>
+    <div class="card mt-3 col-md-10" *ngIf="menuClient == 'reservation'" >
+      <div class="card-header" >Liste des réservations</div>
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Identifiant</th>
-                        <th>Civilité</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Email</th>
-                        <th>Date de naissance</th>
+                        <th>Date</th>
+                        <th>Heure</th>
+                        <th>Nombre de Personne</th>
+                        <th>Jeu</th>
                         <th></th>
                     </tr>
                 </thead>
     
                 <tbody>
-                    <tr *ngFor="let client of list()">
-                        <td>{{client.id}}</td>
-                        <td>{{client.civilite}}</td>
-                        <td>{{client.nom | uppercase}}</td>
-                        <td>{{client.prenom}}</td>
-                        <td>{{client.mail}}</td>
-                        <td>{{client.tel}}</td>
-                        <td>{{client.dateNaissance | date:"dd/MM/yyyy"}}</td>
+                    <tr *ngFor="let resa of listResaByIdClient()">
+                        <td>{{resa.id}}</td>
+                        <td>{{resa.dateRes | date:"dd/MM/yyyy"}}</td>
+                        <td>{{resa.heureRes}}</td>
+                        <td>{{resa.nbPersonne}}</td>
+                        <td>{{resa.jeu}}</td>
                         <td>
-                            <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" (click)="edit(client.id)" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription"><i
+                            <!-- <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" (click)="editResa(resa.id)" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription"><i
                                         class="bi bi-pencil-square"></i></a>
-                                <a class="btn btn-danger" (click)="remove(client.id)"><i class="bi bi-trash"></i></a>
-                            </div>
+                                <a class="btn btn-danger" (click)="removeResa(resa.id)"><i class="bi bi-trash"></i></a>
+                            </div> -->
                         </td>
                     </tr>
                 </tbody>
@@ -66,7 +61,8 @@
         </div>
         
     </div>
-    <br>
+
+
     <br>
     <p></p>
   </main>

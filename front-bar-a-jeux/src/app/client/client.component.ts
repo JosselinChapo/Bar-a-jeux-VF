@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Client } from '../model';
+import { Client, Reservation } from '../model';
 import { ClientService } from './client.service';
 
 @Component({
@@ -12,6 +12,8 @@ export class ClientComponent {
   currentClient : Client;
   @Input('id')
   id : number;
+  listResa : Array<Reservation>;
+  menuClient : string;
 
   constructor(private clientService: ClientService) {
   }
@@ -20,20 +22,37 @@ export class ClientComponent {
     return this.clientService.findAll();
   }
 
+   listResaByIdClient() : Array<Reservation>{
+   return this.listResa;
+  }
+
   edit(id: number): void {
     this.clientService.findById(id).subscribe(response => {
       this.formClient = response;
     });
   }
 
-  remove(id: number): void {
+  removeClient(id: number): void {
     this.clientService.remove(id);
   }
+
+  clientPage() : void {
+    this.clientService.findById(this.id).subscribe(response => {
+  this.currentClient = response;
+    });
+  }
+
+  ViewReservation(id: number): void {
+    this.clientService.findAllReservationByIdClient(this.id).subscribe(response => {
+      this.listResa = response;
+    });
+    this.menuClient = "reservation";
+  }
+    
+
+
+
   
-clientPage() : void {
-  this.clientService.findById(this.id).subscribe(response => {
-this.currentClient = response;
-  });
 }
 
-}
+
