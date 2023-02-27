@@ -4,9 +4,9 @@
       <div class="list-group list-group-flush mx-3 mt-4">
         <ul>
           <li><a class="btn" (click)="ViewReservation(currentClient.id)">Mes réservations</a></li>
-          <li><a href="#">Mes achats</a></li>
-          <li><a href="#">Mes consommations</a></li>
-          <li><a href="#">Mes informations</a></li>
+          <!-- <li><a class="btn">Mes achats</a></li>
+          <li><a class="btn">Mes consommations</a></li> -->
+          <li><a class="btn">Mes informations</a></li>
         </ul>
         <div class="card-footer">
           <a class="btn btn-success btn-lg" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription">Inscription</a>
@@ -48,11 +48,11 @@
                         <td>{{resa.nbPersonne}}</td>
                         <td>{{resa.jeu}}</td>
                         <td>
-                            <!-- <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" (click)="editResa(resa.id)" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription"><i
-                                        class="bi bi-pencil-square"></i></a>
+                            <div class="btn-group btn-group-sm">
+                                <!-- <a class="btn btn-primary" (click)="editResa(resa.id)" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription"><i
+                                        class="bi bi-pencil-square"></i></a> -->
                                 <a class="btn btn-danger" (click)="removeResa(resa.id)"><i class="bi bi-trash"></i></a>
-                            </div> -->
+                            </div>
                         </td>
                     </tr>
                 </tbody>

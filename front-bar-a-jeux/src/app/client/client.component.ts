@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Client, Reservation } from '../model';
+import { ReservationService } from '../reservation/reservation.service';
 import { ClientService } from './client.service';
 
 @Component({
@@ -14,8 +15,9 @@ export class ClientComponent {
   id : number;
   listResa : Array<Reservation>;
   menuClient : string;
+  formReservation: Reservation = null;
 
-  constructor(private clientService: ClientService) {
+  constructor(private clientService: ClientService, private resaService : ReservationService) {
   }
 
   list(): Array<Client> {
@@ -48,11 +50,21 @@ export class ClientComponent {
     });
     this.menuClient = "reservation";
   }
-    
-
-
-
+    ViewInformationClient() : void {
+      this.menuClient = "information";
+    }
   
+    // editResa(id: number): void {
+    //   this.resaService.findById(id).subscribe(resp => {
+    //     this.formReservation = resp;
+    //   });
+    // }
+
+    removeResa(id: number): void {
+      this.resaService.removeId(id);
+    }
+
+    
 }
 
 
