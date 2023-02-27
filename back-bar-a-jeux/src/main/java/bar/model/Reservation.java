@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -35,11 +36,14 @@ public class Reservation {
 	private Integer nbPersonne;
 	@ManyToOne
 	@JoinColumn(name = "tableBar_id")
+	@JsonView(Views.ViewReservation.class)
 	private TableBar tableBar;
 	@OneToMany(mappedBy = "reservation")
+	@JsonIgnore
 	private List<CommandeConso> commandeConsos = new ArrayList<>();
 	@ManyToOne
 	@JoinColumn(name = "client_id")
+	@JsonView(Views.ViewReservation.class)
 	private Client client;
 	@OneToOne
 	@JoinColumn(name = "jeu_id")

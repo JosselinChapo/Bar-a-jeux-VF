@@ -1,5 +1,219 @@
-<div class="card mt-3">
-    <div class="card-header bg-primary text-white display-6" >Accueil Admin</div>
+<!-- Sidebar -->
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="margin-top: 80px;">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <ul>
+          <li><a (click)="divToShow('reservation')">Reservation</a></li>
+          <li><a (click)="divToShow('jeux')">Jeux</a></li>
+          <li><a (click)="divToShow('client')">Client</a></li>
+          <li><a (click)="divToShow('admin')">Admin</a></li>
+          
+        </ul>
+      <br>
+      </div>
+    </div>
+</nav>
+
+
+<div class="container-data" *ngIf="!menuAdmin">
+<br><br>
+<h1 style="padding-left: 10%;">Bienvenue dans le menu Admin</h1>
+
+</div>
+
+<!--Menu Reservation -->
+
+<div class="container-data" *ngIf="menuAdmin == 'reservation'">
+    <div class="card mt-3">
+        <div class="card-header bg-primary text-white display-6">Liste des réservations</div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre de Personne</th>
+                        <th>Date de la réservation</th>
+                        <th>Heure  de la réservation</th>
+                        <th>Numéro de la table</th>
+                        <th>Client</th>
+                        <th></th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let res of listResa()">
+                        <td>{{res.id}}</td>
+                        <td>{{res.nbPersonne}}</td>
+                        <td>{{res.dateRes | date:'dd/MM/yyyy'}}</td>
+                        <td>{{res.heureRes}}</td>
+                        <td>{{res.tableBar.idTable}}</td>
+                        <td>{{res.client.prenom}} - {{res.client.nom}}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" (click)="editResa(res.id)"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-danger" (click)="removeResa(res.id)"><i class="bi bi-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+    
+            </table>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-success btn-lg" (click)="addResa()"><i
+                class="bi bi-plus-square"></i></a>
+        </div>
+    </div>
+    
+    <div class="card mt-3" *ngIf="formReservation">
+        <div class="card-header bg-primary text-white display-6">Edition d'une réservation</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
+            </div>
+            <div class="form-group">
+                <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" />
+            </div>
+            <div class="form-group">
+                <label for="dateRes">Date:</label> <input type="text" class="form-control" id="dateRes" name="dateRes" [(ngModel)]="formReservation.dateRes" />
+            </div>
+            <div class="form-group">
+                <label for="heureRes">Heure:</label> <input type="text" class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" />
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-success" (click)="saveResa()"><i class="bi bi-check-square-fill"></i></a>
+                <a class="btn btn-warning" (click)="cancelResa()"><i class="bi bi-backspace-fill"></i></a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!--Menu Jeux -->
+
+<div class="container-data" *ngIf="menuAdmin == 'jeux'">
+    <div class="card mt-3">
+        <div class="card-header bg-primary text-white display-6">Liste des Jeux</div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Nom</th>
+                        <th>Joueurs min</th>
+                        <th>Joueurs max</th>
+                        <th>Age min</th>
+                        <th>Durée</th>
+                        <th>Editeur</th>
+                        <th>Année</th>
+                        <th>Prix</th>
+                        <th>Image</th>
+                        <th>Type de jeu</th>
+                        <th>Stock</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let jeu of listJeux()">
+                        <td>{{jeu.id}}</td>
+                        <td>{{jeu.nom}}</td>
+                        <td>{{jeu.nbJoueurMin}}</td>
+                        <td>{{jeu.nbJoueurMax}}</td>
+                        <td>{{jeu.ageMin}}</td>
+                        <td>{{jeu.duree}}</td>
+                        <td>{{jeu.editeur}}</td>
+                        <td>{{jeu.annee}}</td>
+                        <td>{{jeu.prix}}</td>
+                        <td><p style="max-width: 40px;
+                            max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.image}}</p></td>
+                        <td><p style="max-width: 40px;
+                            max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.typeJeu}}</p></td>
+                        <td>{{jeu.stock}}</td>
+                        <td><p style="max-width: 40px;
+                        max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                        {{jeu.description}}</p></td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" (click)="editJeu(jeu.id)"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-danger" (click)="removeJeu(jeu.id)"><i class="bi bi-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+    
+            </table>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-success btn-lg" (click)="addJeu()"><i
+                class="bi bi-plus-square"></i></a>
+        </div>
+    </div>
+    
+    <div class="card mt-3" *ngIf="formJeu">
+        <div class="card-header bg-primary text-white display-6">Edition d'un stagiaire</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formJeu.id" readonly/>
+            </div>
+            <div class="form-group">
+                <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formJeu.nom"/>
+            </div>
+            <div class="form-group">
+                <label for="nbJoueurMin">Nombre Joueur Min:</label> <input type="number" class="form-control" id="nbJoueurMin" name="nbJoueurMin" [(ngModel)]="formJeu.nbJoueurMin" />
+            </div>
+            <div class="form-group">
+                <label for="nbJoueurMax">Nombre Joueur Max:</label> <input type="number" class="form-control" id="nbJoueurMax" name="nbJoueurMax" [(ngModel)]="formJeu.nbJoueurMax" />
+            </div>
+            <div class="form-group">
+                <label for="ageMin">Age Min:</label> <input type="number" class="form-control" id="ageMin" name="ageMin" [(ngModel)]="formJeu.ageMin" />
+            </div>
+            <div class="form-group">
+                <label for="duree">Duree:</label> <input type="number" class="form-control" id="duree" name="duree" [(ngModel)]="formJeu.duree" />
+            </div>
+            <div class="form-group">
+                <label for="editeur">Editeur:</label> <input type="text" class="form-control" id="editeur" name="editeur" [(ngModel)]="formJeu.editeur" />
+            </div>
+            <div class="form-group">
+                <label for="annee">Annee:</label> <input type="text" class="form-control" id="annee" name="annee" [(ngModel)]="formJeu.annee" />
+            </div>
+            <div class="form-group">
+                <label for="prix">Prix:</label> <input type="number" class="form-control" id="prix" name="prix" [(ngModel)]="formJeu.prix" />
+            </div>
+            <div class="form-group">
+                <label for="image">Image:</label> <input type="text" class="form-control" id="image" name="image" [(ngModel)]="formJeu.image" />
+            </div>
+            <div class="form-group">
+                <label for="typeJeu">TypeJeu:</label> <input type="text" class="form-control" id="typeJeu" name="typeJeu" [(ngModel)]="formJeu.typeJeu" />
+            </div>
+            <div class="form-group">
+                <label for="stock">Stock:</label> <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="formJeu.stock" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label> <input type="text" class="form-control" id="description" name="description" [(ngModel)]="formJeu.description" />
+            </div>
+    
+        </div>
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-success" (click)="saveJeu()"><i class="bi bi-check-square-fill"></i></a>
+                <a class="btn btn-warning" (click)="cancelJeu()"><i class="bi bi-backspace-fill"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+<!-- Menu Admin -->
+
+<div class="container-data" *ngIf="menuAdmin == 'admin'">
+
     <div class="card mt-3">
         <div class="card-header bg-primary text-white display-6" id="admin">Liste admin</div>
     <div class="card-body">
@@ -28,15 +242,15 @@
                 </td>
            </tr>
             </tbody>
-
+            </table>  
 					 <div class="card-footer">
                         <a class="btn btn-success btn-lg" (click)="add()"><i
                             class="bi bi-plus-square"></i></a>
                     </div>
-            </table>   
+             
         </div> 
     </div>
- </div>
+ 
 
  <div class="card mt-3" *ngIf="creaAdmin">
     <div class="card-header bg-primary text-white display-6">Edition d'un Admin</div>
@@ -58,4 +272,104 @@
         </div>
     </div>
 </div>
-    
+</div>    
+</div>
+
+<!-- Menu Client -->
+
+<div class="container-data" *ngIf="menuAdmin == 'client'">
+
+    <div class="card mt-3">
+        <div class="card-header bg-primary text-white display-6" id="admin">Liste Clients</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>email</th>
+                    <th>Mot de passe</th>
+                    <th>Civilite</th>
+                    <th>Date de naissance</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Telephone</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let client of listClient()">
+                    <td>{{client.id}}</td>
+                    <td>{{client.mail}}</td>
+                    <td>{{client.password}}</td>
+                    <td>{{client.civilite}}</td>
+                    <td>{{client.dateNaissance}}</td>
+                    <td>{{client.nom}}</td>
+                    <td>{{client.prenom}}</td>
+                    <td>{{client.tel}}</td>
+                
+                <td>
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-primary" (click)="editClient(client.id)"><i
+                                class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-danger" (click)="removeClient(client.id)"><i class="bi bi-trash"></i></a>
+                    </div>
+                </td>
+           </tr>
+            </tbody>
+            </table>  
+					 <div class="card-footer">
+                        <a class="btn btn-success btn-lg" (click)="addClient()"><i
+                            class="bi bi-plus-square"></i></a>
+                    </div>
+             
+        </div> 
+    </div>
+ 
+
+ <div class="card mt-3" *ngIf="formClient">
+    <div class="card-header bg-primary text-white display-6">Edition d'un Client</div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formClient.id" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label> <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formClient.mail" />
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe:</label> <input type="password" class="form-control" id="password" name="password" [(ngModel)]="formClient.password" />
+        </div>
+            
+        <div class="form-group">
+            <label for="civilite">Civilité:</label>
+            <select class="form-control" id="civilite" name="civilite" [(ngModel)]="formClient.civilite">
+                <option value="">Veuillez sélectionner une civilité</option>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+                <option value="nb">NB</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dateNaissance">Date Naissance:</label> <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="formClient.dateNaissance" />
+        </div>
+
+        <div class="form-group">
+            <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formClient.nom" />
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prenom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formClient.prenom" />
+        </div>
+        <div class="form-group">
+            <label for="tel">Telephone:</label> <input type="number" class="form-control" id="tel" name="tel" [(ngModel)]="formClient.tel" />
+        </div>
+        
+        
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+            <a class="btn btn-success" (click)="saveClient()"><i class="bi bi-check-square-fill"></i></a>
+            <a class="btn btn-warning" (click)="cancelClient()"><i class="bi bi-backspace-fill"></i></a>
+        </div>
+    </div>
+</div>
+</div>    
+</div>

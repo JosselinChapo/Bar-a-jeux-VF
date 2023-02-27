@@ -1,84 +1,80 @@
-<p>Menu Client</p>
 
-<div class="card mt-3">
-    <div class="card-header bg-primary text-white display-6">Liste des clients</div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Identifiant</th>
-                    <th>Civilité</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Email</th>
-                    <th>Date de naissance</th>
-                    <th></th>
-                </tr>
-            </thead>
 
-            <tbody>
-                <tr *ngFor="let client of list()">
-                    <td>{{client.id}}</td>
-                    <td>{{client.civilite}}</td>
-                    <td>{{client.nom | uppercase}}</td>
-                    <td>{{client.prenom}}</td>
-                    <td>{{client.mail}}</td>
-                    <td>{{client.tel}}</td>
-                    <td>{{client.dateNaissance | date:"dd/MM/yyyy"}}</td>
-                    <td>
-                        <div class="btn-group btn-group-sm">
-                            <a class="btn btn-primary" (click)="edit(client.id)"><i
-                                    class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger" (click)="remove(client.id)"><i class="bi bi-trash"></i></a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+<!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="margin-top: 80px;">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <ul>
+          <li><a href="#">Mes réservations</a></li>
+          <li><a href="#">Mes achats</a></li>
+          <li><a href="#">Mes consommations</a></li>
+          <li><a href="#">Mes informations</a></li>
+        </ul>
+        <div class="card-footer">
+          <a class="btn btn-success btn-lg" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription">Inscription</a>
+      </div>
+      <br>
+      <br>
+      <input type="number" [(ngModel)]=id>
+      <button (click)="clientPage()" placehoder="id client">client !</button>
+      </div>
+    </div>
+  </nav>
+  
+<!--Main layout-->
+<main>
+  
+  <br>
+  <h1 class="bonjour">Bonjour {{currentClient.nom}}</h1>
+  <div class="container pt-4"></div>
+    <div class="card mt-3 col-md-10">
+      <div class="card-header" >Liste des clients</div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Civilité</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Date de naissance</th>
+                        <th></th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let client of list()">
+                        <td>{{client.id}}</td>
+                        <td>{{client.civilite}}</td>
+                        <td>{{client.nom | uppercase}}</td>
+                        <td>{{client.prenom}}</td>
+                        <td>{{client.mail}}</td>
+                        <td>{{client.tel}}</td>
+                        <td>{{client.dateNaissance | date:"dd/MM/yyyy"}}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" (click)="edit(client.id)" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-danger" (click)="remove(client.id)"><i class="bi bi-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+    
+            </table>
+        </div>
+        
+    </div>
+    <br>
+    <br>
+    <p></p>
+  </main>
 
-        </table>
-    </div>
-    <div class="card-footer">
-        <a class="btn btn-success btn-lg" (click)="add()"><i
-            class="bi bi-plus-square"></i></a>
-    </div>
-</div>
 
-<div class="card mt-3" *ngIf="formClient">
-    <div class="card-header bg-primary text-white display-6">Edition d'un client</div>
-    <div class="card-body">
-        <div class="form-group">
-            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formClient.id" readonly/>
-        </div>
-        <div class="form-group">
-            <label for="civilite">Civilité:</label>
-            <select class="form-control" id="civilite" name="civilite" [(ngModel)]="formClient.civilite">
-                <option value="">Veuillez sélectionner une civilité</option>
-                <option *ngFor="let item of listCivilites() | keyvalue" [value]="item.key">{{item.value}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formClient.nom" />
-        </div>
-        <div class="form-group">
-            <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formClient.prenom" />
-        </div>
-        <div class="form-group">
-            <label for="mail">Email:</label> <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="formClient.mail" />
-        </div>
-        <div class="form-group">
-            <label for="password">Mot de passe:</label> <input type="password" class="form-control" id="password" name="password" [(ngModel)]="formClient.password" />
-        </div>
-        <div class="form-group">
-            <label for="tel">Téléphone:</label> <input type="text" class="form-control" id="tel" name="tel" [(ngModel)]="formClient.tel" />
-        </div>
-        <div class="form-group">
-            <label for="dateNaissance">Date de naissance:</label> <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" [(ngModel)]="formClient.dateNaissance" />
-        </div>
-    </div>
-    <div class="card-footer">
-        <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
-            <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
-        </div>
-    </div>
-</div>
+
+        
+
+
+
+

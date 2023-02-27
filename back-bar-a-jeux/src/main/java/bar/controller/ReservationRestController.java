@@ -1,5 +1,7 @@
 package bar.controller;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +51,34 @@ public class ReservationRestController {
 //		}
 		
 		return reservation;
+	}
+	
+	@GetMapping("/client/{id}")
+	@JsonView(Views.ViewReservation.class)
+	public List<Reservation> findAllByClientId(@PathVariable Integer id) {
+		List<Reservation> reservations = reservationSrv.findAllByClientId(id);
+
+//		if(optReservation.isEmpty()) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
+		
+		return reservations;
+	}
+	
+	@GetMapping("/dates/{nbPersonne}")
+	@JsonView(Views.ViewReservation.class)
+	public List<LocalDate> findAllDisableDate(@PathVariable Integer nbPersonne) {
+		List<LocalDate> datesDisable = reservationSrv.findAllDisableDate(nbPersonne);  
+		
+		return datesDisable;
+	}
+	
+	@GetMapping("/heures/{nbPersonne}:{dateRes}")
+	@JsonView(Views.ViewReservation.class)
+	public List<LocalTime> findAllDisableDate(@PathVariable Integer nbPersonne,@PathVariable LocalDate dateRes) {
+		List<LocalTime> heuresDisable = reservationSrv.findAllDisableHeureparDate(nbPersonne,dateRes);
+		
+		return heuresDisable;
 	}
 	
 	@PostMapping("")

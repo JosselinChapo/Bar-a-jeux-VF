@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Client } from '../model';
 import { ClientService } from './client.service';
 
@@ -9,6 +9,9 @@ import { ClientService } from './client.service';
 })
 export class ClientComponent {
   formClient: Client = null;
+  currentClient : Client;
+  @Input('id')
+  id : number;
 
   constructor(private clientService: ClientService) {
   }
@@ -17,37 +20,20 @@ export class ClientComponent {
     return this.clientService.findAll();
   }
 
-  listCivilites(): Array<string> {
-    return this.clientService.findAllCivilite();
-  }
-
-  add(): void {
-    this.formClient = new Client();
-
-  }
-
   edit(id: number): void {
     this.clientService.findById(id).subscribe(response => {
       this.formClient = response;
     });
   }
 
-  save(): void {
-    if(this.formClient.id) { // UPDATE
-      this.clientService.update(this.formClient);
-    } else { // CREATE
-      this.clientService.create(this.formClient);
-    }
-
-    this.cancel();
-  }
-
   remove(id: number): void {
     this.clientService.remove(id);
   }
-
-  cancel(): void {
-    this.formClient = null;
-  }
   
+clientPage() : void {
+  this.clientService.findById(this.id).subscribe(response => {
+this.currentClient = response;
+  });
+}
+
 }

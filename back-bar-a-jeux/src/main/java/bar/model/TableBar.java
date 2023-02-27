@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -21,17 +22,18 @@ public class TableBar {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(Views.ViewTableBar.class)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "event_id")
 	private Evenement evenement;
-	@JsonView(Views.ViewTableBar.class)
+	@JsonView(Views.ViewBase.class)
 	@Column(name = "nbPersonne")
 	private int nbPersonne;
-	@JsonView(Views.ViewTableBar.class)
+	@JsonView(Views.ViewReservation.class)
 	@Column(name = "idTable")
 	private int idTable;
+	@JsonIgnore
 	@OneToMany(mappedBy = "tableBar")
 	private List<Reservation> reservations = new ArrayList<>();
 	// à voir si cette liste est necessaire à un moment
