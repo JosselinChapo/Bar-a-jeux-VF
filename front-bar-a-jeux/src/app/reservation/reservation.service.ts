@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ClientService } from '../client/client.service';
 import { Reservation } from '../model';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Reservation } from '../model';
 export class ReservationService {
   reservations: Array<Reservation> = new Array<Reservation>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private clientSrv: ClientService) {
     this.load();
   }
 
@@ -41,6 +42,7 @@ export class ReservationService {
 
   removeId(id: number): void {
     this.http.delete<void>("http://localhost:8888/reservation/" + id).subscribe(resp => {
+      this.clientSrv.load();
     });
   }
 

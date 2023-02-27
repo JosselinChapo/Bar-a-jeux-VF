@@ -51,7 +51,7 @@ export class ClientService {
   }
 
 
-  private load(): void {
+  load(): void {
     this.http.get<Array<Client>>("http://localhost:8888/client").subscribe(resp => {
       this.clients = resp;
     });
