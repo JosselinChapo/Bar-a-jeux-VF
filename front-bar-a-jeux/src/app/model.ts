@@ -35,16 +35,16 @@ export class Reservation {
     nbPersonne: number;
     tableBar: TableBar;
     client: Client;
-    // jeu: Jeu;
+    jeu: Jeu;
 
-    constructor(id?:number, dateRes?:string, heureRes?:string, nbPersonne?:number, tableBar?:TableBar, client?:Client){ //jeu?:Jeu
+    constructor(id?:number, dateRes?:string, heureRes?:string, nbPersonne?:number, tableBar?:TableBar, client?:Client, jeu?:Jeu){ //
         this.id = id;
         this.dateRes = dateRes;
         this.heureRes = heureRes;
         this.nbPersonne = nbPersonne;
         this.tableBar = tableBar;
         this.client = client;
-      //  this.jeu = jeu;
+        this.jeu = jeu;
 
     }
 

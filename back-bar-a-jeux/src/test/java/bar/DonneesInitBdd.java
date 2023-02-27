@@ -208,9 +208,7 @@ class DonneesInitBdd {
 		Reservation resa8 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("11:00:00"),8,table10,client2);
 		resaSrv.create(resa8);
 		Reservation resa9 = new Reservation(LocalDate.parse("2023-02-23"),LocalTime.parse("11:00:00"),4,table12,client1);
-		resaSrv.create(resa9);
-		
-		
+		resaSrv.create(resa9);	
 	}
 
 }

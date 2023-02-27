@@ -44,3 +44,7 @@ a {
   font-size: xx-large;
   font-weight: bold;
 }
+
+.btn {
+  font-weight: bolder;
+}

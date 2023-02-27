@@ -38,8 +38,6 @@ export class AdminComponent {
     this.cancel();
   }
 
-  
-
   edit(id: number): void {
     this.adminService.findById(id).subscribe(response => {
       this.creaAdmin = response;
