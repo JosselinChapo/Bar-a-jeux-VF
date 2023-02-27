@@ -15,8 +15,8 @@ export class ClientComponent {
   id : number;
   listResa : Array<Reservation>;
   menuClient : string;
-  formReservation: Reservation = null;
-
+  formReservation : Reservation;
+ 
   constructor(private clientService: ClientService, private resaService : ReservationService) {
   }
 
@@ -24,14 +24,24 @@ export class ClientComponent {
     return this.clientService.findAll();
   }
 
-   listResaByIdClient() : Array<Reservation>{
-   return this.listResa;
+  listResaByIdClient() : Array<Reservation>{
+    return this.listResa;
+  }
+
+  listCivilites(): Array<string> {
+    return this.clientService.findAllCivilite();
   }
 
   edit(id: number): void {
     this.clientService.findById(id).subscribe(response => {
       this.formClient = response;
     });
+    this.menuClient = "modifInformations";
+  }
+
+  saveClient(): void {
+    this.clientService.update(this.formClient);
+    this.menuClient = null;
   }
 
   removeClient(id: number): void {
@@ -45,14 +55,19 @@ export class ClientComponent {
   }
 
   ViewReservation(id: number): void {
-    this.clientService.findAllReservationByIdClient(this.id).subscribe(response => {
+    this.clientService.findAllReservationByIdClient(id).subscribe(response => {
       this.listResa = response;
     });
     this.menuClient = "reservation";
   }
-    ViewInformationClient() : void {
-      this.menuClient = "information";
-    }
+  
+  ViewInformationClient(id :number) : void {
+    this.clientService.findById(this.id).subscribe(response => {
+      this.currentClient = response;
+    });
+
+    this.menuClient = "information";
+  }
   
     // editResa(id: number): void {
     //   this.resaService.findById(id).subscribe(resp => {
@@ -60,11 +75,12 @@ export class ClientComponent {
     //   });
     // }
 
-    removeResa(id: number): void {
-      this.resaService.removeId(id);
-    }
+  removeResa(id: number): void {
+    this.menuClient = null;
+    this.clientService.removeResa(id);
+  }
 
-    
+
 }
 
 

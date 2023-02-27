@@ -11,6 +11,7 @@ export class ClientService {
   clients: Array<Client> = new Array<Client>();
   civilites: Array<string> = new Array<string>();
 
+
   constructor(private http: HttpClient) { 
     this.load();
     this.loadCivilites();
@@ -50,8 +51,18 @@ export class ClientService {
     return this.http.get<Array<Reservation>>("http://localhost:8888/reservation/client/" + (id?id:""));
   }
 
+  removeResa(id: number): void {
+    this.http.delete<void>("http://localhost:8888/reservation/" + id).subscribe(resp => {
+  });
+  }
 
-  load(): void {
+  updateResa(reservation: Reservation): void {
+    this.http.put<Reservation>("http://localhost:8888/reservation/" + reservation.id, reservation).subscribe(resp => {
+      this.load();
+    });
+  }
+
+  private load(): void {
     this.http.get<Array<Client>>("http://localhost:8888/client").subscribe(resp => {
       this.clients = resp;
     });
@@ -65,4 +76,7 @@ export class ClientService {
     });
   }
 
+
+
+  
 }
