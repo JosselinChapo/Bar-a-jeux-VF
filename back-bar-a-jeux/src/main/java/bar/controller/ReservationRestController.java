@@ -53,6 +53,18 @@ public class ReservationRestController {
 		return reservation;
 	}
 	
+	@GetMapping("/client/{id}")
+	@JsonView(Views.ViewReservation.class)
+	public List<Reservation> findAllByClientId(@PathVariable Integer id) {
+		List<Reservation> reservations = reservationSrv.findAllByClientId(id);
+
+//		if(optReservation.isEmpty()) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
+		
+		return reservations;
+	}
+	
 	@GetMapping("/dates/{nbPersonne}")
 	@JsonView(Views.ViewReservation.class)
 	public List<LocalDate> findAllDisableDate(@PathVariable Integer nbPersonne) {
