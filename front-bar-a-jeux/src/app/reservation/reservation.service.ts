@@ -39,6 +39,11 @@ export class ReservationService {
     });
   }
 
+  removeId(id: number): void {
+    this.http.delete<void>("http://localhost:8888/reservation/" + id).subscribe(resp => {
+    });
+  }
+
   private load(): void {
     this.http.get<Array<Reservation>>("http://localhost:8888/reservation").subscribe(resp => {
       this.reservations = resp;
