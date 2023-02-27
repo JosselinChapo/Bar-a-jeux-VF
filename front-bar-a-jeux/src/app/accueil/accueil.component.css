@@ -1,0 +1,80 @@
+
+#carouselExampleRide{
+
+   margin-left: 20%;
+   margin-right: 20%;
+
+}
+.carousel-inner{
+    display: flex;
+    align-items: center;
+    
+   
+}
+
+.img_carousel{
+   width:700px;
+   height:250px
+}
+
+.actu{
+    font-size: white;
+    background-color: rgb(53, 48, 41);
+    margin:0%;
+    padding-left:10%;
+    padding-right:10%;
+    padding-bottom: 2%;
+
+}
+
+h1{
+    color:white;
+}
+
+.box{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+  
+}
+
+.box_{
+    padding: 100px
+}
+#menu{
+    border:solid;
+    border-color: rgba(0, 0, 0, 0);
+    margin:2%;
+    background-color: rgb(254, 254, 119);
+    border-radius: 10px;
+    box-decoration-break: clone;-webkit-box-decoration-break: clone;box-shadow: 8px 8px 10px 0 #a4a19e, -5px -5px 5px 0 rgb(104, 104, 104), 5px 5px 15px 0 #ff0;
+
+   
+}
+
+#biblio{
+    border:solid;
+    border-color: rgba(0, 0, 0, 0);
+    margin:2%;
+   
+background-color: #ec8647;   
+ border-radius: 5px;
+    box-decoration-break: clone;-webkit-box-decoration-break: clone;box-shadow: 8px 8px 10px 0 #aeaeae, -5px -5px 5px 0 rgb(132, 132, 132), 5px 5px 15px 0 #ff0;
+}
+
+#boutique{
+    border:solid;
+    border-color: rgba(0, 0, 0, 0);
+    margin:2%;
+   
+background-color: #ff4a44;   
+ border-radius: 5px;
+    box-decoration-break: clone;-webkit-box-decoration-break: clone;box-shadow: 8px 8px 10px 0 #c7bfb7, -5px -5px 5px 0 rgb(133, 127, 125), 5px 5px 15px 0 #ff0;
+}
+
+
+.titre{
+    text-align: center;
+}
+
