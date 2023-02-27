@@ -1,0 +1,108 @@
+.flou {
+    filter: blur(2px);
+    width : 100%;
+  }
+
+  .flou img {
+    height: 100%;
+    width : 100%;
+    object-fit: cover;
+  }
+
+  .bandeau {
+    display: flex;
+    position: relative;
+    height: 20%;
+    justify-content:center;
+    align-items:center;
+
+
+  }
+
+  .page-title{
+    display: flex;
+    height: 100%;
+    width:  100%;
+    position : absolute;
+    z-index: 1;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .page-title h2{
+    color : white;
+    text-shadow: rgb(7, 7, 7) 2px 2px;
+  }
+
+  .search-bar{
+    display: flex;
+    width:  100%;
+    padding: 2.5% 0%;
+  }
+  .bar{
+    display: flex;
+    width:  80%;
+    margin-right:  5%;
+    margin-left:  5%;
+  }
+
+  .display-body{
+    display: flex;
+  }
+
+  .display-filters{
+    
+    display: block;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+
+    width:  20%;
+
+  }
+
+  .display-jeux{
+   
+    display: flex;
+    width:  80%;
+
+  }
+
+  .post-it-joueur{
+    background-color: #116466;
+    color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 1px;
+    text-shadow: rgb(51 51 51) 1px 1px;
+    position: absolute;
+    right: -30px;
+    top: 15px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+    .post-it-duree{
+        background-color: #116466;
+        color: white;
+        box-shadow: rgb(0 0 0 / 20%) 0px 1px;
+        text-shadow: rgb(51 51 51) 1px 1px;
+        position: absolute;
+        right: -30px;
+        top: 65px;
+        padding: 5px 10px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+}
+
+.post-it-age{
+    background-color: #116466;
+    color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 1px;
+    text-shadow: rgb(51 51 51) 1px 1px;
+    position: absolute;
+    right: -30px;
+    top: 115px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+  

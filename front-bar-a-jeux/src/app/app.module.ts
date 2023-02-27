@@ -13,6 +13,7 @@ import { HttpClientModule }from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDatePipe } from './reservation/custom-date-pipe.pipe';
+import { InscriptionComponent } from './inscription/inscription.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material/core';
@@ -29,7 +30,8 @@ import { MatInputModule } from '@angular/material/input';
     AdminComponent,
     AppComponent,
     NavBarComponent,
-    CustomDatePipe
+    CustomDatePipe,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
