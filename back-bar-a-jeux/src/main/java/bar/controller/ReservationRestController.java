@@ -53,7 +53,7 @@ public class ReservationRestController {
 		return reservation;
 	}
 	
-	@GetMapping("/{nbPersonne}")
+	@GetMapping("/dates/{nbPersonne}")
 	@JsonView(Views.ViewReservation.class)
 	public List<LocalDate> findAllDisableDate(@PathVariable Integer nbPersonne) {
 		List<LocalDate> datesDisable = reservationSrv.findAllDisableDate(nbPersonne);  
@@ -61,7 +61,7 @@ public class ReservationRestController {
 		return datesDisable;
 	}
 	
-	@GetMapping("/{nbPersonne}:{dateRes}")
+	@GetMapping("/heures/{nbPersonne}:{dateRes}")
 	@JsonView(Views.ViewReservation.class)
 	public List<LocalTime> findAllDisableDate(@PathVariable Integer nbPersonne,@PathVariable LocalDate dateRes) {
 		List<LocalTime> heuresDisable = reservationSrv.findAllDisableHeureparDate(nbPersonne,dateRes);

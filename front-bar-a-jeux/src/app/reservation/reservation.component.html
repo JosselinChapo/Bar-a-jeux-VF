@@ -20,8 +20,8 @@
                     <td>{{res.nbPersonne}}</td>
                     <td>{{res.dateRes | date:'dd/MM/yyyy'}}</td>
                     <td>{{res.heureRes}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{res.tableBar.idTable}}</td>
+                    <td>{{res.client.prenom}} - {{res.client.nom}}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
                             <a class="btn btn-primary" (click)="edit(res.id)"><i

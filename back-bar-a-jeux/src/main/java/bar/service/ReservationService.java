@@ -178,10 +178,10 @@ public class ReservationService {
 			List<LocalTime> heures = new ArrayList<>();
 			heures.add(LocalTime.parse("10:00"));
 			heures.add(LocalTime.parse("11:00"));
-			heures.add(LocalTime.parse("14:00"));
-			heures.add(LocalTime.parse("15:00"));
-			heures.add(LocalTime.parse("16:00"));
-			heures.add(LocalTime.parse("17:00"));
+//			heures.add(LocalTime.parse("14:00"));
+//			heures.add(LocalTime.parse("15:00"));
+//			heures.add(LocalTime.parse("16:00"));
+//			heures.add(LocalTime.parse("17:00"));
 			
 			return heures;
 		}
