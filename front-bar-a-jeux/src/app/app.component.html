@@ -1,5 +1,5 @@
-<nav-bar></nav-bar>
-   
+<nav-bar *ngIf="!isAccueilRoute()"> </nav-bar>
+
 <div>
     
 <router-outlet></router-outlet>

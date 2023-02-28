@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "GoodDog";
+    src: url("/assets/font/gooddogc.TTF");
+}
+
 .bandeau_accueil{
     display:flex;
     background-color:rgb(246, 211, 136);
@@ -22,14 +27,7 @@
     
 }
 
-ul{
-    list-style-type: none;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    flex-direction: row;
-    width: 80%;
-}
+
 
 .logo_banniere{
     display: flex;
@@ -54,8 +52,6 @@ ul{
     margin: 0%;
     border: 0%;
 }
-
-
 #carouselExampleRide{
 
    margin-left: 20%;
@@ -91,16 +87,25 @@ h1{
 .box{
     display:flex;
     flex-direction: row;
-  
+    justify-content: space-around;
+    
 }
 
+.box_{
+    padding: 100px
+}
+
+.box_:hover{
+    transform : translate(-5%, -5%);
+    transition-duration: 0.2s
+}
 #menu{
     border:solid;
     border-color: rgba(0, 0, 0, 0);
     margin:2%;
     background-image: url("/assets/images/accueil/menu.jpg");
-    border-radius: 10px;
-    box-decoration-break: clone;-webkit-box-decoration-break: clone;box-shadow: 8px 8px 10px 0 #c15508, -5px -5px 5px 0 rgb(255, 38, 0), 5px 5px 15px 0 #ff0;
+    border-radius: 5px;
+    box-decoration-break: clone;-webkit-box-decoration-break: clone;box-shadow: 8px 8px 10px 0 #a4a19e, -5px -5px 5px 0 rgb(104, 104, 104), 5px 5px 15px 0 #ff0;
 
    
 }
@@ -109,16 +114,37 @@ h1{
     border:solid;
     border-color: rgba(0, 0, 0, 0);
     margin:2%;
-background-color: #ead27c;    border-radius: 10px;
-
-    box-decoration-break: clone;-webkit-box-decoration-break: clone;box-shadow: 8px 8px 10px 0 #c15508, -5px -5px 5px 0 rgb(255, 38, 0), 5px 5px 15px 0 #ff0;
+   
+background-image:url("/assets/images/accueil/jeu.jpg");   
+ border-radius: 5px;
+    box-decoration-break: clone;-webkit-box-decoration-break: clone;box-shadow: 8px 8px 10px 0 #aeaeae, -5px -5px 5px 0 rgb(132, 132, 132), 5px 5px 15px 0 #ff0;
 }
 
 #boutique{
     border:solid;
     border-color: rgba(0, 0, 0, 0);
-    margin:0%;
-    background-color: #ffa361;
-    border-radius: 10px;
+    margin:2%;
+   
+background-image:url("/assets/images/accueil/boutique.jpg");   
+ border-radius: 5px;
+    box-decoration-break: clone;-webkit-box-decoration-break: clone;box-shadow: 8px 8px 10px 0 #c7bfb7, -5px -5px 5px 0 rgb(133, 127, 125), 5px 5px 15px 0 #ff0;
+}
 
+
+.titre{
+    text-align: center;
+}
+
+.link{
+    color:black;
+    text-decoration: none;
+}
+
+.link:hover{
+    color:rgba(255, 255, 255, 0.731);
+   
+}
+
+h1,h2{
+    font-family: 'GoodDog';
 }
