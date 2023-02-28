@@ -32,6 +32,15 @@ export class ReservationComponent {
     return this.reservationService.findAll();
   }
 
+  listHeureDisponible(): Array<string> {
+    let dateTest: string = this.datepipe.transform(this.formReservation.dateRes, 'yyyy-MM-dd');
+    return this.reservationService.findAllHeure(this.formReservation.nbPersonne,dateTest);
+  }
+
+  changeHeure(): void {
+    this.reservationService.changeHeure();
+  }
+
   save(): void {
     console.log(this.formReservation)
     if(this.formReservation.id) { // UPDATE
@@ -50,7 +59,7 @@ export class ReservationComponent {
     // Prevent Saturday and Sunday from being selected.
     let testDates: Array<Date>;
 
-    if (!this.formReservation){
+    if (!this.formReservation.nbPersonne){
       testDates= this.reservationService.findDateDisable(0);
     }else{
       testDates= this.reservationService.findDateDisable(this.formReservation.nbPersonne);
@@ -68,7 +77,7 @@ export class ReservationComponent {
     };
   };
 
-  test(event: any) {
+  test(event: any): void {
     console.log(event);
     let event1: Date;
     // let dateForm: string = event.toISOString();
@@ -79,6 +88,7 @@ export class ReservationComponent {
     console.log(dateForm2);
 
     this.formReservation.dateRes=dateForm2;
+    this.reservationService.changeHeure();
 
   } 
 }

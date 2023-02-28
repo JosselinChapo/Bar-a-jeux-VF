@@ -341,7 +341,7 @@ class ReservationServiceTest {
 		resaSrv.create(resa3);
 		resaSrv.create(resa4);
 		
-		List<LocalTime> heuresEnable = resaSrv.AllEnableHeures();
+		List<LocalTime> heuresEnable = resaSrv.AllEnableHeures(4,LocalDate.parse("2024-02-22"));
 		List<LocalTime> heuresDisable = resaSrv.findAllDisableHeureparDate(4,LocalDate.parse("2024-02-22"));
 
 		System.out.println("1er print");
@@ -354,6 +354,19 @@ class ReservationServiceTest {
 		
 		heuresEnable.forEach(System.out::println);
 		
+//		System.out.println("3eme print");
+//		
+//		List<String> heuresDispo = new ArrayList<>();
+//
+//		System.out.println(heuresEnable.size());
+//		
+//		for(int i=0; i<heuresEnable.size(); i++) {
+//			heuresDispo.add(heuresDispo.get(i).toString());
+//			System.out.println(heuresDispo(i));
+//		};
+		
+
+//		heuresDispo.forEach(System.out::println);
 		
 	}
 	

@@ -13,7 +13,7 @@ import bar.model.Reservation;
 
 public interface IReservationRepository extends JpaRepository<Reservation, Integer>{
 	
-	@Query("select r.dateRes from Reservation r WHERE r.nbPersonne=:nbPers")
+	@Query("select r.dateRes from Reservation r WHERE r.tableBar.nbPersonne=:nbPers")
 	Collection<LocalDate> findAllDate(@Param("nbPers") int nbPersonne);
 	
 //	@Query("select r.dateRes from Reservation r WHERE r.tableBar.nbPersonne=:nbPers GROUP BY r.dateResa")

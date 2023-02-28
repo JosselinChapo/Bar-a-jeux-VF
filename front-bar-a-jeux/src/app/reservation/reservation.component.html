@@ -47,20 +47,24 @@
         <div class="form-group">
             <!-- <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (ngModelChange)="recalculForbidden($event)"/> -->
         
-            <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne"/>
+            <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (click)="changeHeure()"/>
             <!-- https://stackoverflow.com/questions/61394048/how-do-i-manually-trigger-angular-material-date-picker-filter -->
         </div>
         <div class="form-group">
             <mat-form-field class="example-full-width" appearance="fill" >
                 <mat-label>Choisir une Date</mat-label>
-                <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value)" disabled #inputDate >
+                <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value)" disabled>
                 <mat-hint>DD/MM/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="dateRes" ></mat-datepicker-toggle>
                 <mat-datepicker #dateRes disabled="false"></mat-datepicker>
             </mat-form-field>
         </div>
         <div class="form-group">
-            <label for="heureRes">Heure:</label> <input type="text" class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" />
+            <label for="heureRes">Heures disponible:</label>
+            <select class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes">
+                <option selected value="">Veuillez sélectionner une heure</option>
+                <option *ngFor="let item of listHeureDisponible()" [value]="item">{{item}}</option>
+            </select>
         </div>
     </div>
     <div class="card-footer">

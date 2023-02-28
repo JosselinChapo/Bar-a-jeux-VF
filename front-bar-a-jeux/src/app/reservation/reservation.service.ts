@@ -12,9 +12,12 @@ export class ReservationService {
   reservations: Array<Reservation> = new Array<Reservation>();
   
   datesDisable: Array<Date>;
+  heuresDisable: Array<string>;
+  heureAChanger: boolean=false;
 
   constructor(private http: HttpClient, private clientSrv: ClientService) {
     this.load();
+    this.loadHeures(undefined,undefined);
   }
 
   findAll(): Array<Reservation> {
@@ -34,6 +37,18 @@ export class ReservationService {
       this.datesDisable=[];
     }
     return this.datesDisable
+  }
+
+  findAllHeure(nbPersonne: number, datetest: string): Array<string> {
+    if (this.heureAChanger) {
+      this.loadHeures(nbPersonne,datetest);
+      this.heureAChanger=false;
+    }
+    return this.heuresDisable
+  }
+
+  changeHeure() {
+    this.heureAChanger=true;
   }
 
   create(reservation: Reservation): void {
@@ -63,6 +78,16 @@ export class ReservationService {
     this.http.get<Array<Reservation>>("http://localhost:8888/reservation").subscribe(resp => {
       this.reservations = resp;
     });
+  }
+
+  private loadHeures(nbPersonne: number, datetest: string): void {
+    if (nbPersonne!== undefined && datetest!== undefined){
+      this.http.get<Array<string>>("http://localhost:8888/reservation/heures/" + nbPersonne + ":" + datetest).subscribe(resp => {
+        this.heuresDisable = resp;
+      });
+    }else {
+      this.heuresDisable=["10:00:00","11:00:00","14:00:00","15:00:00"];
+    }  
   }
 
 }

@@ -75,10 +75,10 @@ public class ReservationRestController {
 	
 	@GetMapping("/heures/{nbPersonne}:{dateRes}")
 	@JsonView(Views.ViewReservation.class)
-	public List<LocalTime> findAllDisableHeure(@PathVariable Integer nbPersonne,@PathVariable LocalDate dateRes) {
-		List<LocalTime> heuresDisable = reservationSrv.findAllDisableHeureparDate(nbPersonne,dateRes);
+	public List<LocalTime> findAllDisableHeure(@PathVariable Integer nbPersonne,@PathVariable String dateRes) {
+		List<LocalTime> heuresEnable = reservationSrv.AllEnableHeures(nbPersonne,LocalDate.parse(dateRes));
 		
-		return heuresDisable;
+		return heuresEnable;
 	}
 	
 	@PostMapping("")

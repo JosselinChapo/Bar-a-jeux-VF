@@ -195,8 +195,8 @@ class DonneesInitBdd {
 		resaSrv.create(resa1);
 		Reservation resa2 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("10:00:00"),4,table2,client2);
 		resaSrv.create(resa2);	
-		Reservation resa3 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("10:00:00"),6,table3,client3);
-		resaSrv.create(resa3);		
+//		Reservation resa3 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("10:00:00"),6,table3,client3);
+//		resaSrv.create(resa3);		
 		Reservation resa4 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("11:00:00"),4,table1,client1);
 		resaSrv.create(resa4);
 		Reservation resa5 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("11:00:00"),4,table2,client4);
@@ -205,7 +205,7 @@ class DonneesInitBdd {
 		resaSrv.create(resa6);
 		Reservation resa7 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("15:00:00"),6,table3,client4);
 		resaSrv.create(resa7);
-		Reservation resa8 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("11:00:00"),8,table10,client2);
+		Reservation resa8 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("14:00:00"),6,table11,client2);
 		resaSrv.create(resa8);
 		Reservation resa9 = new Reservation(LocalDate.parse("2023-02-23"),LocalTime.parse("11:00:00"),4,table12,client1);
 		resaSrv.create(resa9);		
@@ -213,17 +213,17 @@ class DonneesInitBdd {
 		resaSrv.create(resa10);
 		Reservation resa11 = new Reservation(LocalDate.parse("2023-03-16"),LocalTime.parse("10:00:00"),4,table2,client2);
 		resaSrv.create(resa11);	
-		Reservation resa12 = new Reservation(LocalDate.parse("2023-03-16"),LocalTime.parse("11:00:00"),4,table3,client3);
+		Reservation resa12 = new Reservation(LocalDate.parse("2023-03-16"),LocalTime.parse("11:00:00"),4,table2,client3);
 		resaSrv.create(resa12);		
 		Reservation resa13 = new Reservation(LocalDate.parse("2023-03-16"),LocalTime.parse("11:00:00"),4,table1,client1);
 		resaSrv.create(resa13);
-		Reservation resa14 = new Reservation(LocalDate.parse("2023-03-15"),LocalTime.parse("10:00:00"),6,table2,client4);
+		Reservation resa14 = new Reservation(LocalDate.parse("2023-03-15"),LocalTime.parse("10:00:00"),6,table11,client4);
 		resaSrv.create(resa14);
 		Reservation resa15 = new Reservation(LocalDate.parse("2023-03-15"),LocalTime.parse("10:00:00"),6,table3,client1);
 		resaSrv.create(resa15);
 		Reservation resa16 = new Reservation(LocalDate.parse("2023-03-15"),LocalTime.parse("11:00:00"),6,table3,client4);
 		resaSrv.create(resa16);
-		Reservation resa17 = new Reservation(LocalDate.parse("2023-03-15"),LocalTime.parse("11:00:00"),6,table10,client2);
+		Reservation resa17 = new Reservation(LocalDate.parse("2023-03-15"),LocalTime.parse("11:00:00"),6,table11,client2);
 		resaSrv.create(resa17);
 		
 		

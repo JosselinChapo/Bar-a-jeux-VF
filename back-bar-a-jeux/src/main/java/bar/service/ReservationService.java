@@ -144,7 +144,7 @@ public class ReservationService {
 			List<LocalTime> heureUnique = heures.stream().distinct().collect(Collectors.toList());
 			List<LocalTime> heureDisables = new ArrayList<>();
 			for (var heure : heureUnique) {
-				// compte le nombre de fois que la date "date" apparait dans la liste "dates"
+				// compte le nombre de fois que l'heure "heure" apparait dans la liste "heures"
 				int occurrences = Collections.frequency(heures, heure);
 				if (occurrences==resaMaxHeure) {
 					heureDisables.add(heure);
@@ -174,16 +174,20 @@ public class ReservationService {
 			return idTableDisable;
 		}
 		
-		public List<LocalTime> AllEnableHeures () {
-			List<LocalTime> heures = new ArrayList<>();
-			heures.add(LocalTime.parse("10:00"));
-			heures.add(LocalTime.parse("11:00"));
-//			heures.add(LocalTime.parse("14:00"));
-//			heures.add(LocalTime.parse("15:00"));
-//			heures.add(LocalTime.parse("16:00"));
-//			heures.add(LocalTime.parse("17:00"));
+		public List<LocalTime> AllEnableHeures (int nbPersonne, LocalDate dates) {
+			List<LocalTime> heuresEnable = new ArrayList<>();
+			heuresEnable.add(LocalTime.parse("10:00"));
+			heuresEnable.add(LocalTime.parse("11:00"));
+			heuresEnable.add(LocalTime.parse("14:00"));
+			heuresEnable.add(LocalTime.parse("15:00"));
+//			heuresEnable.add(LocalTime.parse("16:00"));
+//			heuresEnable.add(LocalTime.parse("17:00"));
 			
-			return heures;
+			List<LocalTime> heuresDisable = findAllDisableHeureparDate(nbPersonne,dates);
+			
+			heuresEnable.removeIf(x -> heuresDisable.contains(x));
+			
+			return heuresEnable;
 		}
 
 }
