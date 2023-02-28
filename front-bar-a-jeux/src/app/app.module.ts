@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDatePipe } from './reservation/custom-date-pipe.pipe';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgxSliderModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
