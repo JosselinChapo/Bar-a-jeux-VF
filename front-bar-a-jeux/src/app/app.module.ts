@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDatePipe } from './reservation/custom-date-pipe.pipe';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.co
     NavBarComponent,
     CustomDatePipe,
     InscriptionComponent,
-    BanniereAccueilComponent
+    BanniereAccueilComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
