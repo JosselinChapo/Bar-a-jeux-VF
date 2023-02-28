@@ -13,6 +13,7 @@ export class AppComponent {
   mailConnexion : string;
   @Input()
   passwordConnexion : string;
+  popupBool : boolean = true;
   
   constructor(protected popupService: PopupService) { }
 

@@ -2,8 +2,7 @@
    
 <div>
     <div >        
-        <!-- [ngClass]="{'visibility':true}" -->
-        <app-popup id="modal-1" >
+        <app-popup id="modal-1" [ngStyle]="popupBool && { 'visibility': 'hidden' }">
             <div class="modal-body">
                 <div class="container">
                     <div class="row">

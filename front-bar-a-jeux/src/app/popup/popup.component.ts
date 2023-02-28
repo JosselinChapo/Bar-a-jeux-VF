@@ -50,6 +50,7 @@ export class PopupComponent implements OnInit, OnDestroy {
       this.element.style.display = 'none';
       document.body.classList.remove('modal-open');
       this.isOpen = false;
+      this.appService.popupBool = false;
   }
 
 
