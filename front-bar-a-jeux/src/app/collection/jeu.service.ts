@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Jeu } from '../model';
+import { Filter, Jeu } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +9,19 @@ import { Jeu } from '../model';
 export class JeuService {
 
   jeux: Array<Jeu> = new Array<Jeu>();
+  typeJeux: Array<string>;
 
     constructor(private http : HttpClient) { 
      this.load();
+     this.getAllTypeJeu()
     }
   
     findAll(): Array<Jeu> {
       return this.jeux;
+    }
+
+    resetServ():void{
+      this.load();
     }
   
     findById(id: number): Observable<Jeu> {
@@ -47,8 +53,24 @@ export class JeuService {
     }
 
     findAllByNom(recherche :string): Array<Jeu> {
-      return this.jeux.filter(jeu => jeu.nom.indexOf(recherche) != -1);
+      return this.jeux.filter(jeu => jeu.nom.toUpperCase().indexOf(recherche.toUpperCase()) != -1);
     }
 
+    getAllTypeJeu():Array<string>{
+      this.http.get<Array<string>>("http://localhost:8888/jeu/typeJeu").subscribe(resp => {
+        this.typeJeux = resp;
+      })
+      return this.typeJeux;;
+    }
+
+    findAllTypeJeu(): Array<string> {
+      return this.typeJeux;
+    }
+
+    filterTest(filter: Filter): void {
+      this.http.post<Array<Jeu>>("http://localhost:8888/jeu/filtre", filter).subscribe(resp => {
+        this.jeux = resp;
+      });
+    }
   }
 

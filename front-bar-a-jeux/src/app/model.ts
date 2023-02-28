@@ -137,3 +137,19 @@ export class CommandeJeu {
         this.statut = statut;
     }
 }
+
+export class Filter {
+
+    nbJoueur : number;
+    dureeMin : number;
+    dureeMax : number;
+    typeJeu : string;
+
+    constructor(nbJoueur?:number,dureeMin?: number,dureeMax?: number, typeJeu?: string){
+        this.nbJoueur = nbJoueur;
+        this.dureeMin = dureeMin;
+        this.dureeMax = dureeMax;
+        this.typeJeu = typeJeu;
+    }
+
+}

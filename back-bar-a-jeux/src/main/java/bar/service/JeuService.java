@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import bar.exception.IdException;
@@ -139,4 +140,28 @@ public class JeuService {
 			List<String> listTypeJeu = Stream.of(typeJeuCommaSeparated.split(",")).distinct().collect(Collectors.toList());
 			return listTypeJeu;	
 		}
+		
+		public List<Jeu> findByTypeJeu(String typeJeu) {
+			
+			List<Jeu> jeux = jeuRepo.findByTypeJeu(typeJeu);
+			return jeux;	
+			}
+		
+		public List<Jeu> findByTypeJeuNbj(Integer nombreJoueur,String typeJeu) {
+					
+			List<Jeu> jeux = jeuRepo.findByTypeJeuNbj(nombreJoueur,typeJeu);
+			return jeux;	
+			}
+		
+		public List<Jeu> findByTypeJeuDuree(Integer dureeMin,Integer dureeMax,String typeJeu) {
+			
+			List<Jeu> jeux = jeuRepo.findByTypeJeuDuree(dureeMin,dureeMax,typeJeu);
+			return jeux;	
+			}
+		
+		public List<Jeu> findByFilter(Integer nombreJoueur,String typeJeu,Integer dureeMin,Integer dureeMax) {
+			
+			List<Jeu> jeux = jeuRepo.findByFilter(nombreJoueur,typeJeu,dureeMin,dureeMax);
+			return jeux;	
+			}
 }

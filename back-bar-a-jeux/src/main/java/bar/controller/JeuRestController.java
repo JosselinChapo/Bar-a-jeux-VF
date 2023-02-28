@@ -1,5 +1,6 @@
 package bar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import bar.dto.FilterDTO;
 import bar.model.Jeu;
 import bar.model.Views;
 import bar.repository.IJeuRepository;
@@ -59,6 +61,33 @@ public class JeuRestController {
 			
 			return jeu;
 		}
+		
+		@GetMapping("/typeJeu")
+		@JsonView(Views.ViewJeu.class)
+		public List<String> allTypeJeu() {
+			List<String> typeJeux = jeuService.findAllTypeJeu();
+			
+			return typeJeux;
+		}
+		
+		
+		@PostMapping("/filtre")
+		@JsonView(Views.ViewJeu.class)
+		public List<Jeu> findByfilter(@RequestBody FilterDTO filterDTO) {
+			List<Jeu> jeux = new ArrayList();
+			if(filterDTO.getNbJoueur()==0) {
+				jeux = jeuService.findByTypeJeuDuree(filterDTO.getDureeMin(),filterDTO.getDureeMax(),filterDTO.getTypeJeu());
+			}
+			else {
+				jeux = jeuService.findByFilter(filterDTO.getNbJoueur(),filterDTO.getTypeJeu(),filterDTO.getDureeMin(),filterDTO.getDureeMax());
+			}
+			
+			for (Jeu j : jeux) {
+				System.out.println(j.getNom());
+			}
+			return jeux;
+		}
+		
 		
 		@PutMapping("/{id}")
 		@JsonView(Views.ViewJeu.class)

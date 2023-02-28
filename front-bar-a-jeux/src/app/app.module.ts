@@ -16,6 +16,7 @@ import { CustomDatePipe } from './reservation/custom-date-pipe.pipe';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.component';
 import { FooterComponent } from './footer/footer.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgxSliderModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
