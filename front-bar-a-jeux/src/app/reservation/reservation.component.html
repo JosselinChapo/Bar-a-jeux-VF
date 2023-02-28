@@ -24,8 +24,6 @@
                     <td>{{res.client.prenom}} - {{res.client.nom}}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
-                            <a class="btn btn-primary" (click)="edit(res.id)"><i
-                                    class="bi bi-pencil-square"></i></a>
                             <a class="btn btn-danger" (click)="remove(res.id)"><i class="bi bi-trash"></i></a>
                         </div>
                     </td>
@@ -34,33 +32,32 @@
 
         </table>
     </div>
-    <div class="card-footer">
-        <a class="btn btn-success btn-lg" (click)="add()"><i
-            class="bi bi-plus-square"></i></a>
-    </div>
 </div>
 
 
 
-<div class="card mt-3" *ngIf="formReservation">
-    <div class="card-header bg-primary text-white display-6">Edition d'une réservation</div>
+
+
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white display-6">Faire une réservation</div>
     <div class="card-body">
         <div class="form-group">
             <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
         </div>
         <div class="form-group">
-            
-            <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" />
+            <!-- <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (ngModelChange)="recalculForbidden($event)"/> -->
+        
+            <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne"/>
+            <!-- https://stackoverflow.com/questions/61394048/how-do-i-manually-trigger-angular-material-date-picker-filter -->
         </div>
         <div class="form-group">
-            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-form-field class="example-full-width" appearance="fill" >
                 <mat-label>Choisir une Date</mat-label>
-                <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value)">
+                <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value)" disabled #inputDate >
                 <mat-hint>DD/MM/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="dateRes"></mat-datepicker-toggle>
-                <mat-datepicker #dateRes></mat-datepicker>
+                <mat-datepicker-toggle matIconSuffix [for]="dateRes" ></mat-datepicker-toggle>
+                <mat-datepicker #dateRes disabled="false"></mat-datepicker>
             </mat-form-field>
-            <!-- <label for="dateRes">Date de la réservation :</label> <input id="dateRes" type="date" class="form-control datepicker" placeholder="Date" name="dateRes" [(ngModel)]="formReservation.dateRes"> -->
         </div>
         <div class="form-group">
             <label for="heureRes">Heure:</label> <input type="text" class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" />
@@ -69,36 +66,7 @@
     <div class="card-footer">
         <div class="btn-group btn-group-lg float-right">
             <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
-            <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
         </div>
     </div>
 </div>
-
-
-
-	<!-- jQuery library -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- Popper JS -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<!-- Bootstrap 4 JS -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- Bootstrap Datepicker JS -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
-	<script type="text/javascript">
-		var dateDisable = "2023-02-15"
-		var datesForDisable = [ "2023-02-28", "2023-02-16", dateDisable ]
-
-		$('.datepicker').datepicker({
-			format : 'yyyy-mm-dd',
-			autoclose : true,
-			todayHighlight : true,
-			datesDisabled : datesForDisable,
-			startDate : "today"
-		});
-	</script>
 

@@ -1,4 +1,5 @@
 import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -12,11 +13,11 @@ import { ReservationService } from './reservation.service';
   providers: [DatePipe],
 })
 export class ReservationComponent {
-  formReservation: Reservation = null;
-  
+  formReservation: Reservation = new Reservation();
   myForm : FormGroup;
 
-  constructor(private reservationService: ReservationService,
+  constructor(
+    private reservationService: ReservationService,
     private _adapter: DateAdapter<any>, 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     public datepipe: DatePipe
@@ -31,16 +32,6 @@ export class ReservationComponent {
     return this.reservationService.findAll();
   }
 
-  add(): void {
-    this.formReservation = new Reservation();
-  }
-
-  edit(id: number): void {
-    this.reservationService.findById(id).subscribe(resp => {
-      this.formReservation = resp;
-    });
-  }
-
   save(): void {
     console.log(this.formReservation)
     if(this.formReservation.id) { // UPDATE
@@ -48,29 +39,33 @@ export class ReservationComponent {
     } else { // CREATE
       this.reservationService.create(this.formReservation);
     }
-
-    this.cancel();
   }
 
   remove(id: number): void {
     this.reservationService.remove(id);
   }
 
-  cancel(): void {
-    this.formReservation = null;
-  }
-
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
     // Prevent Saturday and Sunday from being selected.
+    let testDates: Array<Date>;
 
-    const testDates: Array<Date> = [
-      new Date('2023-03-07'),
-      new Date('2023-03-02'),
-      new Date('2023-05-04'),
-      new Date('2023-03-30')
-    ]
-    return day !== 0 && day !== 6 && testDates.findIndex(testDate => d?.toDateString() === testDate.toDateString()) < 0;
+    if (!this.formReservation){
+      testDates= this.reservationService.findDateDisable(0);
+    }else{
+      testDates= this.reservationService.findDateDisable(this.formReservation.nbPersonne);
+    }
+    let index: number=-1;
+    if (testDates == undefined) {
+      return day !== 0 && day !== 6;
+    }else {
+      // console.log(this.datepipe.transform(d, 'yyyy-MM-dd'));
+      // console.log(this.datepipe.transform(testDates[0], 'yyyy-MM-dd'));
+      // console.log(this.datepipe.transform(testDates[1], 'yyyy-MM-dd'));
+      // console.log(testDates.findIndex(testDate => this.datepipe.transform(d, 'yyyy-MM-dd') == this.datepipe.transform(testDate, 'yyyy-MM-dd')));
+      
+      return day !== 0 && day !== 6 && testDates.findIndex(testDate => this.datepipe.transform(d, 'yyyy-MM-dd') == this.datepipe.transform(testDate, 'yyyy-MM-dd')) <0;
+    };
   };
 
   test(event: any) {

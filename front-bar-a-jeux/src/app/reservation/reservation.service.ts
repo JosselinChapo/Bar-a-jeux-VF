@@ -9,6 +9,8 @@ import { Reservation } from '../model';
 })
 export class ReservationService {
   reservations: Array<Reservation> = new Array<Reservation>();
+  
+  datesDisable: Array<Date>;
 
   constructor(private http: HttpClient, private clientSrv: ClientService) {
     this.load();
@@ -20,6 +22,17 @@ export class ReservationService {
 
   findById(id: number): Observable<Reservation> {
     return this.http.get<Reservation>("http://localhost:8888/reservation/" + id);
+  }
+
+  findDateDisable(nbPersonne: number): Array<Date> {
+    if (nbPersonne!== undefined){
+      this.http.get<Array<Date>>("http://localhost:8888/reservation/dates/" + nbPersonne).subscribe(resp => {
+        this.datesDisable = resp;
+      });
+    }else {
+      this.datesDisable=[];
+    }
+    return this.datesDisable
   }
 
   create(reservation: Reservation): void {

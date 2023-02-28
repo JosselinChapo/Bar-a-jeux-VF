@@ -24,7 +24,7 @@ public class ReservationService {
 	
 	
 	
-	public static Integer resaMaxJour = 2;
+	public static Integer resaMaxJour = 4;
 	
 	
 	
