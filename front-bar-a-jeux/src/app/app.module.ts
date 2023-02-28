@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDatePipe } from './reservation/custom-date-pipe.pipe';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.component';
+import { FooterComponent } from './footer/footer.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { PopupComponent } from './popup/popup.component';
 
@@ -29,16 +32,18 @@ import { PopupComponent } from './popup/popup.component';
     AppComponent,
     NavBarComponent,
     CustomDatePipe,
-    InscriptionComponent,
     AuthentificationComponent,
     PopupComponent
+    BanniereAccueilComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgxSliderModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

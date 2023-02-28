@@ -1,26 +1,53 @@
 <head>
     <meta charset="ISO-8859-1">
-   
     </head>
-    <body>
-        <div class="bandeau_accueil">
-    
-    
-            <div class="reseaux_sociaux">
-                <p id="rs">Suivez-nous sur nos différents réseaux!</p>
-                
-                <ul>
-                    <li><img class="logo" src="/assets/images/reseaux_sociaux/facebook.png" alt="logo_fb"></li>
-                    <li><img class="logo" src="/assets/images/reseaux_sociaux/instagram.png" alt="logo_insta"></li>
-                    <li><img class="logo" src="/assets/images/reseaux_sociaux/twitter.jpg" alt="logo_twitter"></li>
-                </ul>
-            </div>
-    
-            <div class="logo_banniere">
-             <img class="logo_banniere_" id="banniere" src="/assets/images/logo_accueil/logo_banniere2.png" alt="banniere">
-            </div>
-        </div>
- 
+    <banniere-accueil></banniere-accueil>
+<!-- <ul class="nav nav-pills m-5 nav-justified">
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="bi bi-house"></i></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/filiere']" routerLinkActive="active">Filiere</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/matiere']" routerLinkActive="active">Matiere</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/ordinateur']" routerLinkActive="active">Ordinateur</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/formateur']" routerLinkActive="active">Formateur</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/stagiaire']" routerLinkActive="active">Stagiaire</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home/stagiaire']" routerLinkActive="active">Home-Stagiaire</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/utilisateur']" routerLinkActive="active"><i class="bi bi-person-circle"></i></a>
+    </li> 
+</ul> -->
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+
+<nav>
+    <div class="container">
+    <ul id="navbar">
+        <li><a [routerLink]="['/accueil']" routerLinkActive="active" id="accueil">ACCUEIL</a></li>
+        <li><a [routerLink]="['/reservation']" routerLinkActive="active" id="reservation">RESERVATION</a></li>
+        <li><a [routerLink]="['/collection']" routerLinkActive="active" id="collection">COLLECTION</a></li>
+        <li><a [routerLink]="['/client']" routerLinkActive="active"><i class="fas fa-user"></i></a></li>
+        <li><a [routerLink]="['/admin']" routerLinkActive="active"><i class="fas fa-user" style="color: darkred;"></i></a></li>
+    </ul>
+   </div>
+</nav>
+
+   <body>
     <div class="actu">
     <h1> L'actu du bar </h1>	
     <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
@@ -48,26 +75,61 @@
         
         <div class="concept">
         <h2>Le concept</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue eleifend accumsan. Donec convallis diam a aliquam euismod. Duis id porta nunc, eget mollis lectus. Suspendisse facilisis arcu maximus ultrices venenatis. Nulla vitae turpis non enim suscipit fermentum. Curabitur urna odio, pulvinar at fermentum at, rutrum quis ex. Suspendisse potenti. Nunc accumsan neque eros, pharetra faucibus elit sollicitudin efficitur. Curabitur massa sapien, aliquet vel feugiat ut, feugiat vestibulum nisi. Quisque gravida auctor pulvinar. Pellentesque egestas sapien venenatis erat luctus varius. Maecenas malesuada, velit sit amet venenatis porttitor, urna augue malesuada arcu, quis egestas mauris enim sed ante. Nulla in ligula nulla. Quisque hendrerit congue lacus, ut maximus sem sagittis nec. Praesent a auctor ex. Nunc elementum ac lectus a posuere.</p>
+        <p> Le bar "Dé qui roule n'amasse pas mousse" vous propose de venir découvrir, redécouvrir et tester de nombreux jeux autour d'un verre! </p>
+          Le concept est simple : <br/>
+
+          Pour pouvoir accéder aux jeux tu peux :
+              <ul>
+                <li>Acheter une consommation qui paiera ton heure de jeux (2€) </li>
+                <li>Payer ton temps de jeux sans consommer</li>
+              </ul>
+            Si tu veux être sûr d'avoir ta table, tu peux réserver à l'avance avec un jeu au choix ! 
+
+            A très vite chez "Dé qui roule n'amasse pas mousse"! 
+          
+           
         </div> 
         
         <div class="box">
-        <div id = "menu">
-        <h2>A manger</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue eleifend accumsan. Donec convallis diam a aliquam euismod. Duis id porta nunc, eget mollis lectus. Suspendisse facilisis arcu maximus ultrices venenatis. Nulla vitae turpis non enim suscipit fermentum. Curabitur urna odio, pulvinar at fermentum at, rutrum quis ex. Suspendisse potenti. Nunc accumsan neque eros, pharetra faucibus elit sollicitudin efficitur. Curabitur massa sapien, aliquet vel feugiat ut, feugiat vestibulum nisi. Quisque gravida auctor pulvinar. Pellentesque egestas sapien venenatis erat luctus varius. Maecenas malesuada, velit sit amet venenatis porttitor, urna augue malesuada arcu, quis egestas mauris enim sed ante. Nulla in ligula nulla. Quisque hendrerit congue lacus, ut maximus sem sagittis nec. Praesent a auctor ex. Nunc elementum ac lectus a posuere.</p>
+
+        <div id = "menu" class="box_">
+        <h2 class=" titre" routerLink="">A manger  A boire</h2>
         </div>
         
-        <div id= "biblio">
-        <h2>La ludothèque</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue eleifend accumsan. Donec convallis diam a aliquam euismod. Duis id porta nunc, eget mollis lectus. Suspendisse facilisis arcu maximus ultrices venenatis. Nulla vitae turpis non enim suscipit fermentum. Curabitur urna odio, pulvinar at fermentum at, rutrum quis ex. Suspendisse potenti. Nunc accumsan neque eros, pharetra faucibus elit sollicitudin efficitur. Curabitur massa sapien, aliquet vel feugiat ut, feugiat vestibulum nisi. Quisque gravida auctor pulvinar. Pellentesque egestas sapien venenatis erat luctus varius. Maecenas malesuada, velit sit amet venenatis porttitor, urna augue malesuada arcu, quis egestas mauris enim sed ante. Nulla in ligula nulla. Quisque hendrerit congue lacus, ut maximus sem sagittis nec. Praesent a auctor ex. Nunc elementum ac lectus a posuere.</p>
+        <div id= "biblio" class="box_"class="box_">
+          <a class="link" routerLink="/collection"><h2 class="titre"> La ludothèque</h2></a>
         </div>
+        
+
+        <div id = "boutique" class="box_">
+        <h2 class="titre" href="">La boutique</h2>
+        </div>
+       </div>
+
+       
+        <h2 id="ti">Espace contact:</h2>
+        <div id="contact" >
+          <div>
+          Nous sommes ouverts : 
+          <ul>
+            <li>Du lundi au samedi </li>
+            <li>De 14h à 23h</li>
+          </ul>
+          N'hésitez pas à nous contacter:
+          <ul>
+            <li>Par téléphone au 01.87.58.00.00</li>
+          <li>par mail à l'adresse :<br/>
+            <a id="email"href="mailto:dequiroulenamassepasmousse@gmail.com"> dequiroulenamassepasmousse@gmail.com</a>
+          </li>
+        </ul>
+        
         </div>
 
-        <div id = "boutique">
-        <h2>La boutique</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue eleifend accumsan. Donec convallis diam a aliquam euismod. Duis id porta nunc, eget mollis lectus. Suspendisse facilisis arcu maximus ultrices venenatis. Nulla vitae turpis non enim suscipit fermentum. Curabitur urna odio, pulvinar at fermentum at, rutrum quis ex. Suspendisse potenti. Nunc accumsan neque eros, pharetra faucibus elit sollicitudin efficitur. Curabitur massa sapien, aliquet vel feugiat ut, feugiat vestibulum nisi. Quisque gravida auctor pulvinar. Pellentesque egestas sapien venenatis erat luctus varius. Maecenas malesuada, velit sit amet venenatis porttitor, urna augue malesuada arcu, quis egestas mauris enim sed ante. Nulla in ligula nulla. Quisque hendrerit congue lacus, ut maximus sem sagittis nec. Praesent a auctor ex. Nunc elementum ac lectus a posuere.</p>
+        <div id="map">
+          <p>Pour y accéder : </p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.2987869701747!2d2.3438316504277643!3d48.871580407631534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e47a6144249%3A0x54e653d31dc451e9!2sAJC%20Formation!5e0!3m2!1sfr!2sfr!4v1677591052353!5m2!1sfr!2sfr" width="400" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-       
+
+       </div>
     </body>
     
-    <footer>

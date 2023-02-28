@@ -3,10 +3,10 @@
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <ul>
-          <li><a (click)="divToShow('reservation')">Reservation</a></li>
-          <li><a (click)="divToShow('jeux')">Jeux</a></li>
-          <li><a (click)="divToShow('client')">Client</a></li>
-          <li><a (click)="divToShow('admin')">Admin</a></li>
+          <li><a class="btn" (click)="divToShow('reservation')">Reservation</a></li>
+          <li><a class="btn" (click)="divToShow('jeux')">Jeux</a></li>
+          <li><a class="btn" (click)="divToShow('client')">Client</a></li>
+          <li><a class="btn" (click)="divToShow('admin')">Admin</a></li>
           
         </ul>
       <br>
@@ -155,7 +155,7 @@
     </div>
     
     <div class="card mt-3" *ngIf="formJeu">
-        <div class="card-header bg-primary text-white display-6">Edition d'un stagiaire</div>
+        <div class="card-header bg-primary text-white display-6">Edition d'un Jeu</div>
         <div class="card-body">
             <div class="form-group">
                 <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formJeu.id" readonly/>

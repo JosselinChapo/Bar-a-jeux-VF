@@ -1,5 +1,5 @@
-<nav-bar></nav-bar>
-   
+<nav-bar *ngIf="!isAccueilRoute()"> </nav-bar>
+<body>
 <div>
     <div >        
         <app-popup id="modal-1" [ngStyle]="popupBool && { 'visibility': 'hidden' }">
@@ -46,3 +46,6 @@
 <router-outlet></router-outlet>
 
 </div>
+</body>
+
+<footer></footer>
