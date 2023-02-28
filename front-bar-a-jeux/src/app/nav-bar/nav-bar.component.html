@@ -33,11 +33,6 @@
 
 
 
-
-
-
-
-
 <nav>
     <div class="container">
     <div class = "logo"><a [routerLink]="['/accueil']" routerLinkActive="active"><img src="assets/images/logo_w.png" alt="logo du bar"></a></div>
@@ -47,6 +42,7 @@
         <li><a [routerLink]="['/collection']" routerLinkActive="active" id="collection">COLLECTION</a></li>
         <li><a [routerLink]="['/client']" routerLinkActive="active"><i class="fas fa-user"></i></a></li>
         <li><a [routerLink]="['/admin']" routerLinkActive="active"><i class="fas fa-user" style="color: darkred;"></i></a></li>
+        <li><a class="btn" (click)="popupService.open('modal-1')">connexion</a></li>
     </ul>
    </div>
 </nav>

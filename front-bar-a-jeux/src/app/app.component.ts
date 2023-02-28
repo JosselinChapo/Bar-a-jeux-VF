@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { PopupService } from './popup/popup.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,14 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class AppComponent {
   title ="Dé qui roule n'amasse pas mousse";
+  @Input()
+  mailConnexion : string;
+  @Input()
+  passwordConnexion : string;
+  popupBool : boolean = true;
+  
+  constructor(protected popupService: PopupService, public router: Router) { }
 
-constructor(public router: Router){}
 
 isAccueilRoute() {
 if(this.router.url=='/'){
