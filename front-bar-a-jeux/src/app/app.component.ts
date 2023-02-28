@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { PopupService } from './popup/popup.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +15,8 @@ export class AppComponent {
   passwordConnexion : string;
   popupBool : boolean = true;
   
-  constructor(protected popupService: PopupService) { }
+  constructor(protected popupService: PopupService, public router: Router) { }
 
-
-constructor(public router: Router){}
 
 isAccueilRoute() {
 if(this.router.url=='/'){

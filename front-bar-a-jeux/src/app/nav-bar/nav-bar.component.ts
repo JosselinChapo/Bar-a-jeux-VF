@@ -8,7 +8,7 @@ import { PopupService } from '../popup/popup.service';
 })
 export class NavBarComponent {
 
-  constructor(protected popupService: PopupService) { }
+  constructor(public popupService: PopupService) { }
 
 
 }

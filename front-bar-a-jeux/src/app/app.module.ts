@@ -33,9 +33,10 @@ import { PopupComponent } from './popup/popup.component';
     NavBarComponent,
     CustomDatePipe,
     AuthentificationComponent,
-    PopupComponent
+    PopupComponent,
     BanniereAccueilComponent,
-    FooterComponent
+    FooterComponent, 
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
