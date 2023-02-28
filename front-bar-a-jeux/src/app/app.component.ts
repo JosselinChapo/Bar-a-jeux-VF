@@ -8,7 +8,6 @@ import { PopupService } from './popup/popup.service';
 })
 export class AppComponent {
   title ="Dé qui roule n'amasse pas mousse";
-  visilibity : string;
   @Input()
   mailConnexion : string;
   @Input()
