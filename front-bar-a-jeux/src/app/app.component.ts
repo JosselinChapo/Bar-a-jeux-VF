@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AuthentificationService } from './authentification/authentification.service';
+import { Component, Input } from '@angular/core';
+import { PopupService } from './popup/popup.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,11 @@ import { AuthentificationService } from './authentification/authentification.ser
 export class AppComponent {
   title ="Dé qui roule n'amasse pas mousse";
   visilibity : string;
+  @Input()
+  mailConnexion : string;
+  @Input()
+  passwordConnexion : string;
   
-  constructor(protected modalService: AuthentificationService) { }
-
-
+  constructor(protected popupService: PopupService) { }
 
 }

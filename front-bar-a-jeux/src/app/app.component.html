@@ -3,7 +3,7 @@
 <div>
     <div >        
         <!-- [ngClass]="{'visibility':true}" -->
-        <app-authentification id="modal-1" >
+        <app-popup id="modal-1" >
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
@@ -13,13 +13,13 @@
                             </div>
                             <p>
                                 <label class="form-label">Mail :</label>
-                                <input type="email" class="form-control" />
+                                <input type="email" class="form-control" id="mailConnexion" name="mailConnexion" [(ngModel)]="mailConnexion"/>
                             </p>
                             <p>
                                 <label class="form-label">Mot de passe :</label>
-                                <input type="password" class="form-control" />
+                                <input type="password" class="form-control" id="passwordConnexion" id="passwordConnexion" name="passwordConnexion" [(ngModel)]="passwordConnexion" />
                             </p>
-                            <a class="btn btn-success btn-lg" (click)="modalService.close();">Valider</a>
+                            <a class="btn btn-success btn-lg" (click)="popupService.close();">Valider</a>
                         </div>
                         <div class="col-md-2">
                             <br><br><br><br>
@@ -30,20 +30,18 @@
                                 <p>Inscription</p>
                                 <br>
                                 <br>
-                                <a class="btn btn-success btn-lg" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription" (click)="modalService.close();">Inscription</a>
+                                <a class="btn btn-success btn-lg" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription" (click)="popupService.close();">Inscription</a>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-
-                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="modalService.close();">Close</button>
+                <button type="button" class="btn btn-secondary" (click)="popupService.close();">Close</button>
             </div>
-        </app-authentification>
+        </app-popup>
     </div>
 
 <router-outlet></router-outlet>
