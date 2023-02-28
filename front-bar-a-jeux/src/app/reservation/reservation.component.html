@@ -1,4 +1,4 @@
-<div class="card mt-3">
+<!-- <div class="card mt-3">
     <div class="card-header bg-primary text-white display-6">Liste des réservations</div>
     <div class="card-body">
         <table class="table table-striped">
@@ -32,24 +32,23 @@
 
         </table>
     </div>
-</div>
+</div> -->
+<br/>
+<br/>
+<div class="card-header bg-primary text-white display-6">Faire une réservation</div>
+<br/>
 
-
-
-
-
-<div class="card mt-3">
-    <div class="card-header bg-primary text-white display-6">Faire une réservation</div>
-    <div class="card-body">
-        <div class="form-group">
-            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
-        </div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
         <div class="form-group">
             <!-- <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (ngModelChange)="recalculForbidden($event)"/> -->
         
-            <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (click)="changeHeure();changeTable();resetForm()"/>
+            <label for="nbPersonne">Nombre de Joueurs:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (click)="changeHeure();changeTable();resetForm()"/>
             <!-- https://stackoverflow.com/questions/61394048/how-do-i-manually-trigger-angular-material-date-picker-filter -->
         </div>
+      </div>
+      <div class="col-sm">
         <div class="form-group">
             <mat-form-field class="example-full-width" appearance="fill" >
                 <mat-label>Choisir une Date</mat-label>
@@ -59,6 +58,8 @@
                 <mat-datepicker #dateRes disabled="false"></mat-datepicker>
             </mat-form-field>
         </div>
+      </div>
+      <div class="col-sm">
         <div class="form-group">
             <label for="heureRes">Heures disponible:</label>
             <select class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" (click)="changeTable()">
@@ -66,14 +67,26 @@
                 <option *ngFor="let item of listHeureDisponible()" [value]="item">{{item}}</option>
             </select>
         </div>
-        <div class="form-group" [ngStyle]="(formReservation.heureRes==undefined || formReservation.nbPersonne==undefined || formReservation.dateRes==undefined) && { 'visibility': 'hidden' }">
-            <label for="idTable">tables disponible:</label>
-            <select class="form-control" id="idTable" name="idTable" [(ngModel)]="idTable">
-                <option selected value="">Veuillez sélectionner une table</option>
-                <option *ngFor="let item of listTableDisponible()" [value]="item">{{item}}</option>
-            </select>
-        </div>
+      </div>
     </div>
+</div>
+
+
+<div class="form-group" [ngStyle]="(formReservation.heureRes==undefined || formReservation.nbPersonne==undefined || formReservation.dateRes==undefined) && { 'visibility': 'hidden' }">
+    <label for="idTable">tables disponible:</label>
+    <select class="form-control" id="idTable" name="idTable" [(ngModel)]="idTable">
+        <option selected value="">Veuillez sélectionner une table</option>
+        <option *ngFor="let item of listTableDisponible()" [value]="item">{{item}}</option>
+    </select>
+</div>
+
+<div style="visibility: hidden;">
+    <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
+</div>
+
+
+
+<div class="card mt-3">
     <div class="card-footer">
         <div class="btn-group btn-group-lg float-right">
             <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
