@@ -20,38 +20,6 @@
   
 }
 
-.logo{
-    margin: 0%;
-    height: 20px;
-    width: 20px;
-    
-}
-
-
-
-.logo_banniere{
-    display: flex;
-    flex-direction: column;
-    align-items: center ;
-    width:80%;
-    margin: 0%;
-    
-}
-
-#logo{
-   
-    width:100px;
-    height:127px;
-    margin: 0%;
-    border:0%
-}
-
-#banniere
-{
-    width: 400px;
-    margin: 0%;
-    border: 0%;
-}
 #carouselExampleRide{
 
    margin-left: 20%;
@@ -148,3 +116,56 @@ background-image:url("/assets/images/accueil/boutique.jpg");
 h1,h2{
     font-family: 'GoodDog';
 }
+
+.concept{
+    margin-left: 2%;
+}
+
+/* navbar */
+
+.container {
+
+    padding : 0 24px;
+    margin : auto;
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    height : 80px;
+    background-color: #2C3531;
+    font-family: 'Bebas Neue', sans-serif;
+    margin: 0;
+   }
+
+   
+
+   #navbar {
+     display: flex;
+     flex-direction: row;
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     font-size: 150%;
+   }
+
+   li {
+     margin: 0 50px;
+
+   }
+
+   a{
+     text-decoration: none;
+     color: #D1E8E2;
+   }
+
+  a:hover{
+    color:#D9B08C
+  }
+
+  .fa {
+  color: #D1E8E2;
+  }
+  
+.active{
+    text-decoration: underline;
+  }
