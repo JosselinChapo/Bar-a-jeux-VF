@@ -17,6 +17,9 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { AuthentificationComponent } from './authentification/authentification.component';
+import { PopupComponent } from './popup/popup.component';
+
 
 @NgModule({
   declarations: [
@@ -29,9 +32,11 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     AppComponent,
     NavBarComponent,
     CustomDatePipe,
-    InscriptionComponent,
+    AuthentificationComponent,
+    PopupComponent,
     BanniereAccueilComponent,
-    FooterComponent
+    FooterComponent, 
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
