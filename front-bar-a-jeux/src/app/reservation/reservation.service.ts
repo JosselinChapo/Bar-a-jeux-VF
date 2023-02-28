@@ -12,12 +12,15 @@ export class ReservationService {
   reservations: Array<Reservation> = new Array<Reservation>();
   
   datesDisable: Array<Date>;
-  heuresDisable: Array<string>;
+  heuresDispo: Array<string>;
   heureAChanger: boolean=false;
+  tablesDispo: Array<number>;
+  tableAChanger: boolean=false;
 
   constructor(private http: HttpClient, private clientSrv: ClientService) {
     this.load();
     this.loadHeures(undefined,undefined);
+    this.loadTables(undefined,undefined,undefined);
   }
 
   findAll(): Array<Reservation> {
@@ -36,19 +39,31 @@ export class ReservationService {
     }else {
       this.datesDisable=[];
     }
-    return this.datesDisable
+    return this.datesDisable;
   }
 
-  findAllHeure(nbPersonne: number, datetest: string): Array<string> {
+  findAllHeure(nbPersonneheure: number, datetest: string): Array<string> {
     if (this.heureAChanger) {
-      this.loadHeures(nbPersonne,datetest);
+      this.loadHeures(nbPersonneheure,datetest);
       this.heureAChanger=false;
     }
-    return this.heuresDisable
+    return this.heuresDispo;
+  }
+
+  findAllTable(nbPersonnetable: number, datetable: string, heuretable: string): Array<number> {
+    if (this.tableAChanger) {
+      this.loadTables(nbPersonnetable,datetable,heuretable);
+      this.tableAChanger=false;
+    }
+    return this.tablesDispo;
   }
 
   changeHeure() {
     this.heureAChanger=true;
+  }
+
+  changeTable() {
+    this.tableAChanger=true;
   }
 
   create(reservation: Reservation): void {
@@ -80,13 +95,23 @@ export class ReservationService {
     });
   }
 
-  private loadHeures(nbPersonne: number, datetest: string): void {
-    if (nbPersonne!== undefined && datetest!== undefined){
-      this.http.get<Array<string>>("http://localhost:8888/reservation/heures/" + nbPersonne + ":" + datetest).subscribe(resp => {
-        this.heuresDisable = resp;
+  private loadHeures(nbPersonneHeure: number, dateHeure: string): void {
+    if (nbPersonneHeure!== undefined && dateHeure!== undefined){
+      this.http.get<Array<string>>("http://localhost:8888/reservation/heures/" + nbPersonneHeure + ":" + dateHeure).subscribe(resp => {
+        this.heuresDispo = resp;
       });
     }else {
-      this.heuresDisable=["10:00:00","11:00:00","14:00:00","15:00:00"];
+      this.heuresDispo=["10:00:00","11:00:00","14:00:00","15:00:00"];
+    }  
+  }
+
+  private loadTables(nbPersonneTable: number, datetest: string, heureTable: string): void {
+    if (nbPersonneTable!== undefined && datetest!== undefined && heureTable!== undefined){
+      this.http.get<Array<number>>("http://localhost:8888/reservation/tables/" + nbPersonneTable + "/" + datetest + "/" + heureTable).subscribe(resp => {
+        this.tablesDispo = resp;
+      });
+    }else {
+      this.tablesDispo=[1,2,3,4,5,6,7,8,9,10,11,12];
     }  
   }
 

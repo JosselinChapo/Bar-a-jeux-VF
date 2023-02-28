@@ -317,8 +317,8 @@ class ReservationServiceTest {
 		resaSrv.create(resa2);
 		resaSrv.create(resa3);
 		//System.out.println(heuresDisable);
-		List<Integer> idDate1=resaSrv.findAllIdByDateResandHeureRes(LocalDate.parse("2024-02-22"),LocalTime.parse("10:00:00"));
-		List<Integer> idDate2=resaSrv.findAllIdByDateResandHeureRes(LocalDate.parse("2024-02-22"),LocalTime.parse("11:00:00"));
+		List<Integer> idDate1=resaSrv.findAllIdByDateResandHeureRes(4,LocalDate.parse("2024-02-22"),LocalTime.parse("10:00:00"));
+		List<Integer> idDate2=resaSrv.findAllIdByDateResandHeureRes(4,LocalDate.parse("2024-02-22"),LocalTime.parse("11:00:00"));
 		assertEquals(2, idDate1.size());
 		assertEquals(1, idDate2.size());
 	}

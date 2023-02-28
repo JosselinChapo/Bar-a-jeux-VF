@@ -15,13 +15,16 @@ import bar.exception.IdException;
 import bar.exception.ReservationException;
 import bar.model.Reservation;
 import bar.repository.IReservationRepository;
+import bar.repository.ITableRepository;
 
 @Service
 public class ReservationService {
 	
 	@Autowired
 	private IReservationRepository resaRepo;
-	
+
+	@Autowired
+	private ITableRepository tableRepo;
 	
 	
 	public static Integer resaMaxJour = 4;
@@ -169,11 +172,22 @@ public class ReservationService {
 		}
 		
 		// Cette fonction renvoie la liste d'id des tables non disponible (l'attribut pas celui de la base)
-		public List<Integer> findAllIdByDateResandHeureRes (LocalDate date,LocalTime heure){
+		public List<Integer> findAllIdByDateResandHeureRes (int nbPersonne,LocalDate date,LocalTime heure){
 			List<Integer> idTableDisable = resaRepo.findAllIdByDateResandHeureRes(date, heure);
+			List<Integer> idTableDispo = tableRepo.findAllIdTablebyNbPersonne(nbPersonne);
+			
+			idTableDispo.removeIf(x -> idTableDisable.contains(x));
+			
+			return idTableDispo;
+		}
+		
+		// Cette fonction renvoie la liste d'id des tables non disponible (l'attribut pas celui de la base)
+		public List<Integer> findAllIdTablebyNbPersonne (int nbPersonne){
+			List<Integer> idTableDisable = tableRepo.findAllIdTablebyNbPersonne(nbPersonne);
 			return idTableDisable;
 		}
 		
+		//Cette fonction donc la liste des heures disponible à une certaines dates et un autre de personne précis
 		public List<LocalTime> AllEnableHeures (int nbPersonne, LocalDate dates) {
 			List<LocalTime> heuresEnable = new ArrayList<>();
 			heuresEnable.add(LocalTime.parse("10:00"));

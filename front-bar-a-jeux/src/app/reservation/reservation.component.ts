@@ -1,8 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
 import { Reservation } from '../model';
 import { ReservationService } from './reservation.service';
 
@@ -15,6 +16,7 @@ import { ReservationService } from './reservation.service';
 export class ReservationComponent {
   formReservation: Reservation = new Reservation();
   myForm : FormGroup;
+  idTable: number=0;
 
   constructor(
     private reservationService: ReservationService,
@@ -37,8 +39,17 @@ export class ReservationComponent {
     return this.reservationService.findAllHeure(this.formReservation.nbPersonne,dateTest);
   }
 
+  listTableDisponible(): Array<number> {
+    let dateTest: string = this.datepipe.transform(this.formReservation.dateRes, 'yyyy-MM-dd');
+    return this.reservationService.findAllTable(this.formReservation.nbPersonne,dateTest,this.formReservation.heureRes);
+  }
+
   changeHeure(): void {
     this.reservationService.changeHeure();
+  }
+
+  changeTable(): void {
+    this.reservationService.changeTable();
   }
 
   save(): void {
@@ -77,6 +88,12 @@ export class ReservationComponent {
     };
   };
 
+  @ViewChild('fromInput', {read: MatInput})fromInput: MatInput;
+
+  resetForm() {
+    this.fromInput.value='';
+  }
+
   test(event: any): void {
     console.log(event);
     let event1: Date;
@@ -89,6 +106,11 @@ export class ReservationComponent {
 
     this.formReservation.dateRes=dateForm2;
     this.reservationService.changeHeure();
+    this.reservationService.changeTable();
+
+  } 
+  test2(): void {
+    this.myFilter;
 
   } 
 }
