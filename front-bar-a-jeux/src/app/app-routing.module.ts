@@ -14,7 +14,8 @@ const routes: Routes = [
   {path: "collection", component: CollectionComponent},
   {path: "client", component: ClientComponent},
   {path: "admin", component: AdminComponent}, 
-  {path: "inscription", component: InscriptionComponent}
+  {path: "inscription", component: InscriptionComponent},
+  {path: "boutique", component: CollectionComponent}
 ];
 
 @NgModule({

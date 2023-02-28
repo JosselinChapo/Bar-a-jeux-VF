@@ -1,5 +1,6 @@
 import { Options } from '@angular-slider/ngx-slider';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Filter, Jeu } from '../model';
 import { JeuService } from './jeu.service';
 
@@ -16,9 +17,16 @@ export class CollectionComponent {
   typeDeJeuDefault : string = "Type de jeu";
   minValue: number = 0;
   maxValue: number = 60;
+  minPrix: number = 0;
+  maxPrix: number = 100;
   options: Options = {
     floor: 0,
     ceil: 90,
+    step: 5
+  };
+  options2: Options = {
+    floor: 0,
+    ceil: 100,
     step: 5
   };
 
@@ -27,7 +35,7 @@ export class CollectionComponent {
   
   
 
-  constructor(private jeuService: JeuService) {
+  constructor(private jeuService: JeuService,public router: Router) {
   } 
 
   search(): Array<Jeu> {
@@ -90,6 +98,11 @@ export class CollectionComponent {
     return this.jeuService.findAllTypeJeu();
   }
 
-
+  isBoutique() {
+    if(this.router.url=='/boutique'){
+      return true;
+    }
+    else {return false;}
+    }
 
 }
