@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthentificationService } from './authentification/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title ="Dé qui roule n'amasse pas mousse";
+  visilibity : string;
+  
+  constructor(protected modalService: AuthentificationService) { }
+
+
+
 }

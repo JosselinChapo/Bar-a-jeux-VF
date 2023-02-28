@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDatePipe } from './reservation/custom-date-pipe.pipe';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AuthentificationComponent } from './authentification/authentification.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     AppComponent,
     NavBarComponent,
     CustomDatePipe,
-    InscriptionComponent
+    InscriptionComponent,
+    AuthentificationComponent
   ],
   imports: [
     BrowserModule,

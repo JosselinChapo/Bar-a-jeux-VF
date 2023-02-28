@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthentificationService } from '../authentification/authentification.service';
 
 @Component({
   selector: 'nav-bar',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+
+  constructor(protected modalService: AuthentificationService) { }
+
 
 }

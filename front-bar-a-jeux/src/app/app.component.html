@@ -1,7 +1,51 @@
 <nav-bar></nav-bar>
    
 <div>
-    
+    <div >        
+        <!-- [ngClass]="{'visibility':true}" -->
+        <app-authentification id="modal-1" >
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="header">
+                                <p>Connexion</p>
+                            </div>
+                            <p>
+                                <label class="form-label">Mail :</label>
+                                <input type="email" class="form-control" />
+                            </p>
+                            <p>
+                                <label class="form-label">Mot de passe :</label>
+                                <input type="password" class="form-control" />
+                            </p>
+                            <a class="btn btn-success btn-lg" (click)="modalService.close();">Valider</a>
+                        </div>
+                        <div class="col-md-2">
+                            <br><br><br><br>
+                            <p>or</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="header">
+                                <p>Inscription</p>
+                                <br>
+                                <br>
+                                <a class="btn btn-success btn-lg" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription" (click)="modalService.close();">Inscription</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modalService.close();">Close</button>
+            </div>
+        </app-authentification>
+    </div>
+
 <router-outlet></router-outlet>
 
 </div>

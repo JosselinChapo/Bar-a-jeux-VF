@@ -1,0 +1,22 @@
+.container{
+    text-align : center;
+}
+
+.header{
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.col-md-2 {
+    font-size: x-large;
+    margin2s:0px;
+}
+
+.col-md-4 {
+    /* margin: 20px; */
+}
+
+.modal-body {
+    width: 600px;
+}
+
