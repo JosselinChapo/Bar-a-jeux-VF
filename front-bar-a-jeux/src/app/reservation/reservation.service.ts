@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ClientService } from '../client/client.service';
 import { Reservation } from '../model';
+import { ReservationComponent } from './reservation.component';
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +56,6 @@ export class ReservationService {
 
   removeId(id: number): void {
     this.http.delete<void>("http://localhost:8888/reservation/" + id).subscribe(resp => {
-      this.clientSrv.load();
     });
   }
 
