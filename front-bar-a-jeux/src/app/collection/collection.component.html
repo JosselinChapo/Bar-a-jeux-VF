@@ -63,7 +63,7 @@
         <option *ngFor="let typeJeu of  allTypeJeu()" [value]="typeJeu">{{typeJeu}}</option>
       </select><br>
       <button class="btn btn-primary" type="submit" (click)="searchJeu()" style="background-color:#116466; border-color: #0a3d3e">Recherche</button>
-      <button class="reset-btn"(click)="reset()">Reset</button>
+      <button class="reset-btn"(click)="reset()">reset</button>
       <br>
       <br>
       <br>
@@ -84,7 +84,8 @@
             <div class="card-body">
                 <h5 class="card-title" style="text-align: center;">{{jeu.nom}}</h5>
                 <p class="card-text" style="text-align: center;">{{jeu.editeur}} - {{jeu.annee}}</p>
-                <p class="card-text" style="text-align: center;"><i class="bi bi-dice-6-fill"></i>  {{jeu.typeJeu}}</p>
+                <p class="card-text" style="text-align: center; max-width: 17rem;
+                 text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><i class="bi bi-dice-6-fill"></i>  {{jeu.typeJeu}}</p>
                 <div class="accordion accordion-flush">
                     <div class="accordion-item">
                     
