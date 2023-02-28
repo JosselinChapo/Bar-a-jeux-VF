@@ -19,6 +19,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { MatInputModule } from '@angular/material/input';
     AppComponent,
     NavBarComponent,
     CustomDatePipe,
-    InscriptionComponent
+    InscriptionComponent,
+    BanniereAccueilComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

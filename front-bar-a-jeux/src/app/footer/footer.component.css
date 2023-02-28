@@ -1,0 +1,40 @@
+.bandeau_footer{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    background-color:rgb(246, 211, 136);
+    height: 20%
+    
+}
+
+#reseaux_sociaux
+{ 
+    width: 10%; 
+    height:10%;
+    margin: 0%;
+    padding: 0%;
+  
+}
+
+.logo{
+    margin-top:80%;
+    height: 20px;
+    width: 20px;
+    margin-bottom:0%;
+    padding-bottom: 0;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    padding: 0%;
+    margin-bottom: 0%;
+}
+#copyright{
+    margin: 2%;
+    margin-bottom:2% ;
+}
+
