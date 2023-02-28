@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthDTO } from './model';
 import { PopupService } from './popup/popup.service';
 
 @Component({
@@ -9,11 +10,9 @@ import { PopupService } from './popup/popup.service';
 })
 export class AppComponent {
   title ="Dé qui roule n'amasse pas mousse";
-  @Input()
-  mailConnexion : string;
-  @Input()
-  passwordConnexion : string;
+  typeCompte : string;
   popupBool : boolean = true;
+  authentification : AuthDTO = new AuthDTO();
   
   constructor(protected popupService: PopupService, public router: Router) { }
 
@@ -27,5 +26,9 @@ else if (this.router.url=='/accueil'){
 }
 else {return false;}
   
+}
+
+toto() {
+  console.log(this.authentification);
 }
 }

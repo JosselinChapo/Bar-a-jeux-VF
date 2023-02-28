@@ -1,11 +1,13 @@
 package bar.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bar.exception.AdminException;
+import bar.exception.CompteException;
 import bar.exception.IdException;
 import bar.model.Admin;
 import bar.repository.IAdminRepository;
@@ -16,8 +18,8 @@ public class AdminService {
 	@Autowired 
 	private IAdminRepository adminRepo;
 	
-	public Admin create(String mail, String password) {
-		Admin compteAdmin = new Admin(mail, password);
+	public Admin create(String mail, String password, String type) {
+		Admin compteAdmin = new Admin(mail, password, type);
 		return save(compteAdmin);
 	}
 	
@@ -80,6 +82,18 @@ public class AdminService {
 		AdminEnBase.setMail(compteAdmin.getMail());
 		AdminEnBase.setPassword(compteAdmin.getPassword());
 		return adminRepo.save(AdminEnBase);
+	}
+	
+	public Admin findByMailAndPassword(String mail, String password) {
+		
+		Optional<Admin>  newAdmin =  adminRepo.findByMailAndPassword(mail, password);
+		
+		if(newAdmin.isEmpty()) {
+			throw new CompteException("admin absent");
+			
+		}
+		
+		return  newAdmin.get();
 	}
 }
 

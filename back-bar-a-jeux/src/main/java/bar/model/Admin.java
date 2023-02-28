@@ -11,12 +11,12 @@ public class Admin extends Compte {
 		super();
 	}
 	
-	public Admin(String mail, String password) {
-		super(mail, password);
+	public Admin(String mail, String password, String type) {
+		super(mail, password, type);
 	}
 
-	public Admin(Integer id, String mail, String password) {
-		super(id, mail, password);
+	public Admin(Integer id, String mail, String password, String type) {
+		super(id, mail, password, type);
 	}
 	
 }

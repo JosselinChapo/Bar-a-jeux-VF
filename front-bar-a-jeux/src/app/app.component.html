@@ -11,14 +11,22 @@
                                 <p>Connexion</p>
                             </div>
                             <p>
+                                <label class="form-label"> Type de compte :</label>
+                                <select name="typeCompte" id="typeCompte" class="form-control" [(ngModel)]="typeCompte">
+                                    <option value="admin">Admin</option>
+                                    <option value="client">Client</option>
+                                </select>
+                            </p>
+                            <p>
                                 <label class="form-label">Mail :</label>
-                                <input type="email" class="form-control" id="mailConnexion" name="mailConnexion" [(ngModel)]="mailConnexion"/>
+                                <input type="email" class="form-control" id="mailConnexion" name="mailConnexion" [(ngModel)]="authentification.mail"/>
+                                
                             </p>
                             <p>
                                 <label class="form-label">Mot de passe :</label>
-                                <input type="password" class="form-control" id="passwordConnexion" id="passwordConnexion" name="passwordConnexion" [(ngModel)]="passwordConnexion" />
+                                <input type="password" class="form-control" id="passwordConnexion" id="passwordConnexion" name="passwordConnexion" [(ngModel)]="authentification.password" />
                             </p>
-                            <a class="btn btn-success btn-lg" (click)="popupService.close();">Valider</a>
+                            <a class="btn btn-success btn-lg" (click)="toto();">Valider</a>
                         </div>
                         <div class="col-md-2">
                             <br><br><br><br>

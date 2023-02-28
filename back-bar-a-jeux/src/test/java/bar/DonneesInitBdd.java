@@ -47,17 +47,17 @@ class DonneesInitBdd {
 	void InitBdd() {
 		
 		//ajout admin
-		Admin admin = new Admin("admin@test.fr","admin");
+		Admin admin = new Admin("admin@test.fr","admin", "admin");
 		adminSrv.save(admin);
 		
 		// ajout des clients
-		Client client1 = new Client("client1@test.fr","client1","client1","client1","0600000001",Civilite.homme);
+		Client client1 = new Client("client1@test.fr","client1","client","client1","client1","0600000001",Civilite.homme);
 		clientSrv.save(client1);
-		Client client2 = new Client("client2@test.fr","client2","client2","client2","0600000002",Civilite.femme);	
+		Client client2 = new Client("client2@test.fr","client2","client","client2","client2","0600000002",Civilite.femme);	
 		clientSrv.save(client2);
-		Client client3 = new Client("client3@test.fr","client3","client3","client3","0600000003",Civilite.nb);
+		Client client3 = new Client("client3@test.fr","client3","client","client3","client3","0600000003",Civilite.nb);
 		clientSrv.save(client3);
-		Client client4 = new Client("client4@test.fr","client4","client4","client4","0600000004",Civilite.homme);
+		Client client4 = new Client("client4@test.fr","client4","client","client4","client4","0600000004",Civilite.homme);
 		clientSrv.save(client4);
 		
 		//ajout des jeux

@@ -54,7 +54,7 @@ public class CommandeJeuServiceTest {
 	
 	@Test
 	void creationCommande() {
-	Client clientTest = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
+	Client clientTest = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
 	clientSrv.save(clientTest);
 	CommandeJeu cmdTest = new CommandeJeu(Statut.EnCours,clientTest);
 	cmdJeuSrv.create(cmdTest);
@@ -66,7 +66,7 @@ public class CommandeJeuServiceTest {
 	void checkConstraintThrowsTest() {
 		
 		CommandeJeuException thrown1 = assertThrows(CommandeJeuException.class, () -> {
-			Client clientTest = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
+			Client clientTest = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
 			clientSrv.save(clientTest);
 			CommandeJeu cmdTest = new CommandeJeu(null,clientTest);
 			cmdJeuSrv.create(cmdTest);
@@ -100,7 +100,7 @@ public class CommandeJeuServiceTest {
 
 	@Test
 	void findByIdTest() {
-		Client clientTest = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
+		Client clientTest = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
 		clientSrv.save(clientTest);
 		CommandeJeu cmdTest = new CommandeJeu(Statut.EnCours,clientTest);
 		cmdJeuSrv.create(cmdTest);
@@ -110,7 +110,7 @@ public class CommandeJeuServiceTest {
 	@Test
 	void updateStatut() {
 		
-		Client clientTest = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
+		Client clientTest = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
 		clientSrv.save(clientTest);
 		CommandeJeu cmdTest = new CommandeJeu(Statut.EnCours,clientTest);
 		cmdJeuSrv.create(cmdTest);
@@ -125,11 +125,11 @@ public class CommandeJeuServiceTest {
 	@Test
 	void updateClientTest() {
 		
-		Client clientTest = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
+		Client clientTest = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
 		clientSrv.save(clientTest);
 		CommandeJeu cmdTest = new CommandeJeu(Statut.EnCours,clientTest);
 		cmdJeuSrv.create(cmdTest);
-		Client clientTest2 = new Client("client2@test.fr","clienttest2","clienttest2","clienttest2","0600000002",Civilite.homme, LocalDate.parse("2000-02-01"));	
+		Client clientTest2 = new Client("client2@test.fr","clienttest2","client","clienttest2","clienttest2","0600000002",Civilite.homme, LocalDate.parse("2000-02-01"));	
 		clientSrv.save(clientTest2);
 		CommandeJeu cmdJeuUpdate = new CommandeJeu(cmdTest.getId(),Statut.EnCours,clientTest2);
 		cmdJeuUpdate = cmdJeuSrv.update(cmdJeuUpdate);
@@ -148,7 +148,7 @@ public class CommandeJeuServiceTest {
 	@Test
 	void deleteByIdTest() {
 		
-		Client clientTest = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
+		Client clientTest = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
 		clientSrv.save(clientTest);
 		CommandeJeu cmdTest = new CommandeJeu(Statut.EnCours,clientTest);
 		cmdJeuSrv.create(cmdTest);
@@ -163,7 +163,7 @@ public class CommandeJeuServiceTest {
 	@Test
 	void deleteByObjectTest() {
 		
-		Client clientTest = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
+		Client clientTest = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
 		clientSrv.save(clientTest);
 		CommandeJeu cmdTest = new CommandeJeu(Statut.EnCours,clientTest);
 		cmdJeuSrv.create(cmdTest);
@@ -180,7 +180,7 @@ public class CommandeJeuServiceTest {
 	@Test 
 	void findAllTest() {
 		List<CommandeJeu> commandeJeux = new ArrayList<>();	
-		Client clientTest = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
+		Client clientTest = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));	
 		clientSrv.save(clientTest);
 		CommandeJeu cmdTest = new CommandeJeu(Statut.EnCours,clientTest);
 		commandeJeux.add(cmdTest);
