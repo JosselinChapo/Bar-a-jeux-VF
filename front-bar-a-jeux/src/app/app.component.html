@@ -1,7 +1,10 @@
-<nav-bar></nav-bar>
-   
+<nav-bar *ngIf="!isAccueilRoute()"> </nav-bar>
+<body>
 <div>
     
 <router-outlet></router-outlet>
 
 </div>
+</body>
+
+<footer></footer>
