@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.component';
 import { FooterComponent } from './footer/footer.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -42,11 +43,12 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
+    NgxSliderModule,
+    NgbModule,
     MatInputModule 
   ],
   providers: [],

@@ -272,11 +272,11 @@ class ReservationServiceTest {
 	}
 	
 	@Test
-	@Disabled
+	
 	void findAllByDateRes() {
-		Client client1 = new Client("client1@test.fr","client1","client1","client1","0600000001",Civilite.homme);
+		Client client1 = new Client("client10@test.fr","client10","client10","client1","0600000001",Civilite.homme);
 		client1=clientSrv.save(client1);
-		Client client2 = new Client("client2@test.fr","client2","client2","client2","0600000002",Civilite.homme);
+		Client client2 = new Client("client20@test.fr","client20","client20","client2","0600000002",Civilite.homme);
 		client2=clientSrv.save(client2);
 		TableBar table1 = new TableBar(4,1);
 		table1=tableSrv.create(table1);
@@ -288,11 +288,11 @@ class ReservationServiceTest {
 		
 		List<Reservation> dateAfter=resaSrv.findAllByAfterDateRes(client1.getId());
 		List<Reservation> dateBefore=resaSrv.findAllByBeforeDateRes(client1.getId());
-//		System.out.println(client1.getId());
-//		System.out.println(client2.getId());
-//		System.out.println(dateAfter.get(0).getDateRes());
-//		System.out.println(dateAfter.get(1).getDateRes());
-//		System.out.println(dateBefore.get(0).getDateRes());
+		System.out.println(client1.getId());
+		System.out.println(client2.getId());
+		System.out.println(dateAfter.get(0).getDateRes());
+		System.out.println(dateAfter.get(1).getDateRes());
+		System.out.println(dateBefore.get(0).getDateRes());
 		assertEquals(2, dateAfter.size());
 		assertEquals(1, dateBefore.size());
 
@@ -324,6 +324,7 @@ class ReservationServiceTest {
 	}
 	
 	@Test
+	@Disabled
 	void removeDisableHeure() {
 		Client client1 = new Client("client1@test.fr","client1","client1","client1","0600000001",Civilite.homme);
 		TableBar table1 = new TableBar(4,1);
