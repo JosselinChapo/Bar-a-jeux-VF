@@ -64,6 +64,8 @@
       </select><br>
       <button class="btn btn-primary" type="submit" (click)="searchJeu()" style="background-color:#116466; border-color: #0a3d3e">Recherche</button>
       <button class="reset-btn"(click)="reset()">Reset</button>
+      <p>{{search().length}}
+      </p>
       <!-- <h2>PRIX:</h2>
       <input type="range" value="15" min="1" max="100" oninput="this.nextElementSibling.value = this.value">
       <output>15</output> -->
@@ -73,8 +75,8 @@
 
 <div class="display-jeux">
     <div class="row card-group">
-        <div class="col-4"  *ngFor="let jeu of search();let i = index">
-            <div class="card" style="width: 18rem; margin-bottom: 1.2rem;">
+        <div [ngClass]="{'col-4': search().length <= 51 ,'col-6': search().length == 2}"  *ngFor="let jeu of search();let i = index">
+            <div class="card" style="width: 18rem; margin-bottom: 1.2rem; margin-right: 2rem;">
                 <img src={{jeu.image}} class="card-img-top" style="margin-top: 10px;" alt="image d'un jeu">
             
             <div class="card-body">
