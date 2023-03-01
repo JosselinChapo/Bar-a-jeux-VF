@@ -16,7 +16,7 @@ import { ReservationService } from './reservation.service';
 export class ReservationComponent {
   formReservation: Reservation = new Reservation();
   myForm : FormGroup;
-  idTable: number=0;
+  idTable: number;
 
   constructor(
     private reservationService: ReservationService,
@@ -79,12 +79,7 @@ export class ReservationComponent {
     if (testDates == undefined) {
       return day !== 0 && day !== 6;
     }else {
-      // console.log(this.datepipe.transform(d, 'yyyy-MM-dd'));
-      // console.log(this.datepipe.transform(testDates[0], 'yyyy-MM-dd'));
-      // console.log(this.datepipe.transform(testDates[1], 'yyyy-MM-dd'));
-      // console.log(testDates.findIndex(testDate => this.datepipe.transform(d, 'yyyy-MM-dd') == this.datepipe.transform(testDate, 'yyyy-MM-dd')));
-      
-      return day !== 0 && day !== 6 && testDates.findIndex(testDate => this.datepipe.transform(d, 'yyyy-MM-dd') == this.datepipe.transform(testDate, 'yyyy-MM-dd')) <0;
+      return day !== 0 && day !== 1 && testDates.findIndex(testDate => this.datepipe.transform(d, 'yyyy-MM-dd') == this.datepipe.transform(testDate, 'yyyy-MM-dd')) <0;
     };
   };
 
@@ -92,6 +87,9 @@ export class ReservationComponent {
 
   resetForm() {
     this.fromInput.value='';
+    this.formReservation.heureRes=undefined;
+    this.idTable=undefined;
+    this.formReservation.dateRes=undefined;
   }
 
   test(event: any): void {
