@@ -35,8 +35,8 @@ import { ConsoComponent } from './conso/conso.component';
     CustomDatePipe,
     PopupComponent,
     BanniereAccueilComponent,
-    FooterComponent, 
-    InscriptionComponent, PanierComponent
+    FooterComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
