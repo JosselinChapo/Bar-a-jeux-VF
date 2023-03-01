@@ -18,7 +18,6 @@ import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.co
 import { FooterComponent } from './footer/footer.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { PopupComponent } from './popup/popup.component';
-import { SeConnecterComponent } from './se-connecter/se-connecter.component';
 
 
 @NgModule({
@@ -35,8 +34,7 @@ import { SeConnecterComponent } from './se-connecter/se-connecter.component';
     PopupComponent,
     BanniereAccueilComponent,
     FooterComponent, 
-    InscriptionComponent, 
-    SeConnecterComponent
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,

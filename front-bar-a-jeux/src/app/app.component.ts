@@ -31,7 +31,7 @@ else {return false;}
   
 }
 
-toto() {
+connexion() {
   if(this.authentification.mail == "admin@test.fr" ){
     console.log("admin authentification");
     this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
@@ -48,7 +48,6 @@ toto() {
       this.popupService.close();
     });
   }
-
 
 }
 }
