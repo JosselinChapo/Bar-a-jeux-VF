@@ -12,9 +12,6 @@
                                 <input id="civilite" [value]='item' type="radio" name="civilite" [(ngModel)]="formClientInscription.civilite"> {{ item }}
                             </label>
                         </div>
-                        <div id="validationInscriptionFeedback" class="invalid-feedback">
-                            Please choose a username.
-                          </div>
                     </div> 
                     <div class="col-md-3 mb-3">
                         <strong><label for="nom" for="validationInscription1">Nom : * &nbsp;&nbsp;</label></strong>
@@ -38,9 +35,7 @@
 
                      <div class="col-md-3 mb-3">
                         <strong><label for="mail">Mail : * &nbsp;&nbsp;</label></strong>
-                        <form class="form-floating">
                          <input type="email" class="form-control" id="mail" placeholder="nom@gamil.com" required [(ngModel)]="formClientInscription.mail">
-                        </form>
                         </div>
                      <div class="col-md-3 mb-3">
                         <strong><label for="password">Mot de passe : * &nbsp;&nbsp;</label></strong>
