@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 import { PopupService } from '../popup/popup.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { PopupService } from '../popup/popup.service';
 })
 export class NavBarComponent {
 
-  constructor(public popupService: PopupService) { }
+  constructor(public popupService: PopupService, public appComponent : AppComponent) { }
 
 
 }

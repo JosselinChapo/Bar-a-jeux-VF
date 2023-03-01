@@ -17,7 +17,7 @@ export class AppComponent {
   client : Client;
   admin : Admin;
   
-  constructor(protected popupService: PopupService, public router: Router, private authService: AuthService) { }
+constructor(protected popupService: PopupService, public router: Router, private authService: AuthService) { }
 
 
 isAccueilRoute() {
@@ -28,7 +28,6 @@ else if (this.router.url=='/accueil'){
   return true;
 }
 else {return false;}
-  
 }
 
 connexion() {
@@ -48,6 +47,18 @@ connexion() {
       this.popupService.close();
     });
   }
-
 }
+
+deconnexion(){
+  if(this.authentification.mail == "admin@test.fr"){
+    this.admin = undefined;
+    console.log("deconnexion admin");
+  } else {
+    this.client = undefined;
+    console.log("deconnexion client");
+  }
+  this.authentification = undefined;
+}
+
+
 }
