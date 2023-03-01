@@ -3,7 +3,8 @@
     <img src="assets/images/boardgame_library.jpg" alt="bandeau d'une collection de jeu de societé" style="height: 200px;">
     </div>
     <div class="page-title">
-    <h2>Collection</h2>
+    <h2 *ngIf="!isBoutique()">Collection</h2>
+    <h2 *ngIf="isBoutique()">Boutique</h2>
     </div>
   </div>
 
@@ -62,15 +63,21 @@
         <option selected>Type de jeu</option>
         <option *ngFor="let typeJeu of  allTypeJeu()" [value]="typeJeu">{{typeJeu}}</option>
       </select><br>
+      <div *ngIf="isBoutique()">
+        <h2>PRIX:</h2>
+        <div class="custom-slider">
+        <p>Prix Minimum: <input type="number" [(ngModel)]="minPrix"></p>
+        <p>Prix Maximum: <input type="number" [(ngModel)]="maxPrix"></p>
+        <ngx-slider [(value)]="minPrix" [(highValue)]="maxPrix" [options]="options2"></ngx-slider>
+        </div>
+        </div>
+        <br>
       <button class="btn btn-primary" type="submit" (click)="searchJeu()" style="background-color:#116466; border-color: #0a3d3e">Recherche</button>
       <button class="reset-btn"(click)="reset()">reset</button>
       <br>
       <br>
       <br>
-      <br>
-      <!-- <h2>PRIX:</h2>
-      <input type="range" value="15" min="1" max="100" oninput="this.nextElementSibling.value = this.value">
-      <output>15</output> -->
+      
       
   </div>
 
@@ -99,7 +106,9 @@
                         </div>
                       </div>
                     </div>
-                <!-- <a href="#" class="btn btn-primary">{{jeu.prix}} €</a> -->
+                      <div class="container-prix" *ngIf="isBoutique()">
+                      <h5 style="color: #116466;">{{jeu.prix}}0 €</h5> <button class="btn btn-primary" style="background-color: #116466; border-color: #0a3d3e"><i class="bi bi-cart-plus-fill"></i></button> 
+                      </div>
                 </div>
                 <div class="post-it-joueur">
                     <i class="bi bi-people"></i>
