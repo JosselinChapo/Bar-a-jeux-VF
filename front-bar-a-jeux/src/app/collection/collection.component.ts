@@ -6,6 +6,7 @@ import { JeuService } from './jeu.service';
 
 import { ClientService } from '../client/client.service';
 import { AppComponent } from '../app.component';
+import { PopupService } from '../popup/popup.service';
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.component.html',
@@ -42,7 +43,7 @@ export class CollectionComponent {
 
   
 
-  constructor(private jeuService: JeuService,public router: Router,  private clientService: ClientService,public appComponent : AppComponent ) {
+  constructor(private jeuService: JeuService,public router: Router,  private clientService: ClientService,public appComponent : AppComponent,public popupService : PopupService  ) {
   } 
 
   search(): Array<Jeu> {
@@ -133,6 +134,8 @@ export class CollectionComponent {
         });
       });
 
+      }else{
+        this.popupService.open('modal-1');
       }
     }
   }

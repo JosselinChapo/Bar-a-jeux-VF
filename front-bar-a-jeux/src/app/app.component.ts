@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Admin, AuthDTO, Client } from './model';
-import { CommandeJeuService } from './panier/commande-jeu.service';
 import { PopupService } from './popup/popup.service';
 
 @Component({
@@ -61,5 +60,4 @@ export class AppComponent {
     this.authentification.mail = "";
     this.authentification.password = "";
   }
-
 }
