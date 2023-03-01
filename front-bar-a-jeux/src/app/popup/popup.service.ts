@@ -16,36 +16,36 @@ export class PopupService {
 
   constructor(private http: HttpClient,private authService : AuthService) { }
   
-    add(modal: PopupComponent) {
-      // ensure component has a unique id attribute
-      if (!modal.id || this.popup.find(x => x.id === modal.id)) {
-          throw new Error('modal must have a unique id attribute');
-      }
+   add(modal: PopupComponent) {
+    // ensure component has a unique id attribute
+    if (!modal.id || this.popup.find(x => x.id === modal.id)) {
+      throw new Error('modal must have a unique id attribute');
+    }
   
-      // add modal to array of active modals
-      this.popup.push(modal);
+    // add modal to array of active modals
+    this.popup.push(modal);
   }
   
   remove(modal: PopupComponent) {
-      // remove modal from array of active modals
-      this.popup = this.popup.filter(x => x === modal);
+    // remove modal from array of active modals
+    this.popup = this.popup.filter(x => x === modal);
   }
   
   open(id: string) {
-      // open modal specified by id
-      const modal = this.popup.find(x => x.id === id);
+    // open modal specified by id
+    const modal = this.popup.find(x => x.id === id);
   
-      if (!modal) {
-          throw new Error(`modal '${id}' not found`);
-      }
+    if (!modal) {
+      throw new Error(`modal '${id}' not found`);
+    }
   
-      modal.open();
+    modal.open();
   }
   
   close() {
-      // close the modal that is currently open
-      const modal = this.popup.find(x => x.isOpen);
-      modal?.close();
+    // close the modal that is currently open
+    const modal = this.popup.find(x => x.isOpen);
+    modal?.close();
   }
  
   loginAdmin(dto : AuthDTO):Observable<Admin>{
