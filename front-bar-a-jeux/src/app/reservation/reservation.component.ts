@@ -4,6 +4,7 @@ import { Component, Inject, inject, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
+import { AppComponent } from '../app.component';
 import { Reservation, TableBar } from '../model';
 import { ReservationService } from './reservation.service';
 
@@ -30,15 +31,19 @@ export class ReservationComponent {
   seletedTable: boolean=false;
   selectedNumber: number;
 
+  isconnected: boolean=false;
+
   constructor(
     private http: HttpClient,
     private reservationService: ReservationService,
     private _adapter: DateAdapter<any>, 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private appComponent: AppComponent
   ) { 
     this._locale = 'fr-FR';
     this._adapter.setLocale(this._locale);
+    this.isconnected=this.appComponent.connected;
     this.seletedTable=false;
 
   }
@@ -126,7 +131,9 @@ export class ReservationComponent {
       this.http.get<TableBar>("http://localhost:8888/tableBar/" + this.idTable).subscribe(resp => {
         this.tableBar = resp;
         this.formReservation.tableBar=this.tableBar;
-        console.log(this.formReservation)
+        this.formReservation.client=this.appComponent.client;
+        console.log(this.formReservation);
+        this.resetForm();
         this.reservationService.create(this.formReservation);
       });
     }

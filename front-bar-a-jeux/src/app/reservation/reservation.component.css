@@ -52,6 +52,10 @@
     flex-wrap: wrap;
 }
 
+.canard {
+    height: 150px;
+}
+
 .centrer {
     display: flex;
   justify-content: center;
