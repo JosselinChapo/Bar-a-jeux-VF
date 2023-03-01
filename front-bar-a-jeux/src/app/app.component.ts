@@ -10,6 +10,7 @@ import { PopupService } from './popup/popup.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title ="Dé qui roule n'amasse pas mousse";
   typeCompte : string;
@@ -18,50 +19,47 @@ export class AppComponent {
   client : Client;
   admin : Admin;
   
-constructor(protected popupService: PopupService, public router: Router, private authService: AuthService, private commandeService : CommandeJeuService) { }
+  constructor(protected popupService: PopupService, public router: Router, private authService: AuthService) { }
 
-
-isAccueilRoute() {
-if(this.router.url=='/'){
-  return true;
-}
-else if (this.router.url=='/accueil'){
-  return true;
-}
-else {return false;}
-}
-
-connexion() {
-  if(this.authentification.mail == "admin@test.fr" ){
-    console.log("admin authentification");
-    this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
-    this.admin = resp;
-    this.authService.loginCompte(resp);
-    this.popupService.close();
-    
-  });
-  
-  }else{
-    console.log("client authentification");
-    this.popupService.loginClient(this.authentification).subscribe(resp => { 
-      this.client = resp;
-      this.authService.loginCompte(resp);
-      this.popupService.close();
-    });
+  isAccueilRoute() {
+    if(this.router.url=='/'){
+      return true;
+    } else if (this.router.url=='/accueil'){
+      return true;
+    }else { 
+      return false;
+    }
   }
-}
 
-deconnexion(){
-  if(this.authentification.mail == "admin@test.fr"){
-    this.admin = undefined;
-    console.log("deconnexion admin");
-  } else {
-    this.client = undefined;
-    console.log("deconnexion client");
+  connexion() {
+    if(this.authentification.mail == "admin@test.fr" ){
+      console.log("admin authentification");
+      this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
+        this.admin = resp;
+        this.authService.loginCompte(resp);
+        this.popupService.close();
+      });
+    }
+    else{
+      console.log("client authentification");
+      this.popupService.loginClient(this.authentification).subscribe(resp => { 
+        this.client = resp;
+        this.authService.loginCompte(resp);
+        this.popupService.close();
+      });
+    }
   }
-  this.authentification.mail = "";
-  this.authentification.password = "";
-}
 
+  deconnexion(){
+    if(this.authentification.mail == "admin@test.fr"){
+      this.admin = undefined;
+      console.log("deconnexion admin");
+    } else {
+      this.client = undefined;
+      console.log("deconnexion client");
+    }
+    this.authentification.mail = "";
+    this.authentification.password = "";
+  }
 
 }

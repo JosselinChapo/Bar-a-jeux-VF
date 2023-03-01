@@ -13,7 +13,6 @@ export class NavBarComponent {
 
   constructor(public popupService: PopupService, public appComponent : AppComponent,public router : Router,private commandeService : CommandeJeuService) { }
 
-
   navigationUser(){
     if(this.appComponent.client == undefined && this.appComponent.admin == undefined){
       this.popupService.open('modal-1');
