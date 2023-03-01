@@ -43,6 +43,7 @@ export class AppComponent {
       console.log("client authentification");
       this.popupService.loginClient(this.authentification).subscribe(resp => { 
         this.client = resp;
+        console.log(resp);
         this.authService.loginCompte(resp);
         this.popupService.close();
       });
