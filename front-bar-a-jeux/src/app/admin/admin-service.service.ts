@@ -12,7 +12,6 @@ export class AdminService {
 
   constructor(private http: HttpClient) {
     this.load();
-  
   }
 
   findAll(): Array<Admin> {
@@ -24,31 +23,28 @@ export class AdminService {
   }
 
  create(Admin: Admin): void {
-    
-      this.http.post<Admin>("http://localhost:8888/admin", Admin).subscribe(resp => {
-        this.load();
-      });
-    }
+    this.http.post<Admin>("http://localhost:8888/admin", Admin).subscribe(resp => {
+      this.load();
+    });
+  }
 
-    update(Admin: Admin): void {
+  update(Admin: Admin): void {
       this.http.put<Admin>("http://localhost:8888/admin/" + Admin.id, Admin).subscribe(resp => {
         this.load();
       });
     }
   
-    remove(id: number): void {
-      this.http.delete<void>("http://localhost:8888/admin/" + id).subscribe(resp => {
-        this.load();
-      });
-    }
+  remove(id: number): void {
+    this.http.delete<void>("http://localhost:8888/admin/" + id).subscribe(resp => {
+      this.load();
+    });
+  }
     
 
   private load(): void {
     this.http.get<Array<Admin>>("http://localhost:8888/admin").subscribe(resp => {
       this.admins = resp;
     });
-
-    
   }
  
 }
