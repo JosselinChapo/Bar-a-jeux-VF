@@ -12,11 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import bar.model.Admin;
 import bar.model.Civilite;
 import bar.model.Client;
+import bar.model.Conso;
 import bar.model.Jeu;
 import bar.model.Reservation;
 import bar.model.TableBar;
+import bar.model.TypeConso;
 import bar.service.AdminService;
 import bar.service.ClientService;
+import bar.service.ConsoService;
 import bar.service.JeuService;
 import bar.service.ReservationService;
 import bar.service.TableService;
@@ -41,23 +44,25 @@ class DonneesInitBdd {
 	@Autowired
 	ReservationService resaSrv;
 	
+	@Autowired
+	ConsoService consoService;
 
 	
 	@Test
 	void InitBdd() {
 		
 		//ajout admin
-		Admin admin = new Admin("admin@test.fr","admin");
+		Admin admin = new Admin("admin@test.fr","admin", "admin");
 		adminSrv.save(admin);
 		
 		// ajout des clients
-		Client client1 = new Client("client1@test.fr","client1","client1","client1","0600000001",Civilite.homme);
+		Client client1 = new Client("client1@test.fr","client1","client","client1","client1","0600000001",Civilite.homme);
 		clientSrv.save(client1);
-		Client client2 = new Client("client2@test.fr","client2","client2","client2","0600000002",Civilite.femme);	
+		Client client2 = new Client("client2@test.fr","client2","client","client2","client2","0600000002",Civilite.femme);	
 		clientSrv.save(client2);
-		Client client3 = new Client("client3@test.fr","client3","client3","client3","0600000003",Civilite.nb);
+		Client client3 = new Client("client3@test.fr","client3","client","client3","client3","0600000003",Civilite.nb);
 		clientSrv.save(client3);
-		Client client4 = new Client("client4@test.fr","client4","client4","client4","0600000004",Civilite.homme);
+		Client client4 = new Client("client4@test.fr","client4","client","client4","client4","0600000004",Civilite.homme);
 		clientSrv.save(client4);
 		
 		//ajout des jeux
@@ -225,8 +230,53 @@ class DonneesInitBdd {
 		resaSrv.create(resa16);
 		Reservation resa17 = new Reservation(LocalDate.parse("2023-03-15"),LocalTime.parse("11:00:00"),6,table11,client2);
 		resaSrv.create(resa17);
+	
+		//ajout des conso
 		
+		Conso conso1 = new Conso(3.50, 15, "coca-cola", TypeConso.boisson);
+		consoService.save(conso1);
+		Conso conso2 = new Conso(3.50, 10, "ice-tea", TypeConso.boisson);
+		consoService.save(conso2);
+		Conso conso3 = new Conso(6, 20, "bière - Tripel Karmeliet", TypeConso.boisson);
+		consoService.save(conso3);
+		Conso conso4 = new Conso(3.50, 15, "orangina", TypeConso.boisson);
+		consoService.save(conso4);
+		Conso conso5 = new Conso(4, 5, "jus d'orange", TypeConso.boisson);
+		consoService.save(conso5);
+		Conso conso6 = new Conso(5, 30, "bière blonde", TypeConso.boisson);
+		consoService.save(conso6);
+		Conso conso7 = new Conso(5, 10, "bière brune", TypeConso.boisson);
+		consoService.save(conso7);
+		Conso conso8 = new Conso(5.5, 12, "bière rouge", TypeConso.boisson);
+		consoService.save(conso8);
+		Conso conso9 = new Conso(2, 50, "eau", TypeConso.boisson);
+		consoService.save(conso9);
+		Conso conso10 = new Conso(8, 20, "cocktail du moment", TypeConso.boisson);
+		consoService.save(conso10);
+		Conso conso11 = new Conso(6.5, 5, "Mojito", TypeConso.boisson);
+		consoService.save(conso11);
+		Conso conso12 = new Conso(6, 7, "Sex on the beach", TypeConso.boisson);
+		consoService.save(conso12);
+		Conso conso13 = new Conso(6, 6, "Caïpirinha", TypeConso.boisson);
+		consoService.save(conso13);
+		Conso conso14 = new Conso(3, 20, "chips", TypeConso.plat);
+		consoService.save(conso14);
+		Conso conso15 = new Conso(8, 10, "Sandwich au jambon", TypeConso.plat);
+		consoService.save(conso15);
+		Conso conso16 = new Conso(15, 3, "planche de fromage", TypeConso.plat);
+		consoService.save(conso16);
+		Conso conso17 = new Conso(15, 5, "planche de charcuterie", TypeConso.plat);
+		consoService.save(conso17);
+		Conso conso18 = new Conso(4, 15, "tomates cerises", TypeConso.plat);
+		consoService.save(conso18);
+		Conso conso19 = new Conso(5, 15, "Assiette Tex Mex", TypeConso.plat);
+		consoService.save(conso19);
+		Conso conso20 = new Conso(6, 25, "croque jambon cheddar", TypeConso.plat);
+		consoService.save(conso20);
 		
+	
 	}
+	
+		
 
 }

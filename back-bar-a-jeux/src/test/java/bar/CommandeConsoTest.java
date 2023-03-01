@@ -52,7 +52,7 @@ class CommandeConsoTest {
 		Conso conso1 = consoServ.create(10.0,2,"cocktail",TypeConso.boisson);
 		List <Conso> consos =new ArrayList<>();
 		consos.add(conso1);
-		Client client1 = new Client("client1@test.fr","client1","client1","client1","0600000001",Civilite.homme);
+		Client client1 = new Client("client1@test.fr","client1","client","client1","client1","0600000001",Civilite.homme);
 		TableBar table1 = new TableBar(4,1);
 		client1=clientSrv.save(client1);
 		table1=tableSrv.create(table1);

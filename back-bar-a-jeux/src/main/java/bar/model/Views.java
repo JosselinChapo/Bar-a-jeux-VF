@@ -12,10 +12,13 @@ public class Views {
 	public static class ViewCommandeConso extends ViewBase {	
 	}
 
-	public static class ViewClient extends ViewBase {
+	public static class ViewCompte extends ViewBase {	
+	}
+	
+	public static class ViewClient extends ViewCompte {
 	}
 
-	public static class ViewAdmin extends ViewBase {
+	public static class ViewAdmin extends ViewCompte {
 	}
 
 	public static class ViewReservation extends ViewBase {

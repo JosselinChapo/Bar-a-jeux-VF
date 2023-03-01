@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { AuthDTO } from '../model';
 import { PopupService } from './popup.service';
 
 @Component({
@@ -7,11 +8,15 @@ import { PopupService } from './popup.service';
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.css']
 })
+
 export class PopupComponent implements OnInit, OnDestroy {
 
   @Input() id?: string;
   isOpen = false;
   private element: any;
+  typeCompte : string;
+  authentification : AuthDTO = new AuthDTO();
+  erreur : boolean = false;
 
   constructor(private popupService: PopupService, private el: ElementRef, private appService : AppComponent) {
       this.element = el.nativeElement;
@@ -50,8 +55,19 @@ export class PopupComponent implements OnInit, OnDestroy {
   close() {
       this.element.style.display = 'none';
       document.body.classList.remove('modal-open');
-      this.isOpen = false;
-      
+      this.isOpen = false;  
+  }
+
+  login( ){
+    if(this.typeCompte && this.authentification.isValide()){
+      if(this.typeCompte == "admin"){
+        this.popupService.loginAdmin(this.authentification);
+      }else if(this.typeCompte == "client"){
+        this.popupService.loginClient(this.authentification);
+      }
+    }else{
+    this.erreur = true;
+    }
   }
 
 

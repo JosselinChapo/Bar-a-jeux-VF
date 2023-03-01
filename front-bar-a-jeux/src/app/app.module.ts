@@ -22,7 +22,6 @@ import { MatInputModule } from '@angular/material/input';
 import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { AuthentificationComponent } from './authentification/authentification.component';
 import { PopupComponent } from './popup/popup.component';
 import { PanierComponent } from './panier/panier.component';
 
@@ -38,7 +37,6 @@ import { PanierComponent } from './panier/panier.component';
     AppComponent,
     NavBarComponent,
     CustomDatePipe,
-    AuthentificationComponent,
     PopupComponent,
     BanniereAccueilComponent,
     FooterComponent, 

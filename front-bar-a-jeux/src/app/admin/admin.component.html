@@ -1,24 +1,21 @@
 <!-- Sidebar -->
 <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="margin-top: 80px;">
     <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <ul>
-          <li><a class="btn" (click)="divToShow('reservation')">Reservation</a></li>
-          <li><a class="btn" (click)="divToShow('jeux')">Jeux</a></li>
-          <li><a class="btn" (click)="divToShow('client')">Client</a></li>
-          <li><a class="btn" (click)="divToShow('admin')">Admin</a></li>
-          
-        </ul>
-      <br>
-      </div>
+        <div class="list-group list-group-flush mx-3 mt-4">
+            <ul>
+                <li><a class="btn" (click)="divToShow('reservation')">Reservation</a></li>
+                <li><a class="btn" (click)="divToShow('jeux')">Jeux</a></li>
+                <li><a class="btn" (click)="divToShow('client')">Client</a></li>
+                <li><a class="btn" (click)="divToShow('admin')">Admin</a></li>
+            </ul>
+            <br>
+        </div>
     </div>
 </nav>
 
-
 <div class="container-data" *ngIf="!menuAdmin">
-<br><br>
-<h1 style="padding-left: 10%;">Bienvenue dans le menu Admin</h1>
-
+    <br><br>
+    <h1 style="padding-left: 10%;">Bienvenue dans le menu Admin</h1>
 </div>
 
 <!--Menu Reservation -->
@@ -26,70 +23,65 @@
 <div class="container-data" *ngIf="menuAdmin == 'reservation'">
     <div class="card mt-3">
         <div class="card-header bg-primary text-white display-6">Liste des réservations</div>
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nombre de Personne</th>
-                        <th>Date de la réservation</th>
-                        <th>Heure  de la réservation</th>
-                        <th>Numéro de la table</th>
-                        <th>Client</th>
-                        <th></th>
-                    </tr>
-                </thead>
-    
-                <tbody>
-                    <tr *ngFor="let res of listResa()">
-                        <td>{{res.id}}</td>
-                        <td>{{res.nbPersonne}}</td>
-                        <td>{{res.dateRes | date:'dd/MM/yyyy'}}</td>
-                        <td>{{res.heureRes}}</td>
-                        <td>{{res.tableBar.idTable}}</td>
-                        <td>{{res.client.prenom}} - {{res.client.nom}}</td>
-                        <td>
-                            <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" (click)="editResa(res.id)"><i
-                                        class="bi bi-pencil-square"></i></a>
-                                <a class="btn btn-danger" (click)="removeResa(res.id)"><i class="bi bi-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-    
-            </table>
-        </div>
-        <div class="card-footer">
-            <a class="btn btn-success btn-lg" (click)="addResa()"><i
-                class="bi bi-plus-square"></i></a>
-        </div>
-    </div>
-    
-    <div class="card mt-3" *ngIf="formReservation">
-        <div class="card-header bg-primary text-white display-6">Edition d'une réservation</div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre de Personne</th>
+                            <th>Date de la réservation</th>
+                            <th>Heure  de la réservation</th>
+                            <th>Numéro de la table</th>
+                            <th>Client</th>
+                            <th></th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        <tr *ngFor="let res of listResa()">
+                            <td>{{res.id}}</td>
+                            <td>{{res.nbPersonne}}</td>
+                            <td>{{res.dateRes | date:'dd/MM/yyyy'}}</td>
+                            <td>{{res.heureRes}}</td>
+                            <td>{{res.tableBar.idTable}}</td>
+                            <td>{{res.client.prenom}} - {{res.client.nom}}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a class="btn btn-primary" (click)="editResa(res.id)"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="btn btn-danger" (click)="removeResa(res.id)"><i class="bi bi-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="form-group">
-                <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" />
-            </div>
-            <div class="form-group">
-                <label for="dateRes">Date:</label> <input type="text" class="form-control" id="dateRes" name="dateRes" [(ngModel)]="formReservation.dateRes" />
-            </div>
-            <div class="form-group">
-                <label for="heureRes">Heure:</label> <input type="text" class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" />
+            <div class="card-footer">
+                <a class="btn btn-success btn-lg" (click)="addResa()"><i class="bi bi-plus-square"></i></a>
             </div>
         </div>
-        <div class="card-footer">
-            <div class="btn-group btn-group-lg float-right">
-                <a class="btn btn-success" (click)="saveResa()"><i class="bi bi-check-square-fill"></i></a>
-                <a class="btn btn-warning" (click)="cancelResa()"><i class="bi bi-backspace-fill"></i></a>
+    
+        <div class="card mt-3" *ngIf="formReservation">
+            <div class="card-header bg-primary text-white display-6">Edition d'une réservation</div>
+            <div class="card-body">
+                <div class="form-group">
+                  <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
+                </div>
+                <div class="form-group">
+                    <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" />
+                </div>
+                <div class="form-group">
+                    <label for="dateRes">Date:</label> <input type="text" class="form-control" id="dateRes" name="dateRes" [(ngModel)]="formReservation.dateRes" />
+                </div>
+                <div class="form-group">
+                    <label for="heureRes">Heure:</label> <input type="text" class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" />
+                </div>
             </div>
+            <div class="card-footer">
+                <div class="btn-group btn-group-lg float-right">
+                    <a class="btn btn-success" (click)="saveResa()"><i class="bi bi-check-square-fill"></i></a>
+                    <a class="btn btn-warning" (click)="cancelResa()"><i class="bi bi-backspace-fill"></i></a>
+                </div>
         </div>
     </div>
-    
 </div>
 
 <!--Menu Jeux -->
@@ -116,7 +108,6 @@
                         <th>Description</th>
                     </tr>
                 </thead>
-    
                 <tbody>
                     <tr *ngFor="let jeu of listJeux()">
                         <td>{{jeu.id}}</td>
@@ -128,18 +119,13 @@
                         <td>{{jeu.editeur}}</td>
                         <td>{{jeu.annee}}</td>
                         <td>{{jeu.prix}}</td>
-                        <td><p style="max-width: 40px;
-                            max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.image}}</p></td>
-                        <td><p style="max-width: 40px;
-                            max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.typeJeu}}</p></td>
+                        <td><p style="max-width: 40px; max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.image}}</p></td>
+                        <td><p style="max-width: 40px; max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.typeJeu}}</p></td>
                         <td>{{jeu.stock}}</td>
-                        <td><p style="max-width: 40px;
-                        max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                        {{jeu.description}}</p></td>
+                        <td><p style="max-width: 40px; max-height: 40px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{jeu.description}}</p></td>
                         <td>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" (click)="editJeu(jeu.id)"><i
-                                        class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-primary" (click)="editJeu(jeu.id)"><i class="bi bi-pencil-square"></i></a>
                                 <a class="btn btn-danger" (click)="removeJeu(jeu.id)"><i class="bi bi-trash"></i></a>
                             </div>
                         </td>
@@ -149,8 +135,7 @@
             </table>
         </div>
         <div class="card-footer">
-            <a class="btn btn-success btn-lg" (click)="addJeu()"><i
-                class="bi bi-plus-square"></i></a>
+            <a class="btn btn-success btn-lg" (click)="addJeu()"><i class="bi bi-plus-square"></i></a>
         </div>
     </div>
     
@@ -196,7 +181,6 @@
             <div class="form-group">
                 <label for="description">Description:</label> <input type="text" class="form-control" id="description" name="description" [(ngModel)]="formJeu.description" />
             </div>
-    
         </div>
         <div class="card-footer">
             <div class="btn-group btn-group-lg float-right">
@@ -205,49 +189,40 @@
             </div>
         </div>
     </div>
-    
-    
-    
 </div>
 
 <!-- Menu Admin -->
 
 <div class="container-data" *ngIf="menuAdmin == 'admin'">
-
     <div class="card mt-3">
         <div class="card-header bg-primary text-white display-6" id="admin">Liste admin</div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Identifiant</th>
-                    <th>email</th>
-                    <th>Mot de passe</th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr *ngFor="let admin of listAdmin()">
-                    <td>{{admin.id}}</td>
-                    <td>{{admin.mail}}</td>
-                    <td>{{admin.password}}</td>
-                
-                <td>
-                    <div class="btn-group btn-group-sm">
-                        <a class="btn btn-primary" (click)="edit(admin.id)"><i
-                                class="bi bi-pencil-square"></i></a>
-                        <a class="btn btn-danger" (click)="remove(admin.id)"><i class="bi bi-trash"></i></a>
-                    </div>
-                </td>
-           </tr>
-            </tbody>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>email</th>
+                        <th>Mot de passe</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let admin of listAdmin()">
+                        <td>{{admin.id}}</td>
+                        <td>{{admin.mail}}</td>
+                        <td>{{admin.password}}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" (click)="edit(admin.id)"><i class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-danger" (click)="remove(admin.id)"><i class="bi bi-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
             </table>  
-					 <div class="card-footer">
-                        <a class="btn btn-success btn-lg" (click)="add()"><i
-                            class="bi bi-plus-square"></i></a>
-                    </div>
-             
+			<div class="card-footer">
+                <a class="btn btn-success btn-lg" (click)="add()"><i class="bi bi-plus-square"></i></a>
+            </div>           
         </div> 
     </div>
  
@@ -263,8 +238,7 @@
         </div>
         <div class="form-group">
             <label for="password">Mot de passe:</label> <input type="password" class="form-control" id="password" name="password" [(ngModel)]="creaAdmin.password" />
-        </div>
-        
+        </div>       
     <div class="card-footer">
         <div class="btn-group btn-group-lg float-right">
             <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
@@ -318,11 +292,9 @@
            </tr>
             </tbody>
             </table>  
-					 <div class="card-footer">
-                        <a class="btn btn-success btn-lg" (click)="addClient()"><i
-                            class="bi bi-plus-square"></i></a>
-                    </div>
-             
+				<div class="card-footer">
+                    <a class="btn btn-success btn-lg" (click)="addClient()"><i class="bi bi-plus-square"></i></a>
+                </div>
         </div> 
     </div>
  
