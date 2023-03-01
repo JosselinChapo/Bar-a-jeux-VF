@@ -23,4 +23,17 @@ export class PanierComponent {
   refreshPanier(){
     this.commandeService.load(this.appComponent.client.id);
   }
+
+  removeCmd(id: number): void {
+    this.commandeService.remove(id);
+    this.refreshPanier();
+  }
+
+  validateCmd():void{
+    this.commandeService.commandeJeux.forEach(commandeJeu => { 
+      commandeJeu.statut = "Validee";
+      this.commandeService.update(commandeJeu);
+      this.refreshPanier();
+    });
+  }
 }

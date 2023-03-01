@@ -1,4 +1,13 @@
-<div *ngFor="let cmd of list()">
-    <p>{{cmd.id}}</p>
-    <p>{{cmd.statut}}</p>
+
+<h4>Votre Panier : </h4>
+<div *ngFor="let cmd of list()"> 
+    
+    <div *ngFor="let aj of cmd.achatJeux">
+        <img src={{aj.jeu.image}} alt="logo du jeu">
+        <div style="display: flex;">Jeu : {{aj.jeu.nom}} </div>
+        <div> qte : {{aj.quantite}} prix : {{aj.jeu.prix}}0 €</div>
+        <a style="display: flex;" class="btn" (click)="removeCmd(cmd.id)" style="color:red"><i class="bi bi-x-circle-fill"></i></a>
+    </div>
+    
 </div>
+<a class="btn" style="color:green" (click)="validateCmd()">Valider</a>

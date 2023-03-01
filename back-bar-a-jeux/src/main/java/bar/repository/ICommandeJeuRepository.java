@@ -12,4 +12,7 @@ public interface ICommandeJeuRepository extends JpaRepository <CommandeJeu,Integ
 	
 	@Query("select c from CommandeJeu c left join fetch c.achatJeux where c.client.id=:id ")
 	List<CommandeJeu> findAllByClientIdWithAchatJeu(@Param("id") Integer id);
+	
+	@Query("select c from CommandeJeu c left join fetch c.achatJeux aj left join fetch aj.jeu where c.client.id=:id and c.statut='EnCours' ")
+	List<CommandeJeu> findAllByClientPanier(@Param("id") Integer id);
 }

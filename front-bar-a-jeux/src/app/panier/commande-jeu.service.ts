@@ -23,7 +23,7 @@ export class CommandeJeuService {
       let cmdJeuInit =  new CommandeJeu(3,"test");
       this.commandeJeux.push(cmdJeuInit);
     }else{
-    this.http.get<Array<CommandeJeu>>("http://localhost:8888/commandeJeu/client/" + id).subscribe(resp => {
+    this.http.get<Array<CommandeJeu>>("http://localhost:8888/commandeJeu/client/panier/" + id).subscribe(resp => {
       this.commandeJeux = resp;
     });
   }
@@ -35,7 +35,7 @@ export class CommandeJeuService {
   }
 
   findByIdClient(id: number): Observable<Array<CommandeJeu>> {
-    return this.http.get<Array<CommandeJeu>>("http://localhost:8888/commandeJeu/client/" + id);
+    return this.http.get<Array<CommandeJeu>>("http://localhost:8888/commandeJeu/client/panier/" + id);
   }
 
   update(commandeJeu: CommandeJeu): void {

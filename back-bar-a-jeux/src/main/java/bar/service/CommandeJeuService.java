@@ -71,6 +71,10 @@ public class CommandeJeuService {
 			return commandeJeuRepo.findAllByClientIdWithAchatJeu(id);
 		}
 		
+		public List<CommandeJeu> findAllByClientIdPanier(Integer id){
+			return commandeJeuRepo.findAllByClientPanier(id);
+		}
+		
 		public CommandeJeu update(CommandeJeu commandeJeu) {
 			checkNotNull(commandeJeu);
 			checkExist(commandeJeu);

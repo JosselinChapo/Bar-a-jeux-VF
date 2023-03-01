@@ -142,6 +142,7 @@ export class CommandeJeu {
     statut: string;
     
     client : Client;
+    achatJeux : Array<AchatJeu>
     
 
     constructor(id?:number, statut?: string){

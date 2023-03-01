@@ -5,6 +5,7 @@ import { AchatJeu, Client, CommandeJeu, Filter, Jeu } from '../model';
 import { JeuService } from './jeu.service';
 
 import { ClientService } from '../client/client.service';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.component.html',
@@ -41,7 +42,7 @@ export class CollectionComponent {
 
   
 
-  constructor(private jeuService: JeuService,public router: Router,  private clientService: ClientService) {
+  constructor(private jeuService: JeuService,public router: Router,  private clientService: ClientService,public appComponent : AppComponent ) {
   } 
 
   search(): Array<Jeu> {
@@ -125,11 +126,6 @@ export class CollectionComponent {
             this.achatJeu.commandeJeu = resp;
             this.jeuService.insertAchatJeu(this.achatJeu).subscribe(resp => {
               this.achatJeu = resp;
-              console.log(this.achatJeu.jeu.nom);
-              console.log(this.achatJeu.quantite);
-              console.log(this.commandeJeu.client.nom);
-              console.log(this.commandeJeu.statut);
-              console.log(this.commandeJeu.id);
               this.commandeJeu = new CommandeJeu;
               this.achatJeu = new AchatJeu
             });
