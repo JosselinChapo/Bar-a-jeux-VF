@@ -26,14 +26,9 @@ export class AuthService {
     } 
   }
 
-getCompte():Compte{
-  console.log(this.compteConnecte);
-  return this.compteConnecte;
-}
-
-disconnectCompte(){
-  this.compteConnecte = undefined;
-  this.router.navigate(["/accueil"]);
-}
+  getCompte():Compte{
+    console.log(this.compteConnecte);
+    return this.compteConnecte;
+  }
 
 }
