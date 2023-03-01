@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
+import { Admin, AuthDTO, Client } from '../model';
 import { PopupComponent } from './popup.component';
 
 @Injectable({
@@ -7,8 +11,10 @@ import { PopupComponent } from './popup.component';
 export class PopupService {
 
   private popup: PopupComponent[] = [];
-  
-  constructor() { }
+  adminConnect : Admin;
+  clientConnect : Client;
+
+  constructor(private http: HttpClient,private authService : AuthService) { }
   
     add(modal: PopupComponent) {
       // ensure component has a unique id attribute
@@ -41,4 +47,13 @@ export class PopupService {
       const modal = this.popup.find(x => x.isOpen);
       modal?.close();
   }
+ 
+  loginAdmin(dto : AuthDTO):Observable<Admin>{
+    return this.http.post<Admin>("http://localhost:8888/admin/auth",dto);   
+  }
+
+  loginClient(dto : AuthDTO):Observable<Client>{
+    return this.http.post<Client>("http://localhost:8888/client/auth",dto);   
+  }
+  
 }
