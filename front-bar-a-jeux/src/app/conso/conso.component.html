@@ -4,7 +4,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Identifiant</th>
                     <th>Nom</th>
                     <th>Prix</th>
                     <th></th>
@@ -13,9 +12,9 @@
 
             <tbody>
                 <tr *ngFor="let conso of list()">
-                    <td>{{conso.id}}</td>
                     <td>{{conso.nom}}</td>
-                    <td>{{conso.prix}}</td>
+                    <td>{{conso.prix}} € </td>
+                    <td></td>
                 </tr>
             </tbody>
 

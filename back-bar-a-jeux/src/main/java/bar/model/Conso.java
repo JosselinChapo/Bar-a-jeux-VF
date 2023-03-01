@@ -24,7 +24,7 @@ public class Conso {
 	@JsonView(Views.ViewBase.class)
 	private double prix;
 	
-	@Column(name="type_conso")
+	@Column(name="typeconso")
 	@Enumerated(EnumType.STRING)
 	@JsonView(Views.ViewBase.class)
 	private TypeConso typeconso;

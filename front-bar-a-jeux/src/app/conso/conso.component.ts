@@ -9,15 +9,29 @@ import { ConsoService } from './conso.service';
 })
 export class ConsoComponent {
   creaConso: Conso = null;
+  typeconso: string;
+  consos : Array<Conso>;
+  listBoissons : Array<Conso>;
 
 
   constructor(private consoService: ConsoService){
   }
 
-  list(): Array<Conso> {
-    return this.consoService.findAll();
+  listBoisson(): Array<Conso> {
+  this.consos = this.consoService.findAll();
+    
+
+
+ return this.listBoisson;
+     
     
   }
+
+  listTypeConso(): Array<string> {
+    return this.consoService.findAllTypeConso();
+  }
+
+
 
   add(): void {
     this.creaConso = new Conso();

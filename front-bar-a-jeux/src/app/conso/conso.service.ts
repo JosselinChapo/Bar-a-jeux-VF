@@ -7,48 +7,63 @@ import { Conso } from '../model';
   providedIn: 'root'
 })
 export class ConsoService {
-  Consos: Array< Conso> = new Array<Conso>();
+  consos: Array< Conso> = new Array<Conso>();
+  typeConsos: Array<string> = new Array<string>();
 
   constructor(private http: HttpClient) {
     this.load();
+    this.loadTypeConsos();
   
   }
 
   findAll(): Array<Conso> {
-    return this.Consos;
+    return this.consos;
+  }
+
+  findAllTypeConso(): Array<string> {
+    return this.typeConsos;
   }
 
   findById(id: number): Observable<Conso> {
-    return this.http.get<Conso>("http://localhost:8888/Conso/" + id);
+    return this.http.get<Conso>("http://localhost:8888/conso/" + id);
   }
 
- create(Conso: Conso): void {
+ create(conso: Conso): void {
     
-      this.http.post<Conso>("http://localhost:8888/Conso", Conso).subscribe(resp => {
+      this.http.post<Conso>("http://localhost:8888/conso", conso).subscribe(resp => {
         this.load();
       });
     }
 
-    update(Conso: Conso): void {
-      this.http.put<Conso>("http://localhost:8888/Conso/" + Conso.id, Conso).subscribe(resp => {
+    update(conso: Conso): void {
+      this.http.put<Conso>("http://localhost:8888/conso/" + conso.id, conso).subscribe(resp => {
         this.load();
       });
     }
   
     remove(id: number): void {
-      this.http.delete<void>("http://localhost:8888/Conso/" + id).subscribe(resp => {
+      this.http.delete<void>("http://localhost:8888/conso/" + id).subscribe(resp => {
         this.load();
       });
     }
     
 
   private load(): void {
-    this.http.get<Array<Conso>>("http://localhost:8888/Conso").subscribe(resp => {
-      this.Consos = resp;
+    this.http.get<Array<Conso>>("http://localhost:8888/conso").subscribe(resp => {
+      this.consos = resp;
     });
 
     
   }
+
+  private loadTypeConsos(): void {
+    this.http.get<Array<string>>("http://localhost:8888/typeconsos").subscribe(resp => {
+      resp.forEach(typeconso => {
+        this.typeConsos = resp;
+      });
+    });
+  }
+
  
 }
 

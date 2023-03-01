@@ -36,7 +36,8 @@ import { ConsoComponent } from './conso/conso.component';
     PopupComponent,
     BanniereAccueilComponent,
     FooterComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ConsoComponent
   ],
   imports: [
     BrowserModule,
