@@ -60,5 +60,4 @@ export class AppComponent {
     this.authentification.mail = "";
     this.authentification.password = "";
   }
-
 }
