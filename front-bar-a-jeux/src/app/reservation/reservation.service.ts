@@ -101,7 +101,7 @@ export class ReservationService {
         this.heuresDispo = resp;
       });
     }else {
-      this.heuresDispo=["10:00:00","11:00:00","14:00:00","15:00:00"];
+      this.heuresDispo=["18:00:00","19:00:00","20:00:00","21:00:00","22:00:00","23:00:00"];
     }  
   }
 
@@ -111,7 +111,7 @@ export class ReservationService {
         this.tablesDispo = resp;
       });
     }else {
-      this.tablesDispo=[1,2,3,4,5,6,7,8,9,10,11,12];
+      this.tablesDispo=[1,2,3,4,5,6,7,8];
     }  
   }
 

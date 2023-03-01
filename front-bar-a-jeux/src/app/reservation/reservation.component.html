@@ -20,7 +20,7 @@
             <div class="form-group">
                 <!-- <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (ngModelChange)="recalculForbidden($event)"/> -->
             
-                <label for="nbPersonne">Nombre de Joueurs:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (click)="changeHeure();changeTable();resetForm()"/>
+                <label for="nbPersonne">Nombre de Joueurs:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (click)="changeHeure();changeTable();resetForm()" max="8" min="0"/>
                 <!-- https://stackoverflow.com/questions/61394048/how-do-i-manually-trigger-angular-material-date-picker-filter -->
         </div></div>
       </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
             <label for="heureRes">Heures disponible:</label>
             <select class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" (click)="changeTable()">
-                <option [value]="undefined">Veuillez sélectionner une heure</option>
+                <option [value]=undefined>Veuillez sélectionner une heure</option>
                 <option *ngFor="let item of listHeureDisponible()" [value]="item">{{item}}</option>
             </select>
         </div></div>
@@ -80,7 +80,7 @@
 <br/>
 <br/>
 <div class="centrer">
-    <a href="#" class="button button--pen" (click)="save()">
+    <span class="button button--pen" (click)="save()">
         <div class="button__wrapper">
             <span class="button__text">Valider</span>
         </div>
@@ -102,6 +102,6 @@
                 <div class="charactor__face2"></div>
             </div>
         </div>
-    </a>
+    </span>
 
 </div>

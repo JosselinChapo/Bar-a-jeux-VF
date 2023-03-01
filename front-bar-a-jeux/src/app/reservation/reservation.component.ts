@@ -4,7 +4,7 @@ import { Component, Inject, inject, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
-import { Reservation } from '../model';
+import { Reservation, TableBar } from '../model';
 import { ReservationService } from './reservation.service';
 
 @Component({
@@ -15,6 +15,7 @@ import { ReservationService } from './reservation.service';
 })
 export class ReservationComponent {
   formReservation: Reservation = new Reservation();
+  tableBar: TableBar;
   myForm : FormGroup;
   idTable: number;
 
@@ -30,6 +31,7 @@ export class ReservationComponent {
   selectedNumber: number;
 
   constructor(
+    private http: HttpClient,
     private reservationService: ReservationService,
     private _adapter: DateAdapter<any>, 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
@@ -37,6 +39,7 @@ export class ReservationComponent {
   ) { 
     this._locale = 'fr-FR';
     this._adapter.setLocale(this._locale);
+    this.seletedTable=false;
 
   }
 
@@ -55,51 +58,51 @@ export class ReservationComponent {
     let tablesDiponibles = this.reservationService.findAllTable(this.formReservation.nbPersonne,dateTest,this.formReservation.heureRes);
 
     let tablesDiponiblesString=tablesDiponibles.map(String);
-    if (tablesDiponibles.includes(1)){
+    if (tablesDiponibles.includes(1) && this.selectedNumber!=1){
       this.table1="assets/images/reservation/table4vide.png";
-    }else{
+    }else if(!tablesDiponibles.includes(1) && this.selectedNumber!=1){
       this.table1="assets/images/reservation/table4rempli.png";
     }
     
-    if (tablesDiponibles.includes(2)){
+    if (tablesDiponibles.includes(2) && this.seletedTable==false){
       this.table2="assets/images/reservation/table4vide.png";
-    }else{
+    }else if(!tablesDiponibles.includes(2) && this.selectedNumber!=2){
       this.table2="assets/images/reservation/table4rempli.png";
     }
     
-    if (tablesDiponibles.includes(3)){
+    if (tablesDiponibles.includes(3) && this.seletedTable==false){
       this.table3="assets/images/reservation/table6vide.png";
-    }else{
+    }else if(!tablesDiponibles.includes(3) && this.selectedNumber!=3){
       this.table3="assets/images/reservation/table6rempli.png";
     }
     
-    if (tablesDiponibles.includes(4)){
+    if (tablesDiponibles.includes(4) && this.seletedTable==false){
       this.table4="assets/images/reservation/table8vide.png";
-    }else{
+    }else if(!tablesDiponibles.includes(4) && this.selectedNumber!=4){
       this.table4="assets/images/reservation/table8rempli.png";
     }
     
-    if (tablesDiponibles.includes(5)){
+    if (tablesDiponibles.includes(5) && this.seletedTable==false){
       this.table5="assets/images/reservation/table6vide.png";
-    }else{
+    }else if(!tablesDiponibles.includes(5) && this.selectedNumber!=5){
       this.table5="assets/images/reservation/table6rempli.png";
     }
     
-    if (tablesDiponibles.includes(6)){
+    if (tablesDiponibles.includes(6) && this.seletedTable==false){
       this.table6="assets/images/reservation/table4vide.png";
-    }else{
+    }else if(!tablesDiponibles.includes(6) && this.selectedNumber!=6){
       this.table6="assets/images/reservation/table4rempli.png";
     }
     
-    if (tablesDiponibles.includes(7)){
+    if (tablesDiponibles.includes(7) && this.seletedTable==false){
       this.table7="assets/images/reservation/table4vide.png";
-    }else{
+    }else if(!tablesDiponibles.includes(7) && this.selectedNumber!=7){
       this.table7="assets/images/reservation/table4rempli.png";
     }
     
-    if (tablesDiponibles.includes(8)){
+    if (tablesDiponibles.includes(8) && this.seletedTable==false){
       this.table8="assets/images/reservation/table8vide.png";
-    }else{
+    }else if(!tablesDiponibles.includes(8) && this.selectedNumber!=8){
       this.table8="assets/images/reservation/table8rempli.png";
     }
 
@@ -119,7 +122,13 @@ export class ReservationComponent {
     if(this.formReservation.id) { // UPDATE
       this.reservationService.update(this.formReservation);
     } else { // CREATE
-      this.reservationService.create(this.formReservation);
+
+      this.http.get<TableBar>("http://localhost:8888/tableBar/" + this.idTable).subscribe(resp => {
+        this.tableBar = resp;
+        this.formReservation.tableBar=this.tableBar;
+        console.log(this.formReservation)
+        this.reservationService.create(this.formReservation);
+      });
     }
   }
 
@@ -152,6 +161,8 @@ export class ReservationComponent {
     this.formReservation.heureRes=undefined;
     this.idTable=undefined;
     this.formReservation.dateRes=undefined;
+    this.seletedTable=false;
+    this.selectedNumber=undefined;
   }
 
   test(event: any): void {
@@ -191,8 +202,7 @@ export class ReservationComponent {
         this.table1="assets/images/reservation/table4select.png";
       }
     }
-
-    if (idImage==2 && this.table2!="assets/images/reservation/table4rempli.png"){
+    else if(idImage==2 && this.table2!="assets/images/reservation/table4rempli.png"){
       if (this.table2=="assets/images/reservation/table4select.png"){
         this.table2="assets/images/reservation/table4vide.png";
         this.seletedTable=false;
@@ -207,8 +217,7 @@ export class ReservationComponent {
         this.table2="assets/images/reservation/table4select.png";
       }
     }
-
-    if (idImage==3 && this.table3!="assets/images/reservation/table6rempli.png"){
+    else if(idImage==3 && this.table3!="assets/images/reservation/table6rempli.png"){
       if (this.table3=="assets/images/reservation/table6select.png"){
         this.table3="assets/images/reservation/table6vide.png";
         this.seletedTable=false;
@@ -223,8 +232,7 @@ export class ReservationComponent {
         this.table3="assets/images/reservation/table6select.png";
       }
     }
-
-    if (idImage==4 && this.table4!="assets/images/reservation/table8rempli.png"){
+    else if(idImage==4 && this.table4!="assets/images/reservation/table8rempli.png"){
       if (this.table4=="assets/images/reservation/table8select.png"){
         this.table4="assets/images/reservation/table8vide.png";
         this.seletedTable=false;
@@ -239,8 +247,7 @@ export class ReservationComponent {
         this.table4="assets/images/reservation/table8select.png";
       }
     }
-
-    if (idImage==5 && this.table5!="assets/images/reservation/table6rempli.png"){
+    else if(idImage==5 && this.table5!="assets/images/reservation/table6rempli.png"){
       if (this.table5=="assets/images/reservation/table6select.png"){
         this.table5="assets/images/reservation/table6vide.png";
         this.seletedTable=false;
@@ -255,8 +262,7 @@ export class ReservationComponent {
         this.table5="assets/images/reservation/table6select.png";
       }
     }
-
-    if (idImage==6 && this.table6!="assets/images/reservation/table4rempli.png"){
+    else if(idImage==6 && this.table6!="assets/images/reservation/table4rempli.png"){
       if (this.table6=="assets/images/reservation/table4select.png"){
         this.table6="assets/images/reservation/table4vide.png";
         this.seletedTable=false;
@@ -271,8 +277,7 @@ export class ReservationComponent {
         this.table6="assets/images/reservation/table4select.png";
       }
     }
-
-    if (idImage==7 && this.table7!="assets/images/reservation/table4rempli.png"){
+    else if(idImage==7 && this.table7!="assets/images/reservation/table4rempli.png"){
       if (this.table7=="assets/images/reservation/table4select.png"){
         this.table7="assets/images/reservation/table4vide.png";
         this.seletedTable=false;
@@ -287,8 +292,7 @@ export class ReservationComponent {
         this.table7="assets/images/reservation/table4select.png";
       }
     }
-
-    if (idImage==8 && this.table8!="assets/images/reservation/table8rempli.png"){
+    else if(idImage==8 && this.table8!="assets/images/reservation/table8rempli.png"){
       if (this.table8=="assets/images/reservation/table8select.png"){
         this.table8="assets/images/reservation/table8vide.png";
         this.seletedTable=false;
