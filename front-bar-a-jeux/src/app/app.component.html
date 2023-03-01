@@ -1,7 +1,48 @@
 <nav-bar *ngIf="!isAccueilRoute()"> </nav-bar>
 <body>
 <div>
-    
+    <div >        
+        <app-popup id="modal-1" [ngStyle]="popupBool && { 'visibility': 'hidden' }">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="header">
+                                <p>Connexion</p>
+                            </div>
+                            <p>
+                                <label class="form-label">Mail :</label>
+                                <input type="email" class="form-control" id="mailConnexion" name="mailConnexion" [(ngModel)]="authentification.mail"/>  
+                            </p>
+                            <p>
+                                <label class="form-label">Mot de passe :</label>
+                                <input type="password" class="form-control" id="passwordConnexion" id="passwordConnexion" name="passwordConnexion" [(ngModel)]="authentification.password" />
+                            </p>
+                            <a class="btn btn-success btn-lg" (click)="connexion();">Valider</a>
+                        </div>
+                        <div class="col-md-2">
+                            <br><br><br><br>
+                            <p>or</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="header">
+                                <p>Inscription</p>
+                                <br>
+                                <br>
+                                <a class="btn btn-success btn-lg" [routerLink]="['/inscription']" routerLinkActive="active" id="inscription" (click)="popupService.close();">Inscription</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="popupService.close();">Close</button>
+            </div>
+        </app-popup>
+    </div>
+
 <router-outlet></router-outlet>
 
 </div>

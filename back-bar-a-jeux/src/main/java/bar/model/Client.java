@@ -44,16 +44,16 @@ public class Client extends Compte {
 		super();
 	}
 	
-	public Client(String mail, String password, String nom, String prenom, String tel, Civilite civilite) {
-		super(mail, password);
+	public Client(String mail, String password, String type, String nom, String prenom, String tel, Civilite civilite) {
+		super(mail, password, type);
 		this.nom = nom;
 		this.prenom = prenom;
 		this.tel = tel;
 		this.civilite = civilite;
 	}
 	
-	public Client(String mail, String password, String nom, String prenom, String tel, Civilite civilite, LocalDate dateNaissance) {
-		super(mail, password);
+	public Client(String mail, String password, String type, String nom, String prenom, String tel, Civilite civilite, LocalDate dateNaissance) {
+		super(mail, password, type);
 		this.nom = nom;
 		this.prenom = prenom;
 		this.tel = tel;
@@ -61,8 +61,8 @@ public class Client extends Compte {
 		this.dateNaissance = dateNaissance;
 	}
 	
-	public Client(Integer id, String mail, String password, String nom, String prenom, String tel, Civilite civilite, LocalDate dateNaissance) {
-		super(id, mail, password);
+	public Client(Integer id, String mail, String password, String type, String nom, String prenom, String tel, Civilite civilite, LocalDate dateNaissance) {
+		super(id, mail, password, type);
 		this.nom = nom;
 		this.prenom = prenom;
 		this.tel = tel;

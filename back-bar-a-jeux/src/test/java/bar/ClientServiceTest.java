@@ -38,14 +38,14 @@ public class ClientServiceTest {
 
 	@Test
 	void saveClientTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
 		assertNotNull(clientSrv.findById(client1.getId()));
 	}
 
 	@Test
 	void createWithBirthdayTest () {
-		Client client2 = clientSrv.createWithBirthday("client2@test.fr","clienttestPassword2","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02"));
+		Client client2 = clientSrv.createWithBirthday("client2@test.fr","clienttestPassword2","client","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02"));
 		assertEquals("client2@test.fr", client2.getMail());
 		assertEquals("clienttestPassword2", client2.getPassword());
 		assertEquals("clienttestNom2", client2.getNom());
@@ -57,7 +57,7 @@ public class ClientServiceTest {
 
 	@Test
 	void createLessBirthdayTest () {
-		Client client2 = clientSrv.createLessBirthday("client2@test.fr","clienttestPassword2","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme);
+		Client client2 = clientSrv.createLessBirthday("client2@test.fr","clienttestPassword2","client","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme);
 		assertEquals("client2@test.fr", client2.getMail());
 		assertEquals("clienttestPassword2", client2.getPassword());
 		assertEquals("clienttestNom2", client2.getNom());
@@ -78,12 +78,12 @@ public class ClientServiceTest {
 	@Test
 	void checkConstraintMailTest() {
 		ClientException thrown1 = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client(null, "clienttestPassword2","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client(null, "clienttestPassword2","client","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown1.getMessage().contentEquals("mail obligatoire"));
 
 		ClientException thrown2 = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client(" ", "clienttestPassword2","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client(" ", "clienttestPassword2","client","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown2.getMessage().contentEquals("mail obligatoire"));
 	}
@@ -91,11 +91,11 @@ public class ClientServiceTest {
 	@Test
 	void checkConstraintPasswordTest() {
 		ClientException thrown = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", null,"clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", null,"client","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown.getMessage().contentEquals("mot de passe obligatoire"));
 		ClientException thrown2 = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", " ","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", " ","client","clienttestNom2","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown2.getMessage().contentEquals("mot de passe obligatoire"));
 	}
@@ -103,11 +103,11 @@ public class ClientServiceTest {
 	@Test
 	void checkConstraintNomTest() {
 		ClientException thrown = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2",null,"clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","client",null,"clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown.getMessage().contentEquals("nom obligatoire"));
 		ClientException thrown2 = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2"," ","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","client"," ","clienttestPrenom2","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown2.getMessage().contentEquals("nom obligatoire"));
 	}	
@@ -115,11 +115,11 @@ public class ClientServiceTest {
 	@Test
 	void checkConstraintPrenomTest() {
 		ClientException thrown = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","clienttestPrenom2",null,"0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","client","clienttestPrenom2",null,"0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown.getMessage().contentEquals("prenom obligatoire"));
 		ClientException thrown2 = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","clienttestNom2"," ","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","client","clienttestNom2"," ","0600000002",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown2.getMessage().contentEquals("prenom obligatoire"));
 	}	
@@ -127,11 +127,11 @@ public class ClientServiceTest {
 	@Test
 	void checkConstraintTelTest() {
 		ClientException thrown = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","clienttestPrenom2","clienttestPrenom2",null,Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","client","clienttestPrenom2","clienttestPrenom2",null,Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown.getMessage().contentEquals("téléphone obligatoire"));
 		ClientException thrown2 = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","clienttestNom2","clienttestPrenom2"," ",Civilite.femme, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","client","clienttestNom2","clienttestPrenom2"," ",Civilite.femme, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown2.getMessage().contentEquals("téléphone obligatoire"));
 	}	
@@ -139,7 +139,7 @@ public class ClientServiceTest {
 	@Test
 	void checkConstraintCiviliteTest() {
 		ClientException thrown = assertThrows(ClientException.class, () -> {
-			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","clienttestPrenom2","clienttestPrenom2","0600000002",null, LocalDate.parse("2000-01-02")));
+			clientSrv.save(new Client("client2@test.fr", "clienttestPassword2","client","clienttestPrenom2","clienttestPrenom2","0600000002",null, LocalDate.parse("2000-01-02")));
 		});
 		assertTrue(thrown.getMessage().contentEquals("civilite obligatoire"));
 	}	
@@ -154,7 +154,7 @@ public class ClientServiceTest {
 
 	@Test
 	void deleteClientTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
 		clientSrv.delete(client1);		
 		assertThrows(ClientException.class, () -> {
@@ -164,7 +164,7 @@ public class ClientServiceTest {
 
 	@Test
 	void deleteByIdTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);	
 		clientSrv.delete(client1.getId());	
 		assertThrows(ClientException.class, () -> {
@@ -174,7 +174,7 @@ public class ClientServiceTest {
 
 	@Test
 	void findByIdTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);	
 		assertNotNull(clientSrv.findById(client1.getId()));
 	}
@@ -182,7 +182,7 @@ public class ClientServiceTest {
 	@Test 
 	void findAllTest() {
 		List<Client> clients = new ArrayList<>();	
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clients.add(client1);
 		clientSrv.save(client1);
 		//vérif renvoie bien une liste
@@ -193,63 +193,63 @@ public class ClientServiceTest {
 
 	@Test
 	void updateMailTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
-		Client clientUpdate = new Client(client1.getId(),"client1Update@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client clientUpdate = new Client(client1.getId(),"client1Update@test.fr","client","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.update(clientUpdate);
 		assertEquals("client1Update@test.fr",clientUpdate.getMail());
 	}
 
 	@Test
 	void updatePasswordTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
-		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","clienttestUpdate1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","client","clienttestUpdate1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.update(clientUpdate);
 		assertEquals("clienttestUpdate1",clientUpdate.getPassword());
 	}
 	
 	@Test
 	void updateCiviliteTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
-		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.femme, LocalDate.parse("2000-01-01"));
+		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","client","clienttest1","clienttest1","clienttest1","0600000001",Civilite.femme, LocalDate.parse("2000-01-01"));
 		clientSrv.update(clientUpdate);
 		assertEquals(Civilite.femme,clientUpdate.getCivilite());
 	}	
 	
 	@Test
 	void updateNomTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
-		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","clienttest1","clienttestUpdate1","clienttest1","0600000001",Civilite.femme, LocalDate.parse("2000-01-01"));
+		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","client","clienttest1","clienttestUpdate1","clienttest1","0600000001",Civilite.femme, LocalDate.parse("2000-01-01"));
 		clientSrv.update(clientUpdate);
 		assertEquals("clienttestUpdate1",clientUpdate.getNom());
 	}
 	
 	@Test
 	void updatePrenomTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
-		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","clienttest1","clienttest1","clienttestUpdate1","0600000001",Civilite.femme, LocalDate.parse("2000-01-01"));
+		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","client","clienttest1","clienttest1","clienttestUpdate1","0600000001",Civilite.femme, LocalDate.parse("2000-01-01"));
 		clientSrv.update(clientUpdate);
 		assertEquals("clienttestUpdate1",clientUpdate.getPrenom());
 	}
 	
 	@Test
 	void updateTelTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
-		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","clienttest1","clienttest1","clienttest1","0600000002",Civilite.femme, LocalDate.parse("2000-01-01"));
+		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","client","clienttest1","clienttest1","clienttest1","0600000002",Civilite.femme, LocalDate.parse("2000-01-01"));
 		clientSrv.update(clientUpdate);
 		assertEquals("0600000002",clientUpdate.getTel());
 	}
 	
 	@Test
 	void updateDateNaissanceTest() {
-		Client client1 = new Client("client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
+		Client client1 = new Client("client1@test.fr","clienttest1","client","clienttest1","clienttest1","0600000001",Civilite.homme, LocalDate.parse("2000-01-01"));
 		clientSrv.save(client1);
-		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","clienttest1","clienttest1","clienttest1","0600000001",Civilite.femme, LocalDate.parse("2000-01-03"));
+		Client clientUpdate = new Client(client1.getId(),"client1@test.fr","client","clienttest1","clienttest1","clienttest1","0600000001",Civilite.femme, LocalDate.parse("2000-01-03"));
 		clientSrv.update(clientUpdate);
 		assertEquals(LocalDate.parse("2000-01-03"),clientUpdate.getDateNaissance());
 	}

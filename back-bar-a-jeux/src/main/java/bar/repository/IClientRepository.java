@@ -1,11 +1,15 @@
 package bar.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import bar.model.Client;
 
 public interface IClientRepository extends JpaRepository<Client, Integer>{
 
+	
+	public Optional<Client> findByMailAndPassword(String mail, String password);
 	
 //	@Query("select distinct c from Client c left join fetch c.reservations where c.id=:id")
 //	Optional<Client> findByIdWithReservation(@Param("id") Integer id);

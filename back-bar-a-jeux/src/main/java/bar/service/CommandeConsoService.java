@@ -20,8 +20,8 @@ public class CommandeConsoService {
 	private ICommandeConsoRepository commandeConsoRepo;
 	
 	// creation commande
-		public CommandeConso create(List<Conso> consos ,Reservation reservation) {
-			CommandeConso commandeConso= new CommandeConso(consos,reservation);
+		public CommandeConso create(Reservation reservation) {
+			CommandeConso commandeConso= new CommandeConso(reservation);
 			checkConstraint(commandeConso);
 			checkNotNull(commandeConso);
 			return commandeConsoRepo.save(commandeConso);
@@ -41,11 +41,6 @@ public class CommandeConsoService {
 		}
 		
 		private void checkConstraint(CommandeConso commandeConso) {
-			if (commandeConso.getConsos().isEmpty()) {
-				throw new CommandeConsoException("la commande est vide");
-			}
-			
-			
 			if (commandeConso.getReservation()==null ) {
 				throw new CommandeConsoException("Aucune réservation n'est affectée à la commande");
 			}

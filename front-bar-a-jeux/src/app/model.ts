@@ -2,11 +2,13 @@ export abstract class Compte {
     id : number;
     mail : string;
     password : string;
+    type : string;
 
-    constructor(id?:number, mail?: string, password?:string){
+    constructor(id?:number, mail?: string, password?:string, type? : string){
         this.id = id; 
         this.mail = mail;
         this.password = password;
+        this.type = type;
     } 
 }
 
@@ -18,8 +20,8 @@ export class Client extends Compte {
     // commandeJeux : Array<CommandeJeux>;
     civilite : string;
 
-    constructor(id?:number, mail?: string, password?:string, nom?: string, prenom?: string, tel?: string, dateNaissance?: string, civilite?: string) {
-        super(id, mail, password);
+    constructor(id?:number, mail?: string, password?:string, type? : string, nom?: string, prenom?: string, tel?: string, dateNaissance?: string, civilite?: string) {
+        super(id, mail, password, type);
         this.nom = nom;
         this.prenom = prenom;
         this.tel = tel;
@@ -27,6 +29,20 @@ export class Client extends Compte {
         this.civilite = civilite;
     }
 }
+
+export class AuthDTO {
+    mail: string;
+    password: string;
+  
+    constructor(mail?: string, password?: string) {
+      this.mail = mail;
+      this.password = password;
+    }
+
+    isValide():boolean{
+        return(Boolean(this.mail) && Boolean(this.password));
+    }
+  }
 
 export class Reservation {
     id: number;
@@ -47,7 +63,6 @@ export class Reservation {
         this.jeu = jeu;
 
     }
-
 }
 
 export class TableBar {
@@ -63,14 +78,11 @@ export class TableBar {
     }
 }
     
-    export class Admin extends Compte {
+export class Admin extends Compte {
         
-
-        constructor(id?:number, mail?: string, password?:string) {
-            super(id, mail, password);
-           
-        }
-
+    constructor(id?:number, mail?: string, password?:string, type? : string) {
+        super(id, mail, password, type);  
+    }
 }
 
 

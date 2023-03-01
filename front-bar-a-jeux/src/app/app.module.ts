@@ -17,7 +17,10 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { BanniereAccueilComponent } from './banniere-accueil/banniere-accueil.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { PopupComponent } from './popup/popup.component';
+import { PanierComponent } from './panier/panier.component';
 import { ConsoComponent } from './conso/conso.component';
+
 
 @NgModule({
   declarations: [
@@ -30,10 +33,10 @@ import { ConsoComponent } from './conso/conso.component';
     AppComponent,
     NavBarComponent,
     CustomDatePipe,
-    InscriptionComponent,
+    PopupComponent,
     BanniereAccueilComponent,
-    FooterComponent,
-    ConsoComponent
+    FooterComponent, 
+    InscriptionComponent, PanierComponent
   ],
   imports: [
     BrowserModule,

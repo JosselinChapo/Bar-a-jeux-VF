@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AppComponent } from '../app.component';
 import { Client, Reservation } from '../model';
 import { ReservationService } from '../reservation/reservation.service';
 import { ClientService } from './client.service';
@@ -17,7 +18,8 @@ export class ClientComponent {
   menuClient : string;
   formReservation : Reservation;
  
-  constructor(private clientService: ClientService, private resaService : ReservationService) {
+  constructor(private clientService: ClientService, private resaService : ReservationService,private appService : AppComponent) {
+    this.currentClient = this.appService.client;
   }
 
   list(): Array<Client> {

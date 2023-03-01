@@ -31,22 +31,27 @@ public abstract class Compte {
 	@Column(name="password", length = 100)
 	@JsonView(Views.ViewBase.class)
 	private String password;
+	@Column(name="type", length=20)
+	@JsonView(Views.ViewBase.class)
+	private String type;
 	
 	public Compte() {
 		super();
 	}
 
-	public Compte(Integer id, String mail, String password) {
+	public Compte(Integer id, String mail, String password, String type) {
 		super();
 		this.id = id;
 		this.mail = mail;
 		this.password = password;
+		this.type = type;
 	}
 	
-	public Compte(String mail, String password) {
+	public Compte(String mail, String password, String type) {
 		super();
 		this.mail = mail;
 		this.password = password;
+		this.type = type;
 	}
 
 	public Integer getId() {
@@ -72,5 +77,14 @@ public abstract class Compte {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	
 }
