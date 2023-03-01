@@ -20,8 +20,8 @@ import bar.repository.IConsoRepository;
 		private IConsoRepository consoRepo;
 		
 		// creation conso
-			public Conso create(double prix, int qtité, String nom,TypeConso typeconso) {
-				Conso conso= new Conso(prix,qtité,nom,typeconso);
+			public Conso create(String nom, double prix,TypeConso typeconso) {
+				Conso conso= new Conso(nom,prix,typeconso);
 				checkConstraint(conso);
 				checkNotNull(conso);
 				return save(conso);
@@ -50,9 +50,6 @@ import bar.repository.IConsoRepository;
 				}
 				if (conso.getTypeconso() == null ) {
 					throw new ConsoException("Le choix de la conso est obligatoire");
-				}
-				if (conso.getQtité()<0) {
-					throw new CommandeConsoException("la quantité est incorrecte");
 				}
 				
 			}

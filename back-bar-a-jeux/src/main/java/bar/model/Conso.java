@@ -20,44 +20,26 @@ public class Conso {
 	private int id;
 	@Column
 	@JsonView(Views.ViewBase.class)
-	private double prix;
-	@JsonView(Views.ViewBase.class)
-	@Column
-	private int qtité;
-
-	@Column
-	@JsonView(Views.ViewBase.class)
 	private String nom;
+	@JsonView(Views.ViewBase.class)
+	private double prix;
+	
 	@Column(name="type_conso")
 	@Enumerated(EnumType.STRING)
 	@JsonView(Views.ViewBase.class)
 	private TypeConso typeconso;
-	@ManyToOne
-	@JoinColumn (name= "commandeConso_id")
-	private CommandeConso commandeConso;
-	
-	
 	
 	public Conso() {
 		super();
 	}
 	
 	
-	public Conso(double prix, int qtité, String nom, TypeConso typeconso) {
+	
+	public Conso( String nom, double prix, TypeConso typeconso) {
 		super();
-		this.prix = prix;
-		this.qtité = qtité;
 		this.nom = nom;
+		this.prix = prix;
 		this.typeconso = typeconso;
-	}
-
-
-	public int getQtité() {
-		return qtité;
-	}
-
-	public void setQtité(int qtité) {
-		this.qtité = qtité;
 	}
 
 
@@ -88,12 +70,6 @@ public class Conso {
 		this.typeconso = typeconso;
 	}
 
-	public CommandeConso getCommandeConso() {
-		return commandeConso;
-	}
-	public void setCommandeConso(CommandeConso commandeConso) {
-		this.commandeConso = commandeConso;
-	}
 	
 	
 	

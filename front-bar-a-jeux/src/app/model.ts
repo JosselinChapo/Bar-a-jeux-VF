@@ -153,3 +153,20 @@ export class Filter {
     }
 
 }
+
+export class Conso {
+
+    id: number; 
+    nom : String;
+    prix: number;
+   
+    
+
+    constructor(id?:number, nom?: string, prix?: number){
+        this.id = id;
+        this.nom= nom;
+        this.prix = prix;
+        
+    }
+}
+
