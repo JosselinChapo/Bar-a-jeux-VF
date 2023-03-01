@@ -57,7 +57,8 @@ deconnexion(){
     this.client = undefined;
     console.log("deconnexion client");
   }
-  this.authentification = undefined;
+  this.authentification.mail = "";
+  this.authentification.password = "";
 }
 
 
