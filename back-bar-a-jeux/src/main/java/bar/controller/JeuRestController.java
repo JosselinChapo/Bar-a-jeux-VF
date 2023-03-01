@@ -79,7 +79,7 @@ public class JeuRestController {
 				jeux = jeuService.findByTypeJeuDuree(filterDTO.getDureeMin(),filterDTO.getDureeMax(),filterDTO.getTypeJeu());
 			}
 			else {
-				jeux = jeuService.findByFilter(filterDTO.getNbJoueur(),filterDTO.getTypeJeu(),filterDTO.getDureeMin(),filterDTO.getDureeMax());
+				jeux = jeuService.findByFilter(filterDTO.getNbJoueur(),filterDTO.getTypeJeu(),filterDTO.getDureeMin(),filterDTO.getDureeMax(),filterDTO.getPrixMin(),filterDTO.getPrixMax());
 			}
 			
 			for (Jeu j : jeux) {

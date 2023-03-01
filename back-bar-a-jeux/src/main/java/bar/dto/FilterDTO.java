@@ -5,6 +5,8 @@ public class FilterDTO {
 	private int dureeMin;
 	private int dureeMax;
 	private String typeJeu;
+	private double prixMin;
+	private double prixMax;
 	
 	
 	public FilterDTO() {
@@ -35,6 +37,22 @@ public class FilterDTO {
 	public void setTypeJeu(String typeJeu) {
 		this.typeJeu = typeJeu;
 	}
-	
+
+	public double getPrixMin() {
+		return prixMin;
+	}
+
+	public void setPrixMin(double prixMin) {
+		this.prixMin = prixMin;
+	}
+
+	public double getPrixMax() {
+		return prixMax;
+	}
+
+	public void setPrixMax(double prixMax) {
+		this.prixMax = prixMax;
+	}
+
 	
 }

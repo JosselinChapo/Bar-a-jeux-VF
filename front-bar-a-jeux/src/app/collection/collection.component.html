@@ -8,7 +8,6 @@
     </div>
   </div>
 
-  
 
   <div class="search-bar">
   <input type='text' placeholder="rechercher ..." class="form-control" style="margin-left: 20px;margin-right: 20px;" [(ngModel)]="recherche">
@@ -106,10 +105,14 @@
                         </div>
                       </div>
                     </div>
-                      <div class="container-prix" *ngIf="isBoutique()">
-                      <h5 style="color: #116466;">{{jeu.prix}}0 €</h5> <button *ngIf="appComponent.client != undefined" class="btn btn-primary" style="background-color: #116466; border-color: #0a3d3e" (click)="addCommande(jeu.id,appComponent.client.id)"><i class="bi bi-cart-plus-fill"></i></button> 
+                      <div class="container-prix" *ngIf="isBoutique()" [id]="i">
+                      <h5 style="color: #116466;">{{jeu.prix}}0 €</h5> <button *ngIf="appComponent.client != undefined" class="btn btn-primary" style="background-color: #116466; border-color: #0a3d3e" (click)="addCommande(jeu.id,appComponent.client.id,i)">
+                        <div [id]="i" *ngIf="show > 0 && id==i" style="color: white;"><div class="spinner-grow spinner-grow-sm" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div></div>
+                        <div [id]="i" *ngIf="show < 0 || id!=i"><i class="bi bi-cart-plus-fill"></i></div>
+                      </button> 
                       <button *ngIf="appComponent.client == undefined" class="btn btn-primary" style="background-color: #116466; border-color: #0a3d3e" (click)="popupService.open('modal-1')"><i class="bi bi-cart-plus-fill"></i></button> 
-                      </div>
                 </div>
                 <div class="post-it-joueur">
                     <i class="bi bi-people"></i>
