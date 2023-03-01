@@ -44,8 +44,8 @@
 
 .parquet {
     width: 500px;
-    height: 500px;
-    background-image: url('/assets/images/reservation/parquet.jpeg');
+    height: 450px;
+    background-image: url('/assets/images/reservation/sol.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display:flex;
@@ -60,10 +60,10 @@
 
 #tableUne {
     position:relative;
-    width: 84px;
-    height:74px;
-    margin-left:30px;
-    margin-top:30px;
+    width: 95px;
+    height:85px;
+    margin-left:25px;
+    margin-top:25px;
     display:inline-block;
 }
 #tableUne:hover {
@@ -71,10 +71,10 @@
 }
 
 #tableDeux {
-    width: 84px;
-    height:74px;
+    width: 95px;
+    height:85px;
     margin-left:30px;
-    margin-top:30px;
+    margin-top:25px;
     display:inline-block;
 }
 #tableDeux:hover {
@@ -82,10 +82,10 @@
 }
 
 #tableTrois {
-    width: 84px;
-    height:74px;
-    margin-left:150px;
-    margin-top:30px;
+    width: 120px;
+    height:85px;
+    margin-left:110px;
+    margin-top:25px;
     display:inline-block;
 }
 #tableTrois:hover {
@@ -93,14 +93,58 @@
 }
 
 #tableQuatre {
-    width: 167px;
-    height:74px;
+    width: 180px;
+    height:85px;
     margin-left:30px;
-    margin-top:30px;
+    margin-top:25px;
     display:inline-block;
-    transform: rotate(90deg);
 }
 #tableQuatre:hover {
+    display:inline-block;
+}
+
+#tableCinq {
+    width: 120px;
+    height:85px;
+    margin-left:145px;
+    margin-top:25px;
+    display:inline-block;
+}
+#tableCinq:hover {
+    display:inline-block;
+}
+
+#tableSix {
+    position:relative;
+    width: 95px;
+    height:85px;
+    margin-left:25px;
+    margin-top:25px;
+    display:inline-block;
+}
+#tableSix:hover {
+    display:inline-block;
+}
+
+#tableSept {
+    width: 95px;
+    height:85px;
+    margin-left:30px;
+    margin-top:25px;
+    display:inline-block;
+}
+#tableSetp:hover {
+    display:inline-block;
+}
+
+#tableHuit {
+    width: 180px;
+    height:85px;
+    margin-left:50px;
+    margin-top:25px;
+    display:inline-block;
+}
+#tableHuit:hover {
     display:inline-block;
 }
 

@@ -65,10 +65,14 @@
 
 <div class="centrer">
     <div class="parquet">
-        <img src="assets/images/reservation/bandeau_reservation.png" id="tableUne" title="Corelangs link">
-        <img src="assets/images/reservation/bandeau_reservation.png" id="tableDeux" title="Corelangs link">
-        <img src="assets/images/reservation/bandeau_reservation.png" id="tableTrois" title="Corelangs link">
-        <img src="assets/images/reservation/bandeau_reservation.png" id="tableQuatre" title="Corelangs link">
+        <img [src]="table1" id="tableUne" title="Corelangs link" (click)="changeImage(1)">
+        <img [src]="table2" id="tableDeux" title="Corelangs link" (click)="changeImage(2)">
+        <img [src]="table3" id="tableTrois" title="Corelangs link" (click)="changeImage(3)">
+        <img [src]="table4" id="tableQuatre" title="Corelangs link" (click)="changeImage(4)">
+        <img [src]="table5" id="tableCinq" title="Corelangs link" (click)="changeImage(5)">
+        <img [src]="table6" id="tableSix" title="Corelangs link" (click)="changeImage(6)">
+        <img [src]="table7" id="tableSept" title="Corelangs link" (click)="changeImage(7)">
+        <img [src]="table8" id="tableHuit" title="Corelangs link" (click)="changeImage(8)">
     </div>
 </div>
 
