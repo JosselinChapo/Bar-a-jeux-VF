@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { PopupComponent } from './popup/popup.component';
+import { PanierComponent } from './panier/panier.component';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { PopupComponent } from './popup/popup.component';
     PopupComponent,
     BanniereAccueilComponent,
     FooterComponent, 
-    InscriptionComponent
+    InscriptionComponent, PanierComponent
   ],
   imports: [
     BrowserModule,

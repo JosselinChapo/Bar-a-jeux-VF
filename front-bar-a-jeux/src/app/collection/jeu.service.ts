@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Filter, Jeu } from '../model';
+import { AchatJeu, CommandeJeu, Filter, Jeu } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,8 @@ export class JeuService {
 
   jeux: Array<Jeu> = new Array<Jeu>();
   typeJeux: Array<string>;
+  achatJeux : AchatJeu;
+  commandeJeu : CommandeJeu;
 
     constructor(private http : HttpClient) { 
      this.load();
