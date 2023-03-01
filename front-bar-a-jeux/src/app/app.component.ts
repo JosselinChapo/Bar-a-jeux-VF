@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthDTO } from './model';
+import { AuthService } from './auth.service';
+import { Admin, AuthDTO, Client } from './model';
 import { PopupService } from './popup/popup.service';
 
 @Component({
@@ -13,8 +14,10 @@ export class AppComponent {
   typeCompte : string;
   popupBool : boolean = true;
   authentification : AuthDTO = new AuthDTO();
+  client : Client;
+  admin : Admin;
   
-  constructor(protected popupService: PopupService, public router: Router) { }
+  constructor(protected popupService: PopupService, public router: Router, private authService: AuthService) { }
 
 
 isAccueilRoute() {
@@ -29,6 +32,23 @@ else {return false;}
 }
 
 toto() {
-  console.log(this.authentification);
+  if(this.authentification.mail == "admin@test.fr" ){
+    console.log("admin authentification");
+    this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
+    this.admin = resp;
+    this.authService.loginCompte(resp);
+    this.popupService.close();
+  });
+  
+  }else{
+    console.log("client authentification");
+    this.popupService.loginClient(this.authentification).subscribe(resp => { 
+      this.client = resp;
+      this.authService.loginCompte(resp);
+      this.popupService.close();
+    });
+  }
+
+
 }
 }

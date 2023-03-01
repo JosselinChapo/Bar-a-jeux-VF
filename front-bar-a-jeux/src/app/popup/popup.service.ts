@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Admin, AuthDTO, Client } from '../model';
 import { PopupComponent } from './popup.component';
@@ -10,7 +11,9 @@ import { PopupComponent } from './popup.component';
 export class PopupService {
 
   private popup: PopupComponent[] = [];
-  
+  adminConnect : Admin;
+  clientConnect : Client;
+
   constructor(private http: HttpClient,private authService : AuthService) { }
   
     add(modal: PopupComponent) {
@@ -45,20 +48,12 @@ export class PopupService {
       modal?.close();
   }
  
-  loginAdmin(dto : AuthDTO){
-  
-    this.http.post<Admin>("http://localhost:8888/admin/auth",dto).subscribe(resp => { 
-      resp.type = "admin";
-      this.authService.loginCompte(resp)
-    });
+  loginAdmin(dto : AuthDTO):Observable<Admin>{
+    return this.http.post<Admin>("http://localhost:8888/admin/auth",dto);   
   }
-  
-  loginClient(dto : AuthDTO){
-  
-    this.http.post<Client>("http://localhost:8888/client/auth",dto).subscribe(resp => { 
-      resp.type = "client";
-      this.authService.loginCompte(resp)
-    });
+
+  loginClient(dto : AuthDTO):Observable<Client>{
+    return this.http.post<Client>("http://localhost:8888/client/auth",dto);   
   }
   
 }

@@ -90,6 +90,4 @@ export class CollectionComponent {
     return this.jeuService.findAllTypeJeu();
   }
 
-
-
 }
