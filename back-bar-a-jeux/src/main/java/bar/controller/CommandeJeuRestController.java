@@ -49,6 +49,15 @@ public class CommandeJeuRestController {
 			return CommandeJeu;
 		}
 		
+		@GetMapping("client/{id}")
+		@JsonView(Views.ViewCommandeJeu.class)
+		public  List<CommandeJeu> findByIdClient(@PathVariable Integer id) {
+			
+			List<CommandeJeu> CommandeJeux = commandeJeuService.findAllByClientId(id);
+			
+			return CommandeJeux;
+		}
+		
 		@PostMapping("")
 		@JsonView(Views.ViewCommandeJeu.class)
 		public CommandeJeu create(@RequestBody CommandeJeu CommandeJeu) {
@@ -56,6 +65,8 @@ public class CommandeJeuRestController {
 			
 			return CommandeJeu;
 		}
+		
+		
 		
 		@PutMapping("/{id}")
 		@JsonView(Views.ViewCommandeJeu.class)

@@ -67,6 +67,9 @@ public class CommandeJeuService {
 			return commandeJeuRepo.findAll();
 		}
 		
+		public List<CommandeJeu> findAllByClientId(Integer id){
+			return commandeJeuRepo.findAllByClientIdWithAchatJeu(id);
+		}
 		
 		public CommandeJeu update(CommandeJeu commandeJeu) {
 			checkNotNull(commandeJeu);

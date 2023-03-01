@@ -32,7 +32,7 @@ export class CollectionComponent {
   };
 
   achatJeu : AchatJeu = new AchatJeu();
-  commandeJeu : CommandeJeu = new CommandeJeu(1,"");
+  commandeJeu : CommandeJeu = new CommandeJeu();
   client : Client = new Client();
   
   recherche:string;
@@ -117,11 +117,23 @@ export class CollectionComponent {
       this.jeuService.findById(idJeu).subscribe(resp => {
         this.achatJeu.jeu = resp;
         this.achatJeu.quantite = 1;
-        
+        this.achatJeu.dateAchat = "2023-03-01";
         this.clientService.findById(idClient).subscribe(resp => {
           this.commandeJeu.client = resp;
           this.commandeJeu.statut = "EnCours";
-          this.achatJeu.commandeJeu = this.commandeJeu;
+          this.jeuService.insertCommandeJeu(this.commandeJeu).subscribe(resp => {
+            this.achatJeu.commandeJeu = resp;
+            this.jeuService.insertAchatJeu(this.achatJeu).subscribe(resp => {
+              this.achatJeu = resp;
+              console.log(this.achatJeu.jeu.nom);
+              console.log(this.achatJeu.quantite);
+              console.log(this.commandeJeu.client.nom);
+              console.log(this.commandeJeu.statut);
+              console.log(this.commandeJeu.id);
+              this.commandeJeu = new CommandeJeu;
+              this.achatJeu = new AchatJeu
+            });
+          });
         });
       });
 
