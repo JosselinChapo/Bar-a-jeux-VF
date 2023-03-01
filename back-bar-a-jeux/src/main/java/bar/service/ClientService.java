@@ -2,12 +2,15 @@ package bar.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bar.exception.ClientException;
+import bar.exception.CompteException;
 import bar.exception.IdException;
+import bar.model.Admin;
 import bar.model.Civilite;
 import bar.model.Client;
 import bar.repository.IClientRepository;
@@ -18,13 +21,13 @@ public class ClientService {
 	@Autowired 
 	private IClientRepository clientRepo;
 	
-	public Client createLessBirthday(String mail, String password, String nom, String prenom, String tel, Civilite civilite) {
-		Client compteClient = new Client(mail, password, nom, prenom, tel, civilite);
+	public Client createLessBirthday(String mail, String password, String type, String nom, String prenom, String tel, Civilite civilite) {
+		Client compteClient = new Client(mail, password, type, nom, prenom, tel, civilite);
 		return save(compteClient);
 	}
 	
-	public Client createWithBirthday(String mail, String password, String nom, String prenom, String tel, Civilite civilite, LocalDate dateNaissance) {
-		Client compteClient = new Client(mail, password, nom, prenom, tel, civilite, dateNaissance);
+	public Client createWithBirthday(String mail, String password, String type, String nom, String prenom, String tel, Civilite civilite, LocalDate dateNaissance) {
+		Client compteClient = new Client(mail, password, type, nom, prenom, tel, civilite, dateNaissance);
 		return save(compteClient);
 	}
 	
@@ -105,5 +108,15 @@ public class ClientService {
 		return clientRepo.save(clientEnBase);
 	}
 	
-	
+	public Client findByMailAndPassword(String mail, String password) {
+		
+		Optional<Client>  newClient =  clientRepo.findByMailAndPassword(mail, password);
+		
+		if(newClient.isEmpty()) {
+			throw new CompteException("client absent");
+			
+		}
+		
+		return  newClient.get();
+	}
 }

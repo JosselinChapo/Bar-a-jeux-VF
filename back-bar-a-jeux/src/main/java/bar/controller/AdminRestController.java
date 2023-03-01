@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import bar.dto.AuthDTO;
 import bar.model.Admin;
 import bar.model.Views;
 import bar.service.AdminService;
@@ -65,4 +66,11 @@ public class AdminRestController {
 		adminService.delete(id);
 	}
 
+	@PostMapping("/auth")
+	@JsonView(Views.ViewAdmin.class)
+	public Admin auth(@RequestBody AuthDTO authentification) {
+		
+		return adminService.findByMailAndPassword(authentification.getMail(), authentification.getPassword());
+		
+	}
 }
