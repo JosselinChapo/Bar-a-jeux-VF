@@ -76,7 +76,7 @@ public class JeuRestController {
 		public List<Jeu> findByfilter(@RequestBody FilterDTO filterDTO) {
 			List<Jeu> jeux = new ArrayList();
 			if(filterDTO.getNbJoueur()==0) {
-				jeux = jeuService.findByTypeJeuDuree(filterDTO.getDureeMin(),filterDTO.getDureeMax(),filterDTO.getTypeJeu());
+				jeux = jeuService.findByTypeJeuDuree(filterDTO.getDureeMin(),filterDTO.getDureeMax(),filterDTO.getTypeJeu(),filterDTO.getPrixMin(),filterDTO.getPrixMax());
 			}
 			else {
 				jeux = jeuService.findByFilter(filterDTO.getNbJoueur(),filterDTO.getTypeJeu(),filterDTO.getDureeMin(),filterDTO.getDureeMax(),filterDTO.getPrixMin(),filterDTO.getPrixMax());

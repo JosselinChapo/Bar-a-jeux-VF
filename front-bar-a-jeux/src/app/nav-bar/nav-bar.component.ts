@@ -13,7 +13,7 @@ export class NavBarComponent {
 
   resaconnected: boolean= false;
 
-  constructor(public popupService: PopupService, public appComponent : AppComponent,public router : Router) {
+  constructor(public popupService: PopupService, public appComponent : AppComponent,public router : Router,private commandeService : CommandeJeuService) {
     
    }
 

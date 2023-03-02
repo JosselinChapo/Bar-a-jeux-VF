@@ -153,9 +153,9 @@ public class JeuService {
 			return jeux;	
 			}
 		
-		public List<Jeu> findByTypeJeuDuree(Integer dureeMin,Integer dureeMax,String typeJeu) {
+		public List<Jeu> findByTypeJeuDuree(Integer dureeMin,Integer dureeMax,String typeJeu,double prixMin,double prixMax) {
 			
-			List<Jeu> jeux = jeuRepo.findByTypeJeuDuree(dureeMin,dureeMax,typeJeu);
+			List<Jeu> jeux = jeuRepo.findByTypeJeuDuree(dureeMin,dureeMax,typeJeu,prixMin,prixMax);
 			return jeux;	
 			}
 		
