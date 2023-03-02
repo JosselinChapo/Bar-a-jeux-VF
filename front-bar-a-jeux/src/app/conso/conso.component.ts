@@ -18,32 +18,20 @@ export class ConsoComponent {
   constructor(private consoService: ConsoService){
   }
 
-  listPlat(): void {
-    this.consoService.FindAllByTypeconsoPlat().subscribe(resp => {
-      this.listPlats = resp;
-    })
+  listPlat(): Array<Conso>  {
+    return this.consoService.FindAllByTypeconsoPlat();
      }
 
-     listBoisson (): void {
-      this.consoService.FindAllByTypeconsoBoisson().subscribe(resp => {
-        this.listBoissons = resp;
-      })
+     listBoisson(): Array<Conso>  {
+      return this.consoService.FindAllByTypeconsoBoisson();
        }
+  
 
   listTypeConso(): Array<string> {
-
     return this.consoService.findAllTypeConso();
   }
 
-  AffichePlat() : Array<Conso> {
-    this.listPlat();
-    return this.listPlats;
-  }
 
-  AfficheBoisson() : Array<Conso> {
-    this.listBoisson();
-    return this.listBoissons;
-  }
 
   add(): void {
     this.creaConso = new Conso();

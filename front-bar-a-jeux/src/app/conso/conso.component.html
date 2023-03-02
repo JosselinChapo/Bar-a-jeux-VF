@@ -17,7 +17,7 @@
                 </thead>
 
              <tbody>
-                    <tr *ngFor="let conso of AfficheBoisson()">
+                    <tr *ngFor="let conso of listBoisson()">
                         <td>{{conso.nom}}</td>
                         <td>{{conso.prix}} € </td>
                      <td></td>
@@ -44,7 +44,7 @@
                    </thead>
 
                    <tbody>
-                        <tr *ngFor="let conso of AffichePlat()">
+                        <tr *ngFor="let conso of listPlat()">
                             <td>{{conso.nom}}</td>
                            <td>{{conso.prix}} € </td>
                             <td></td>

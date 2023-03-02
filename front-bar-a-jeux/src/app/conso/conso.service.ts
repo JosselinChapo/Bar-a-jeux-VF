@@ -9,11 +9,16 @@ import { Conso } from '../model';
 export class ConsoService {
   consos: Array< Conso> = new Array<Conso>();
   typeConsos: Array<string> = new Array<string>();
+  listBoissons: Array<Conso> = new Array<Conso>();
+  listPlats: Array<Conso> = new Array<Conso>();
+
 
   constructor(private http: HttpClient) {
     this.load();
     this.loadTypeConsos();
-  
+    this.loadBoisson();
+    this.loadPlat();
+
   }
 
   findAll(): Array<Conso> {
@@ -24,17 +29,13 @@ export class ConsoService {
     return this.typeConsos;
   }
 
-  FindAllByTypeconsoBoisson(): Observable<Array <Conso>>{
-  
-    return this.http.get<Array<Conso>>("http://localhost:8888/conso/boisson");
-
+  FindAllByTypeconsoBoisson(): Array<Conso> {
+    return this.listBoissons;
   }
 
-  FindAllByTypeconsoPlat(): Observable<Array <Conso>>{
-  
-    return this.http.get<Array<Conso>>("http://localhost:8888/conso/plat");
-
-  }
+   FindAllByTypeconsoPlat(): Array <Conso>{
+     return this.listPlats;
+   }
 
 
   findById(id: number): Observable<Conso> {
@@ -65,8 +66,6 @@ export class ConsoService {
     this.http.get<Array<Conso>>("http://localhost:8888/conso").subscribe(resp => {
       this.consos = resp;
     });
-
-    
   }
 
   private loadTypeConsos(): void {
@@ -77,6 +76,21 @@ export class ConsoService {
     });
   }
 
- 
+  private loadBoisson(): void {
+    this.http.get<Array<Conso>>("http://localhost:8888/boisson").subscribe(resp => {
+      resp.forEach(typeconso => {
+        this.listBoissons = resp;
+      });
+    });
+  }
+
+  private loadPlat(): void {
+    this.http.get<Array<Conso>>("http://localhost:8888/plat").subscribe(resp => {
+      resp.forEach(typeconso => {
+        this.listPlats = resp;
+      });
+    });
+  }
+
 }
 
