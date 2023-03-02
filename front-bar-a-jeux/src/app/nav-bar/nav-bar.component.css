@@ -27,6 +27,7 @@
     align-items: end;
     align-content: center;
     height: 90%;
+    width: 20%;
   }
 
    img{
@@ -69,4 +70,8 @@
   .btn{
     color:white;
     border: none;
+  }
+
+  #logoDeco{
+    margin-left: -50px;
   }

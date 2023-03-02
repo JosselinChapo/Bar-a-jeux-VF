@@ -31,7 +31,7 @@
                 <a class="btn" style="font-size: 100%;" (click)="navigationUser()"><i class="fas fa-user"></i></a>
             </li>
             <li *ngIf="appComponent.client != undefined || appComponent.admin != undefined">
-                <a class="btn" style="font-size: 100%;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']">DECONNEXION</a>
+                <a class="btn" id="logoDeco" style="font-size: 100%;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']">DECONNEXION</a>
             </li>
         </ul>
     </div>
