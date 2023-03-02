@@ -20,7 +20,7 @@
         <li *ngIf="appComponent.client != undefined || appComponent.admin != undefined"><a class="btn" style="font-size: 100%;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']" routerLinkActive="active">DECONNEXION</a></li> -->
     </ul>
     </div>
-    <div class ="third">
+    <div class ="third" [ngStyle]="appComponent.client == undefined && { 'justify-content': 'end', 'margin-right': '2rem' }">
         <ul id="ul2" class = "logoC">
                 
                 <div class="btn-group" *ngIf="appComponent.client != undefined">
