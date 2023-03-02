@@ -5,35 +5,41 @@
 
 <nav>
     <div class="container">
+    <div class = "first">
     <div class = "logo"><a [routerLink]="['/accueil']" routerLinkActive="active"><img src="assets/images/logo_w.png" alt="logo du bar"></a></div>
+    </div>
+    <div class ="second">
     <ul id="ul1">
         <li><a [routerLink]="['/accueil']" routerLinkActive="active" id="accueil">ACCUEIL</a></li>
         <li><a [routerLink]="['/reservation']" routerLinkActive="active" id="reservation" (click)="navigationUser('reservation')">RESERVATION</a></li>
         <!-- <li><a [routerLink]="['/collection']" routerLinkActive="active" id="collection">COLLECTION</a></li> -->
         <li><a [routerLink]="['/boutique']" routerLinkActive="active" id="boutique">BOUTIQUE</a></li>
-        <li *ngIf="appComponent.client != undefined">
-            <div class="btn-group">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" (click)="refreshPanier()" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent;border-color: transparent;">
-                <i class="bi bi-cart2" style="color : #D1E8E2"></i>
-            </button>
-            <ul class="dropdown-menu">
-                <panier></panier>
-            </ul>
-          </div>
-        </li>
         <!-- <li><a class="btn" style="font-size: 100%;" (click)="navigationUser()"><i class="fas fa-user"></i></a></li>
         <li><a [routerLink]="['/admin']" routerLinkActive="active"><i class="fas fa-user" style="color: darkred;"></i></a></li>
         <li><a class="btn" (click)="popupService.open('modal-1')">CONNEXION</a></li>
         <li *ngIf="appComponent.client != undefined || appComponent.admin != undefined"><a class="btn" style="font-size: 100%;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']" routerLinkActive="active">DECONNEXION</a></li> -->
     </ul>
-        <ul id="ul1" class = "logoC">
+    </div>
+    <div class ="third" [ngStyle]="appComponent.client == undefined && { 'justify-content': 'end', 'margin-right': '2rem' }">
+        <ul id="ul2" class = "logoC">
+                
+                <div class="btn-group" *ngIf="appComponent.client != undefined">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" (click)="refreshPanier()" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent;border-color: transparent;">
+                    <i class="bi bi-cart2" style="color : #D1E8E2"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <panier></panier>
+                </ul>
+              </div>
+            
             <li>
-                <a class="btn" style="font-size: 100%;" (click)="navigationUser()"><i class="fas fa-user"></i></a>
+                <a class="btn" style="font-size: 100%;color:#D1E8E2" (click)="navigationUser()"><i class="fas fa-user"></i></a>
             </li>
             <li *ngIf="appComponent.client != undefined || appComponent.admin != undefined">
-                <a class="btn" id="logoDeco" style="font-size: 100%;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']">DECONNEXION</a>
+                <a class="btn" id="logoDeco" style="font-size: 100%;color:#D1E8E2" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']">DECONNEXION</a>
             </li>
         </ul>
     </div>
+</div>
 </nav>
 

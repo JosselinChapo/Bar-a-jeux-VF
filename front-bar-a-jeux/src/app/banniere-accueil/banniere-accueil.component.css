@@ -1,6 +1,6 @@
 .bandeau_accueil{
     display:flex;
-    background-color:rgb(246, 211, 136);
+    background-color:#93dada8e;
     height:10%
 }
 #rs{
@@ -54,4 +54,8 @@ ul{
     width: 400px;
     margin: 0%;
     border: 0%;
+}
+
+body{
+    background-color: #fdd8b5;
 }

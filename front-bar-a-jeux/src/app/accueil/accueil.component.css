@@ -5,7 +5,7 @@
 
 .bandeau_accueil{
     display:flex;
-    background-color:rgb(246, 211, 136);
+    background-color: #deeded;
 }
 #rs{
     font-size: 10px;
@@ -46,7 +46,7 @@
 
 .actu{
     font-size: white;
-    background-color: rgb(53, 48, 41);
+    background-color: #07292bd0;
     margin:0%;
     padding-left:10%;
     padding-right:10%;
@@ -124,15 +124,22 @@ h1,h2{
 }
 
 .concept{
-    margin: 2%;
+    margin-top: 2%;
+    margin-left:5%
 }
 
 #contact{
-    margin-top: 2%;
+   
     display: flex;
     flex-direction:row;
-    justify-content: space-evenly;
+   
 
+}
+
+.contact_{
+    width:50%;
+    margin-left:5%;
+    margin-top:2%
 }
 
 #email{
@@ -144,10 +151,9 @@ h1,h2{
     margin-bottom: 2%;
 }
 
-#titre_contact{
-    margin-top:2%;
-    margin-left:2%;
-}
+
+
+
 /* navbar */
 
 .container {
