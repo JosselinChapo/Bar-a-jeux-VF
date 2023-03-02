@@ -12,11 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import bar.model.Admin;
 import bar.model.Civilite;
 import bar.model.Client;
+import bar.model.Conso;
 import bar.model.Jeu;
 import bar.model.Reservation;
 import bar.model.TableBar;
+import bar.model.TypeConso;
 import bar.service.AdminService;
 import bar.service.ClientService;
+import bar.service.ConsoService;
 import bar.service.JeuService;
 import bar.service.ReservationService;
 import bar.service.TableService;
@@ -41,6 +44,8 @@ class DonneesInitBdd {
 	@Autowired
 	ReservationService resaSrv;
 	
+	@Autowired
+	ConsoService consoService;
 
 	
 	@Test
@@ -167,48 +172,124 @@ class DonneesInitBdd {
 		//ajout table bar
 		TableBar table1 = new TableBar(4,1);
 		tableBarSrv.create(table1);
-		TableBar table2= new TableBar(4,2);
+		TableBar table2 = new TableBar(4,2);
 		tableBarSrv.create(table2);
 		TableBar table3 = new TableBar(6,3);
 		tableBarSrv.create(table3);
-		TableBar table4 = new TableBar(4,4);
+		TableBar table4 = new TableBar(8,4);
 		tableBarSrv.create(table4);
-		TableBar table5 = new TableBar(4,5);
+		TableBar table5 = new TableBar(6,5);
 		tableBarSrv.create(table5);
-		TableBar table6 = new TableBar(6,6);
+		TableBar table6 = new TableBar(4,6);
 		tableBarSrv.create(table6);
-		TableBar table7 = new TableBar(8,7);
+		TableBar table7 = new TableBar(4,7);
 		tableBarSrv.create(table7);
-		TableBar table8 = new TableBar(2,8);
+		TableBar table8 = new TableBar(8,8);
 		tableBarSrv.create(table8);
-		TableBar table9 = new TableBar(2,9);
-		tableBarSrv.create(table9);
-		TableBar table10 = new TableBar(8,10);
-		tableBarSrv.create(table10);
-		TableBar table11 = new TableBar(6,11);
-		tableBarSrv.create(table11);
-		TableBar table12 = new TableBar(4,12);
-		tableBarSrv.create(table12);
 		
-		//ajout des réservations		
-		Reservation resa1 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("10:00:00"),4,table1,client1);
+		//ajout des réservations	
+		// Resa 2023-03-22 18h ---------- 1 table de 8 disponible seulement
+		Reservation resa1 = new Reservation(LocalDate.parse("2023-03-22"),LocalTime.parse("18:00:00"),4,table1,client1);
 		resaSrv.create(resa1);
-		Reservation resa2 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("10:00:00"),4,table2,client2);
+		Reservation resa2 = new Reservation(LocalDate.parse("2023-03-22"),LocalTime.parse("18:00:00"),4,table2,client2);
 		resaSrv.create(resa2);	
-		Reservation resa3 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("10:00:00"),6,table3,client3);
+		Reservation resa3 = new Reservation(LocalDate.parse("2023-03-22"),LocalTime.parse("18:00:00"),4,table6,client3);
 		resaSrv.create(resa3);		
-		Reservation resa4 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("11:00:00"),4,table1,client1);
-		resaSrv.create(resa4);
-		Reservation resa5 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("11:00:00"),4,table2,client4);
+		Reservation resa4 = new Reservation(LocalDate.parse("2023-03-22"),LocalTime.parse("18:00:00"),4,table7,client1);
+		resaSrv.create(resa4);		
+		Reservation resa5 = new Reservation(LocalDate.parse("2023-03-22"),LocalTime.parse("18:00:00"),6,table3,client1);
 		resaSrv.create(resa5);
-		Reservation resa6 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("14:00:00"),6,table3,client1);
-		resaSrv.create(resa6);
-		Reservation resa7 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("15:00:00"),6,table3,client4);
-		resaSrv.create(resa7);
-		Reservation resa8 = new Reservation(LocalDate.parse("2023-02-22"),LocalTime.parse("11:00:00"),8,table10,client2);
+		Reservation resa6 = new Reservation(LocalDate.parse("2023-03-22"),LocalTime.parse("18:00:00"),6,table5,client2);
+		resaSrv.create(resa6);	
+		Reservation resa7 = new Reservation(LocalDate.parse("2023-03-22"),LocalTime.parse("18:00:00"),8,table8,client3);
+		resaSrv.create(resa7);	
+		// Resa 2023-03-23 plein pour 6 personnes 	
+		Reservation resa8 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("18:00:00"),6,table3,client1);
 		resaSrv.create(resa8);
-		Reservation resa9 = new Reservation(LocalDate.parse("2023-02-23"),LocalTime.parse("11:00:00"),4,table12,client1);
-		resaSrv.create(resa9);	
+		Reservation resa9 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("18:00:00"),6,table5,client1);
+		resaSrv.create(resa9);
+		Reservation resa10 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("19:00:00"),6,table3,client2);
+		resaSrv.create(resa10);	
+		Reservation resa11 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("19:00:00"),6,table5,client3);
+		resaSrv.create(resa11);	
+		Reservation resa12 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("20:00:00"),6,table3,client1);
+		resaSrv.create(resa12);
+		Reservation resa13 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("20:00:00"),6,table5,client4);
+		resaSrv.create(resa13);
+		Reservation resa14 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("21:00:00"),6,table3,client1);
+		resaSrv.create(resa14);
+		Reservation resa15 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("21:00:00"),6,table5,client4);
+		resaSrv.create(resa15);
+		Reservation resa16 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("22:00:00"),6,table3,client2);
+		resaSrv.create(resa16);
+		Reservation resa17 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("22:00:00"),6,table5,client1);
+		resaSrv.create(resa17);		
+		Reservation resa18 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("23:00:00"),6,table3,client1);
+		resaSrv.create(resa18);
+		Reservation resa19 = new Reservation(LocalDate.parse("2023-03-23"),LocalTime.parse("23:00:00"),6,table5,client2);
+		resaSrv.create(resa19);	
+		// Resa 2023-03-24 8 personnes avec seulement 2 crénaux disponibles			
+		Reservation resa20 = new Reservation(LocalDate.parse("2023-03-24"),LocalTime.parse("19:00:00"),8,table4,client1);
+		resaSrv.create(resa20);
+		Reservation resa21 = new Reservation(LocalDate.parse("2023-03-24"),LocalTime.parse("20:00:00"),8,table8,client4);
+		resaSrv.create(resa21);
+		Reservation resa22 = new Reservation(LocalDate.parse("2023-03-24"),LocalTime.parse("20:00:00"),8,table4,client1);
+		resaSrv.create(resa22);
+		Reservation resa23 = new Reservation(LocalDate.parse("2023-03-24"),LocalTime.parse("21:00:00"),8,table8,client4);
+		resaSrv.create(resa23);
+		Reservation resa24 = new Reservation(LocalDate.parse("2023-03-24"),LocalTime.parse("21:00:00"),8,table4,client2);
+		resaSrv.create(resa24);
+		Reservation resa25 = new Reservation(LocalDate.parse("2023-03-24"),LocalTime.parse("22:00:00"),8,table8,client2);
+		resaSrv.create(resa25);
+		Reservation resa26 = new Reservation(LocalDate.parse("2023-03-24"),LocalTime.parse("19:00:00"),8,table8,client3);
+		resaSrv.create(resa26);
+	
+		//ajout des conso
+		
+		Conso conso1 = new Conso(3.50, 15, "coca-cola", TypeConso.boisson);
+		consoService.save(conso1);
+		Conso conso2 = new Conso(3.50, 10, "ice-tea", TypeConso.boisson);
+		consoService.save(conso2);
+		Conso conso3 = new Conso(6, 20, "bière - Tripel Karmeliet", TypeConso.boisson);
+		consoService.save(conso3);
+		Conso conso4 = new Conso(3.50, 15, "orangina", TypeConso.boisson);
+		consoService.save(conso4);
+		Conso conso5 = new Conso(4, 5, "jus d'orange", TypeConso.boisson);
+		consoService.save(conso5);
+		Conso conso6 = new Conso(5, 30, "bière blonde", TypeConso.boisson);
+		consoService.save(conso6);
+		Conso conso7 = new Conso(5, 10, "bière brune", TypeConso.boisson);
+		consoService.save(conso7);
+		Conso conso8 = new Conso(5.5, 12, "bière rouge", TypeConso.boisson);
+		consoService.save(conso8);
+		Conso conso9 = new Conso(2, 50, "eau", TypeConso.boisson);
+		consoService.save(conso9);
+		Conso conso10 = new Conso(8, 20, "cocktail du moment", TypeConso.boisson);
+		consoService.save(conso10);
+		Conso conso11 = new Conso(6.5, 5, "Mojito", TypeConso.boisson);
+		consoService.save(conso11);
+		Conso conso12 = new Conso(6, 7, "Sex on the beach", TypeConso.boisson);
+		consoService.save(conso12);
+		Conso conso13 = new Conso(6, 6, "Caïpirinha", TypeConso.boisson);
+		consoService.save(conso13);
+		Conso conso14 = new Conso(3, 20, "chips", TypeConso.plat);
+		consoService.save(conso14);
+		Conso conso15 = new Conso(8, 10, "Sandwich au jambon", TypeConso.plat);
+		consoService.save(conso15);
+		Conso conso16 = new Conso(15, 3, "planche de fromage", TypeConso.plat);
+		consoService.save(conso16);
+		Conso conso17 = new Conso(15, 5, "planche de charcuterie", TypeConso.plat);
+		consoService.save(conso17);
+		Conso conso18 = new Conso(4, 15, "tomates cerises", TypeConso.plat);
+		consoService.save(conso18);
+		Conso conso19 = new Conso(5, 15, "Assiette Tex Mex", TypeConso.plat);
+		consoService.save(conso19);
+		Conso conso20 = new Conso(6, 25, "croque jambon cheddar", TypeConso.plat);
+		consoService.save(conso20);
+		
+	
 	}
+	
+		
 
 }

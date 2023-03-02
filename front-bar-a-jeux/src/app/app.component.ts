@@ -17,6 +17,7 @@ export class AppComponent {
   authentification : AuthDTO = new AuthDTO();
   client : Client;
   admin : Admin;
+  connected : boolean=false;
   
   constructor(protected popupService: PopupService, public router: Router, private authService: AuthService) { }
 
@@ -35,6 +36,7 @@ export class AppComponent {
       console.log("admin authentification");
       this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
         this.admin = resp;
+        this.connected=true;
         this.authService.loginCompte(resp);
         this.popupService.close();
       });
@@ -43,6 +45,7 @@ export class AppComponent {
       console.log("client authentification");
       this.popupService.loginClient(this.authentification).subscribe(resp => { 
         this.client = resp;
+        this.connected=true;
         console.log(resp);
         this.authService.loginCompte(resp);
         this.popupService.close();
@@ -53,12 +56,20 @@ export class AppComponent {
   deconnexion(){
     if(this.authentification.mail == "admin@test.fr"){
       this.admin = undefined;
+      this.connected=false;
       console.log("deconnexion admin");
     } else {
       this.client = undefined;
+      this.connected=false;
       console.log("deconnexion client");
     }
     this.authentification.mail = "";
     this.authentification.password = "";
+  }
+
+  resaRoute(){
+        if(true){
+          this.router.navigate(["/reservation"]);
+        }
   }
 }

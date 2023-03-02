@@ -15,26 +15,34 @@ import bar.exception.IdException;
 import bar.exception.ReservationException;
 import bar.model.Reservation;
 import bar.repository.IReservationRepository;
+import bar.repository.ITableRepository;
 
 @Service
 public class ReservationService {
 	
 	@Autowired
 	private IReservationRepository resaRepo;
+
+	@Autowired
+	private ITableRepository tableRepo;
+	
+	
+	public static Integer resaMaxJour4 = 30;
+	public static Integer resaMaxJour6 = 12;
+	public static Integer resaMaxJour8 = 12;
 	
 	
 	
-	public static Integer resaMaxJour = 2;
-	
-	
-	
-	public static Integer resaMaxHeure =2;
+	public static Integer resaMaxHeure4 =4;
+	public static Integer resaMaxHeure6 =2;
+	public static Integer resaMaxHeure8 =2;
 	
 	
 	// creation réservation
 		public Reservation create(Reservation resa) {
 			checkNotNull(resa);
 			checkConstraint(resa);
+			System.out.println(resa);
 			return resaRepo.save(resa);
 		}
 		
@@ -58,10 +66,10 @@ public class ReservationService {
 			if (resa.getNbPersonne() == 0) {
 				throw new ReservationException("personne obligatoire");
 			}
-//			if (resa.getTable() == null) {
-//				//System.out.println("table obligatoire");
-//				throw new ReservationException("table obligatoire");
-//			}
+			if (resa.getTable() == null) {
+				//System.out.println("table obligatoire");
+				throw new ReservationException("table obligatoire");
+			}
 			// donner un jeu n'est pas obligatoire
 		}
 		
@@ -129,7 +137,12 @@ public class ReservationService {
 			for (var date : dateUnique) {
 				// compte le nombre de fois que la date "date" apparait dans la liste "dates"
 				int occurrences = Collections.frequency(dates, date);
-				if (occurrences==resaMaxJour) {
+				if (nbPersonne==4 && occurrences==resaMaxJour4) {
+					dateDisables.add(date);
+				} else if (nbPersonne==6 && occurrences==resaMaxJour6) {
+					dateDisables.add(date);
+					
+				} else if (nbPersonne==8 && occurrences==resaMaxJour8){
 					dateDisables.add(date);
 				}
 			}
@@ -144,9 +157,14 @@ public class ReservationService {
 			List<LocalTime> heureUnique = heures.stream().distinct().collect(Collectors.toList());
 			List<LocalTime> heureDisables = new ArrayList<>();
 			for (var heure : heureUnique) {
-				// compte le nombre de fois que la date "date" apparait dans la liste "dates"
+				// compte le nombre de fois que l'heure "heure" apparait dans la liste "heures"
 				int occurrences = Collections.frequency(heures, heure);
-				if (occurrences==resaMaxHeure) {
+				if (nbPersonne==4 && occurrences==resaMaxHeure4) {
+					heureDisables.add(heure);
+				} else if (nbPersonne==6 && occurrences==resaMaxHeure6) {
+					heureDisables.add(heure);
+					
+				} else if (nbPersonne==8 && occurrences==resaMaxHeure8){
 					heureDisables.add(heure);
 				}
 			}
@@ -169,21 +187,36 @@ public class ReservationService {
 		}
 		
 		// Cette fonction renvoie la liste d'id des tables non disponible (l'attribut pas celui de la base)
-		public List<Integer> findAllIdByDateResandHeureRes (LocalDate date,LocalTime heure){
+		public List<Integer> findAllIdByDateResandHeureRes (int nbPersonne,LocalDate date,LocalTime heure){
 			List<Integer> idTableDisable = resaRepo.findAllIdByDateResandHeureRes(date, heure);
+			List<Integer> idTableDispo = tableRepo.findAllIdTablebyNbPersonne(nbPersonne);
+			
+			idTableDispo.removeIf(x -> idTableDisable.contains(x));
+			
+			return idTableDispo;
+		}
+		
+		// Cette fonction renvoie la liste d'id des tables non disponible (l'attribut pas celui de la base)
+		public List<Integer> findAllIdTablebyNbPersonne (int nbPersonne){
+			List<Integer> idTableDisable = tableRepo.findAllIdTablebyNbPersonne(nbPersonne);
 			return idTableDisable;
 		}
 		
-		public List<LocalTime> AllEnableHeures () {
-			List<LocalTime> heures = new ArrayList<>();
-			heures.add(LocalTime.parse("10:00"));
-			heures.add(LocalTime.parse("11:00"));
-//			heures.add(LocalTime.parse("14:00"));
-//			heures.add(LocalTime.parse("15:00"));
-//			heures.add(LocalTime.parse("16:00"));
-//			heures.add(LocalTime.parse("17:00"));
+		//Cette fonction donc la liste des heures disponible à une certaines dates et un autre de personne précis
+		public List<LocalTime> AllEnableHeures (int nbPersonne, LocalDate dates) {
+			List<LocalTime> heuresEnable = new ArrayList<>();
+			heuresEnable.add(LocalTime.parse("18:00"));
+			heuresEnable.add(LocalTime.parse("19:00"));
+			heuresEnable.add(LocalTime.parse("20:00"));
+			heuresEnable.add(LocalTime.parse("21:00"));
+			heuresEnable.add(LocalTime.parse("22:00"));
+			heuresEnable.add(LocalTime.parse("23:00"));
 			
-			return heures;
+			List<LocalTime> heuresDisable = findAllDisableHeureparDate(nbPersonne,dates);
+			
+			heuresEnable.removeIf(x -> heuresDisable.contains(x));
+			
+			return heuresEnable;
 		}
 
 }

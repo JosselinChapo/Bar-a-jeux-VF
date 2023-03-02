@@ -75,10 +75,26 @@ public class ReservationRestController {
 	
 	@GetMapping("/heures/{nbPersonne}:{dateRes}")
 	@JsonView(Views.ViewReservation.class)
-	public List<LocalTime> findAllDisableDate(@PathVariable Integer nbPersonne,@PathVariable LocalDate dateRes) {
-		List<LocalTime> heuresDisable = reservationSrv.findAllDisableHeureparDate(nbPersonne,dateRes);
+	public List<LocalTime> findAllDisableHeure(@PathVariable Integer nbPersonne,@PathVariable String dateRes) {
+		List<LocalTime> heuresEnable = reservationSrv.AllEnableHeures(nbPersonne,LocalDate.parse(dateRes));
 		
-		return heuresDisable;
+		return heuresEnable;
+	}
+	
+	@GetMapping("/tables/{nbPersonne}/{dateRes}/{heureRes}")
+	@JsonView(Views.ViewReservation.class)
+	public List<Integer> findAllTablesDispo(@PathVariable int nbPersonne,@PathVariable String dateRes,@PathVariable String heureRes) {
+		List<Integer> TablesBar = reservationSrv.findAllIdByDateResandHeureRes(nbPersonne,LocalDate.parse(dateRes),LocalTime.parse(heureRes));
+		
+		return TablesBar;
+	}
+	
+	@GetMapping("/tables/{nbPersonne}")
+	@JsonView(Views.ViewReservation.class)
+	public List<Integer> findAllTablesDispo(@PathVariable Integer nbPersonne) {
+		List<Integer> TablesBar = reservationSrv.findAllIdTablebyNbPersonne(nbPersonne);
+		
+		return TablesBar;
 	}
 	
 	@PostMapping("")

@@ -8,7 +8,7 @@
     <div class = "logo"><a [routerLink]="['/accueil']" routerLinkActive="active"><img src="assets/images/logo_w.png" alt="logo du bar"></a></div>
     <ul id="ul1">
         <li><a [routerLink]="['/accueil']" routerLinkActive="active" id="accueil">ACCUEIL</a></li>
-        <li><a [routerLink]="['/reservation']" routerLinkActive="active" id="reservation">RESERVATION</a></li>
+        <li><a [routerLink]="['/reservation']" routerLinkActive="active" id="reservation" (click)="navigationUser('reservation')">RESERVATION</a></li>
         <li><a [routerLink]="['/collection']" routerLinkActive="active" id="collection">COLLECTION</a></li>
         <li><a [routerLink]="['/boutique']" routerLinkActive="active" id="boutique">BOUTIQUE</a></li>
         <li *ngIf="appComponent.client != undefined">
