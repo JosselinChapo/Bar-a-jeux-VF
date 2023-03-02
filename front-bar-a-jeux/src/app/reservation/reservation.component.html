@@ -12,15 +12,18 @@
 <br/>
 
 <div *ngIf="appComponent.client!=undefined">
-
+    <div class="centrer">
+    <div class="center borderText">4 Pinguins sont nécessaire pour réussir cette étape, un indice : il faut commencer par donner la taille de la table que vous voulez ;)</div>
+    </div>
+    <br/>
     <div class="container">
         <div class="row">
           <div class="col-sm">
             <div class="centrer">
                 <div class="form-group">
-                    <label for="nbPersonne">Nombres de places à la Table:</label>
+                    <label for="nbPersonne" class="centrer">Nombres de places à la Table :</label>
                     <select class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (change)="changeHeure();changeTable();resetForm()">
-                        <option [value]="undefined">Veuillez sélectionner le nombre de place</option>
+                        <option [value]="undefined">Selectionnez le nombre de place</option>
                         <option *ngFor="let item of listNbPersonneDisponible()" [value]="item">{{item}}</option>
                         <!-- <option [value]="formReservation.nbPersonne">4</option>
                         <option [value]="formReservation.nbPersonne">6</option>
@@ -39,20 +42,21 @@
           <div class="col-sm">
             <div class="centrer">
                 <div class="form-group">
+                    <div class="centrer">Dates disponibles :</div>
                     <mat-form-field class="example-full-width" appearance="fill" >
-                        <mat-label>Choisir une Date</mat-label>
+                        <mat-label>Selectionnez une Date</mat-label>
                         <input #fromInput matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value);changeHeure()" (stateChanges)="test2()" disabled>
                         <mat-datepicker-toggle matIconSuffix [for]="dateRes" ></mat-datepicker-toggle>
-                        <mat-datepicker #dateRes disabled="false"></mat-datepicker>
+                        <mat-datepicker #dateRes disabled="false" ></mat-datepicker>
                     </mat-form-field>
                 </div></div>
           </div>
           <div class="col-sm">
             <div class="centrer">
             <div class="form-group">
-                <label for="heureRes">Heures disponible:</label>
+                <label for="heureRes" class="centrer">Heures disponible :</label>
                 <select class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" (click)="changeTable()">
-                    <option [value]="undefined">Veuillez sélectionner une heure</option>
+                    <option [value]="undefined">Selectionnez une heure</option>
                     <option *ngFor="let item of listHeureDisponible()" [value]="item">{{item}}</option>
                 </select>
             </div></div>
@@ -73,9 +77,8 @@
     <!-- <div style="visibility: hidden;">
         <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
     </div> -->
-    
-    <div class="centrer">
-        <div class="parquet">
+    <div class="centrerTable">
+        <div class="parquet" id="tableCSS">
             <img [src]="table1" id="tableUne" title="Corelangs link" (click)="changeImage(1)">
             <img [src]="table2" id="tableDeux" title="Corelangs link" (click)="changeImage(2)">
             <img [src]="table3" id="tableTrois" title="Corelangs link" (click)="changeImage(3)">
@@ -85,7 +88,16 @@
             <img [src]="table7" id="tableSept" title="Corelangs link" (click)="changeImage(7)">
             <img [src]="table8" id="tableHuit" title="Corelangs link" (click)="changeImage(8)">
         </div>
+        <div class="decallage">
+            <div><button class="buttonIndispo"></button><span> Table Indisponible</span></div>
+            <br/>
+            <br/>
+            <div><button class="buttonSelect"></button><span> Table Selectionée</span></div>
+        </div>
+        
     </div>
+    <br/>
+    <br/>
     
     
     <br/>
@@ -116,6 +128,8 @@
         </span>
     
     </div>
+    <br/>
+    <br/>
     
 
 </div>
@@ -140,5 +154,10 @@
 <br>
 
 </div>
+
+
+
+
+
 
 <footer></footer>

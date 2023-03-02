@@ -25,7 +25,7 @@
                 
                 <div class="btn-group" *ngIf="appComponent.client != undefined">
                 <button class="btn btn-secondary btn-lg dropdown-toggle" (click)="refreshPanier()" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent;border-color: transparent;">
-                    <i class="bi bi-cart2" style="color : #D1E8E2"></i>
+                    <i class="bi bi-cart2" style="color :  #ebf3f3"></i>
                 </button>
                 <ul class="dropdown-menu">
                     <panier></panier>
@@ -33,10 +33,10 @@
               </div>
             
             <li>
-                <a class="btn" style="font-size: 100%;color:#D1E8E2" (click)="navigationUser()"><i class="fas fa-user"></i></a>
+                <a class="btn" style="font-size: 100%;color: #ebf3f3" (click)="navigationUser()"><i class="fas fa-user"></i></a>
             </li>
             <li *ngIf="appComponent.client != undefined || appComponent.admin != undefined">
-                <a class="btn" id="logoDeco" style="font-size: 100%;color:#D1E8E2" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']">DECONNEXION</a>
+                <a class="btn" id="logoDeco" style="font-size: 100%;color: #ebf3f3;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']">DECONNEXION</a>
             </li>
         </ul>
     </div>

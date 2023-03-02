@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "GoodDog";
+  src: url("/assets/font/gooddogc.TTF");
+}
+
+.h2 {
+  font-family: "GoodDog";
+}
+
 .flou {
     filter: blur(3px); 
     width : 100%;
@@ -30,7 +39,9 @@
   }
 
   .page-title h2{
-    color : white;
+    font-size: 400%;
+    font-family: 'GoodDog';
+    color : #ebf3f3;
     text-shadow: rgb(7, 7, 7) 2px 2px;
   }
 
@@ -71,7 +82,7 @@
   }
 
   .post-it-joueur{
-    background-color: #116466;
+    background-color: #3e72ad;
     color: white;
     box-shadow: rgb(0 0 0 / 20%) 0px 1px;
     text-shadow: rgb(51 51 51) 1px 1px;
@@ -84,7 +95,7 @@
 }
 
     .post-it-duree{
-        background-color: #116466;
+        background-color: #3e72ad;
         color: white;
         box-shadow: rgb(0 0 0 / 20%) 0px 1px;
         text-shadow: rgb(51 51 51) 1px 1px;
@@ -97,7 +108,7 @@
 }
 
 .post-it-age{
-    background-color: #116466;
+    background-color: #3e72ad;
     color: white;
     box-shadow: rgb(0 0 0 / 20%) 0px 1px;
     text-shadow: rgb(51 51 51) 1px 1px;
@@ -114,7 +125,7 @@
   border: none;
   background: none;
   padding-left: 10rem;
-  color: #116466;
+  color: #19515d;
 }
 
 .container-prix{

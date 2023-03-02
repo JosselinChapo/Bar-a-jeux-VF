@@ -1,3 +1,4 @@
+<body style="background-color: #ebf3f3;">
 <div class="bandeau">
     <div class="flou">
     <img src="assets/images/boardgame_library.jpg" alt="bandeau d'une collection de jeu de societé" style="height: 200px;">
@@ -17,7 +18,7 @@
 
   <div class="display-filters">
     <h3>Filtrer par:</h3><br>
-    <h2>NOMBRE DE JOUEURS:</h2>
+    <h2 style="font-family: 'GoodDog'">NOMBRE DE JOUEURS:</h2>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox1" value=1 [(ngModel)]="nombreJoueur">
         <label class="form-check-label" for="inlineCheckbox1">1</label>
@@ -51,19 +52,19 @@
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox4" value=8 [(ngModel)]="nombreJoueur">
         <label class="form-check-label" for="inlineCheckbox8">8</label>
       </div><br><br>
-      <h2>DUREE DE JEU EN MIN:</h2>
+      <h2 style="font-family: 'GoodDog'">DUREE DE JEU EN MIN:</h2>
       <div class="custom-slider">
       <!-- <p>Durée Minimum: <input type="number" [(ngModel)]="minValue"></p>
       <p>Durée Maximum: <input type="number" [(ngModel)]="maxValue"></p> -->
       <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
       </div>
-      <h2>TYPE DE JEU:</h2>
+      <h2 style="font-family: 'GoodDog'">TYPE DE JEU:</h2>
       <select class="form-select" [(ngModel)]="typeDeJeuDefault">
         <option selected>Type de jeu</option>
         <option *ngFor="let typeJeu of  allTypeJeu()" [value]="typeJeu">{{typeJeu}}</option>
       </select><br>
       <div *ngIf="isBoutique()">
-        <h2>PRIX:</h2>
+        <h2 style="font-family: 'GoodDog'">PRIX:</h2>
         <div class="custom-slider">
         <!-- <p>Prix Minimum: <input type="number" [(ngModel)]="minPrix"></p>
         <p>Prix Maximum: <input type="number" [(ngModel)]="maxPrix"></p> -->
@@ -71,7 +72,7 @@
         </div>
         </div>
         <br>
-      <button class="btn btn-primary" type="submit" (click)="searchJeu()" style="background-color:#116466; border-color: #0a3d3e">Recherche</button>
+      <button class="btn btn-primary" type="submit" (click)="searchJeu()" style="background-color: #19515d ; border-color: #0a3d3e">Recherche</button>
       <button class="reset-btn"(click)="reset()">reset</button>
       <br>
       <br>
@@ -106,13 +107,13 @@
                       </div>
                     </div>
                       <div class="container-prix" *ngIf="isBoutique()" [id]="i">
-                      <h5 style="color: #116466;">{{jeu.prix}}0 €</h5> <button *ngIf="appComponent.client != undefined" class="btn btn-primary" style="background-color: #116466; border-color: #0a3d3e" (click)="addCommande(jeu.id,appComponent.client.id,i)">
+                      <h5 style="color: #19515d;">{{jeu.prix}}0 €</h5> <button *ngIf="appComponent.client != undefined" class="btn btn-primary" style="background-color:  #19515d; border-color: transparent" (click)="addCommande(jeu.id,appComponent.client.id,i)">
                         <div [id]="i" *ngIf="show > 0 && id==i" style="color: white;"><div class="spinner-grow spinner-grow-sm" role="status">
                           <span class="sr-only">Loading...</span>
                         </div></div>
                         <div [id]="i" *ngIf="show < 0 || id!=i"><i class="bi bi-cart-plus-fill"></i></div>
                       </button> 
-                      <button *ngIf="appComponent.client == undefined" class="btn btn-primary" style="background-color: #116466; border-color: #0a3d3e" (click)="popupService.open('modal-1')"><i class="bi bi-cart-plus-fill"></i></button> 
+                      <button *ngIf="appComponent.client == undefined" class="btn btn-primary" style="background-color:  #19515d; border-color: transparent" (click)="popupService.open('modal-1')"><i class="bi bi-cart-plus-fill"></i></button> 
                 </div>
                 <div class="post-it-joueur">
                     <i class="bi bi-people"></i>
@@ -135,4 +136,5 @@
 </div>
 </div>
 </div>
+</body>
 <footer></footer>
