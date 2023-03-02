@@ -42,7 +42,6 @@
                     <mat-form-field class="example-full-width" appearance="fill" >
                         <mat-label>Choisir une Date</mat-label>
                         <input #fromInput matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value);changeHeure()" (stateChanges)="test2()" disabled>
-                        <mat-hint>DD/MM/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="dateRes" ></mat-datepicker-toggle>
                         <mat-datepicker #dateRes disabled="false"></mat-datepicker>
                     </mat-form-field>
