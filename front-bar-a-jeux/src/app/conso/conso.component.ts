@@ -26,38 +26,4 @@ export class ConsoComponent {
       return this.consoService.FindAllByTypeconsoBoisson();
        }
   
-
-  listTypeConso(): Array<string> {
-    return this.consoService.findAllTypeConso();
-  }
-
-
-
-  add(): void {
-    this.creaConso = new Conso();
-  }
-
-  save(): void {
-     if(this.creaConso.id) { // UPDATE
-      this.consoService.update(this.creaConso);
-    } else { // CREATE
-      this.consoService.create(this.creaConso);
-    }
-    this.cancel();
-  }
-
-  edit(id: number): void {
-    this.consoService.findById(id).subscribe(response => {
-      this.creaConso = response;
-    });
-  }
-
-
-   remove(id: number): void {
-    this.consoService.remove(id);
-   }
-
-  cancel(): void {
-    this.creaConso = null;
-  }
 }
