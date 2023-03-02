@@ -40,12 +40,12 @@ public class TableBarRestController {
 		return tables;
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{idTable}")
 	@JsonView(Views.ViewTableBar.class)
-	public TableBar findById(@PathVariable Integer id) {
+	public TableBar findById(@PathVariable Integer idTable) {
 		TableBar tableBar = new TableBar();
 		try {
-			tableBar = tableSrv.findById(id);
+			tableBar = tableSrv.findByIdTable(idTable);
 			
 		} catch (IdException e) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"id inconnu");

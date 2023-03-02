@@ -131,19 +131,22 @@ export class ReservationComponent {
   }
 
   save(): void {
-    console.log(this.formReservation)
+    console.log(this.formReservation);
+    console.log(this.idTable);
     if(this.formReservation.id) { // UPDATE
+      console.log("j'ai un id");
       this.reservationService.update(this.formReservation);
     } else { // CREATE
 
       this.http.get<TableBar>("http://localhost:8888/tableBar/" + this.idTable).subscribe(resp => {
+        console.log("j'ai pas d'id");
         this.tableBar = resp;
         this.formReservation.tableBar=this.tableBar;
         this.formReservation.client=this.appComponent.client;
         console.log(this.formReservation);
+        this.reservationService.create(this.formReservation);
         this.reservationService.loadTables(undefined,undefined,undefined);
         this.reservationService.loadHeures(undefined,undefined);
-        this.reservationService.create(this.formReservation);
         this.resetForm();
         this.formReservation.nbPersonne=undefined;
         this.router.navigate(["/client"]);
@@ -206,7 +209,7 @@ export class ReservationComponent {
   test2(): void {
     this.myFilter;
 
-  } 
+  }
 
   changeImage(idImage: number) {
 
