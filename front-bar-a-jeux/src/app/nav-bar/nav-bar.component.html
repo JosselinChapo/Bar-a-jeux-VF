@@ -9,7 +9,7 @@
     <ul id="ul1">
         <li><a [routerLink]="['/accueil']" routerLinkActive="active" id="accueil">ACCUEIL</a></li>
         <li><a [routerLink]="['/reservation']" routerLinkActive="active" id="reservation" (click)="navigationUser('reservation')">RESERVATION</a></li>
-        <li><a [routerLink]="['/collection']" routerLinkActive="active" id="collection">COLLECTION</a></li>
+        <!-- <li><a [routerLink]="['/collection']" routerLinkActive="active" id="collection">COLLECTION</a></li> -->
         <li><a [routerLink]="['/boutique']" routerLinkActive="active" id="boutique">BOUTIQUE</a></li>
         <li *ngIf="appComponent.client != undefined">
             <div class="btn-group">
@@ -21,11 +21,21 @@
             </ul>
           </div>
         </li>
-        <li><a class="btn" style="font-size: 100%;" (click)="navigationUser()"><i class="fas fa-user"></i></a></li>
-        <!-- <li><a [routerLink]="['/admin']" routerLinkActive="active"><i class="fas fa-user" style="color: darkred;"></i></a></li>
-        <li><a class="btn" (click)="popupService.open('modal-1')">CONNEXION</a></li> -->
-        <li *ngIf="appComponent.client != undefined || appComponent.admin != undefined"><a class="btn" style="font-size: 100%;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']" routerLinkActive="active">DECONNEXION</a></li>
+        <!-- <li><a class="btn" style="font-size: 100%;" (click)="navigationUser()"><i class="fas fa-user"></i></a></li>
+        <li><a [routerLink]="['/admin']" routerLinkActive="active"><i class="fas fa-user" style="color: darkred;"></i></a></li>
+        <li><a class="btn" (click)="popupService.open('modal-1')">CONNEXION</a></li>
+        <li *ngIf="appComponent.client != undefined || appComponent.admin != undefined"><a class="btn" style="font-size: 100%;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']" routerLinkActive="active">DECONNEXION</a></li> -->
     </ul>
-   </div>
+    <div class = "logoC">
+        <ul id="ul1">
+            <li>
+                <a class="btn" style="font-size: 100%;" (click)="navigationUser()"><i class="fas fa-user"></i></a>
+            </li>
+            <li *ngIf="appComponent.client != undefined || appComponent.admin != undefined">
+                <a class="btn" style="font-size: 100%;" (click)="appComponent.deconnexion()" [routerLink]="['/accueil']" routerLinkActive="active">DECONNEXION</a>
+            </li>
+        </ul>
+    </div>
+    </div>
 </nav>
 
