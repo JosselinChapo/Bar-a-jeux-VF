@@ -37,7 +37,7 @@ export class AppComponent {
       this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
         this.admin = resp;
         this.connected=true;
-        this.authService.loginCompte(resp);
+       /*  this.authService.loginCompte(resp); */
         this.popupService.close();
       });
     }
@@ -47,7 +47,7 @@ export class AppComponent {
         this.client = resp;
         this.connected=true;
         console.log(resp);
-        this.authService.loginCompte(resp);
+        /* this.authService.loginCompte(resp); */
         this.popupService.close();
       });
     }
