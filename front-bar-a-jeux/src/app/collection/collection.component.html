@@ -51,10 +51,10 @@
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox4" value=8 [(ngModel)]="nombreJoueur">
         <label class="form-check-label" for="inlineCheckbox8">8</label>
       </div><br><br>
-      <h2>DUREE DE JEU:</h2>
+      <h2>DUREE DE JEU EN MIN:</h2>
       <div class="custom-slider">
-      <p>Durée Minimum: <input type="number" [(ngModel)]="minValue"></p>
-      <p>Durée Maximum: <input type="number" [(ngModel)]="maxValue"></p>
+      <!-- <p>Durée Minimum: <input type="number" [(ngModel)]="minValue"></p>
+      <p>Durée Maximum: <input type="number" [(ngModel)]="maxValue"></p> -->
       <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
       </div>
       <h2>TYPE DE JEU:</h2>
@@ -65,8 +65,8 @@
       <div *ngIf="isBoutique()">
         <h2>PRIX:</h2>
         <div class="custom-slider">
-        <p>Prix Minimum: <input type="number" [(ngModel)]="minPrix"></p>
-        <p>Prix Maximum: <input type="number" [(ngModel)]="maxPrix"></p>
+        <!-- <p>Prix Minimum: <input type="number" [(ngModel)]="minPrix"></p>
+        <p>Prix Maximum: <input type="number" [(ngModel)]="maxPrix"></p> -->
         <ngx-slider [(value)]="minPrix" [(highValue)]="maxPrix" [options]="options2"></ngx-slider>
         </div>
         </div>

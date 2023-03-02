@@ -11,7 +11,7 @@
 <br/>
 <br/>
 
-<div *ngIf="isconnected">
+<div *ngIf="appComponent.client!=undefined">
 
     <div class="container">
         <div class="row">
@@ -123,7 +123,7 @@
 
 
 
-<div *ngIf="isconnected==false">
+<div *ngIf="appComponent.client==undefined">
 
 <div class="centrer" style="color:red">
     Triche pas, il faut se connecter avant de Réserver

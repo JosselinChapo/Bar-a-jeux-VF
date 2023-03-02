@@ -24,6 +24,7 @@ export class NavBarComponent {
       this.popupService.open('modal-1');
     }
     else if(this.appComponent.client == undefined && this.appComponent.admin == undefined){
+      this.appComponent.boutonConnectedPress = true;
       this.popupService.open('modal-1');
     }
     else if( this.appComponent.admin != undefined){

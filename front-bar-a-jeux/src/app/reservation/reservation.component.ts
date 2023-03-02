@@ -40,7 +40,7 @@ export class ReservationComponent {
     private _adapter: DateAdapter<any>, 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     public datepipe: DatePipe,
-    private appComponent: AppComponent,
+    public appComponent: AppComponent,
     private router: Router
   ) { 
     this._locale = 'fr-FR';
