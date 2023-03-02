@@ -2,13 +2,14 @@
 <h4>Votre Panier : </h4>
 <div *ngFor="let cmd of list()"> 
     
-    <div *ngFor="let aj of cmd.achatJeux" style="border-top: 1px solid;">
-        <a class="btn" (click)="removeCmd(cmd.id)" ><i class="bi bi-x-circle-fill"></i></a>
-        <img src={{aj.jeu.image}} alt="logo du jeu" style='display:inline;'>
-        <div style='vertical-align:middle; display:inline ; font-size: 0.8em; '>Jeu : {{aj.jeu.nom}} </div>
-        <div>qte : {{aj.quantite}}  prix : {{aj.jeu.prix}}0 €</div>
-        
+    <div *ngFor="let aj of cmd.achatJeux" style="border-bottom: 1px solid;padding-top: 12px;">
+        <a class="btn" (click)="removeCmd(cmd.id)" style="color:red"><i class="bi bi-x-circle-fill"></i></a>
+        <img src={{aj.jeu.image}} alt="logo du jeu" style='display:inline;'><br>
+        <div style='font-size: 0.8em; display:inline'>Jeu : {{aj.jeu.nom}} </div>       <div style='font-size: 0.8em; display:inline; padding-left: 2rem;'> qte : {{aj.quantite}} </div>
+        <div> prix : {{aj.jeu.prix}}0 €</div>
     </div>
     
 </div>
-<a class="btn" style="color:green" (click)="validateCmd()">Valider</a>
+<div style="display: flex; justify-content: center;padding-top: 8px;">
+<a class="btn" style="color:#3e72ad;" (click)="validateCmd()">Valider</a>
+</div>
