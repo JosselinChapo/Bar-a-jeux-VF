@@ -12,12 +12,19 @@
 h2{
     font-family: "GoodDog";
     text-align: center;
-    font-size: larger;
+  
+}
+
+.form
+{   
+    width:100%;
+    margin: 2%;
 
 }
 
-.form{
+.form_{
     display: flex;
     flex-direction: row;
-    width: 50%
+   
+   
 }
