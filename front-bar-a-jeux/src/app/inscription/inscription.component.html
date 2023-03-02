@@ -47,7 +47,9 @@
                     <input type="password" class="form-control" id="password" required [(ngModel)]="formClientInscription.password">
                 </div>
             
-            <button class="btn btn-primary" (click)="save()" [routerLink]="['/client']" routerLinkActive="active" id="client">Valider</button>
+            <button *ngIf="formClientInscription.civilite==undefined || formClientInscription.nom==undefined || formClientInscription.prenom==undefined || formClientInscription.tel==undefined || formClientInscription.mail==undefined || formClientInscription.password==undefined" class="btn btn-primary color-btn" disabled >Valider</button>
+            
+            <button *ngIf="formClientInscription.civilite!=undefined && formClientInscription.nom!=undefined && formClientInscription.prenom!=undefined && formClientInscription.tel!=undefined && formClientInscription.mail!=undefined && formClientInscription.password!=undefined" class="btn btn-primary" (click)="save()" [routerLink]="['/client']" routerLinkActive="active" id="client">Valider</button>
             <br>
             <br>
             <p>* : champs obligatoire</p>

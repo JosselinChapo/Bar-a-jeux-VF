@@ -58,3 +58,7 @@ button {
 .margin-div {
     margin-bottom: 3%;
 }
+
+.color-btn {
+    background: grey;
+}
