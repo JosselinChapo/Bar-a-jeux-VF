@@ -58,11 +58,13 @@ export class ReservationService {
     return this.tablesDispo;
   }
 
-  changeHeure() {
+  changeHeure(nbPersonneHeureChange: number, dateResHeurechange: string) {
+    this.findAllHeure(nbPersonneHeureChange,dateResHeurechange);
     this.heureAChanger=true;
   }
 
-  changeTable() {
+  changeTable(nbPersonneTableChange: number, dateResTablechange: string, heureResTablechange: string) {
+    this.findAllTable(nbPersonneTableChange,dateResTablechange,heureResTablechange);
     this.tableAChanger=true;
   }
 

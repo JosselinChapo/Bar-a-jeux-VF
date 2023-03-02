@@ -60,6 +60,10 @@ export class ReservationComponent {
     return this.reservationService.findAllHeure(this.formReservation.nbPersonne,dateTest);
   }
 
+  listNbPersonneDisponible(): Array<number> {
+    return [4,6,8];
+  }
+
   listTableDisponible(): Array<number> {
     let dateTest: string = this.datepipe.transform(this.formReservation.dateRes, 'yyyy-MM-dd');
     let tablesDiponibles = this.reservationService.findAllTable(this.formReservation.nbPersonne,dateTest,this.formReservation.heureRes);
@@ -117,11 +121,13 @@ export class ReservationComponent {
   }
 
   changeHeure(): void {
-    this.reservationService.changeHeure();
+    let dateTestHeure: string = this.datepipe.transform(this.formReservation.dateRes, 'yyyy-MM-dd');
+    this.reservationService.changeHeure(this.formReservation.nbPersonne,dateTestHeure);
   }
 
   changeTable(): void {
-    this.reservationService.changeTable();
+    let dateTestTable: string = this.datepipe.transform(this.formReservation.dateRes, 'yyyy-MM-dd');
+    this.reservationService.changeTable(this.formReservation.nbPersonne,dateTestTable,this.formReservation.heureRes);
   }
 
   save(): void {
@@ -178,6 +184,10 @@ export class ReservationComponent {
     this.selectedNumber=undefined;
   }
 
+  resetHeure(){
+    
+  }
+
   test(event: any): void {
     console.log(event);
     let event1: Date;
@@ -189,8 +199,8 @@ export class ReservationComponent {
     console.log(dateForm2);
 
     this.formReservation.dateRes=dateForm2;
-    this.reservationService.changeHeure();
-    this.reservationService.changeTable();
+    this.reservationService.changeHeure(this.formReservation.nbPersonne,dateForm2);
+    this.reservationService.changeTable(this.formReservation.nbPersonne,dateForm2,this.formReservation.heureRes);
 
   } 
   test2(): void {

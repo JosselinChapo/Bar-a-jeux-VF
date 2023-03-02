@@ -18,18 +18,30 @@
           <div class="col-sm">
             <div class="centrer">
                 <div class="form-group">
+                    <label for="nbPersonne">Nombres de places à la Table:</label>
+                    <select class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (change)="changeHeure();changeTable();resetForm()">
+                        <option [value]="undefined">Veuillez sélectionner le nombre de place</option>
+                        <option *ngFor="let item of listNbPersonneDisponible()" [value]="item">{{item}}</option>
+                        <!-- <option [value]="formReservation.nbPersonne">4</option>
+                        <option [value]="formReservation.nbPersonne">6</option>
+                        <option [value]="formReservation.nbPersonne">8</option> -->
+                    </select>
+                </div>
+                
+                <!-- <div class="form-group"> -->
                     <!-- <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (ngModelChange)="recalculForbidden($event)"/> -->
                 
-                    <label for="nbPersonne">Nombre de Joueurs:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (click)="changeHeure();changeTable();resetForm()" max="8" min="0"/>
+                    <!-- <label for="nbPersonne">Nombre de Joueurs:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (click)="changeHeure();changeTable();resetForm()" max="8" min="0"/> -->
                     <!-- https://stackoverflow.com/questions/61394048/how-do-i-manually-trigger-angular-material-date-picker-filter -->
-            </div></div>
+            <!-- </div> -->
+            </div>
           </div>
           <div class="col-sm">
             <div class="centrer">
                 <div class="form-group">
                     <mat-form-field class="example-full-width" appearance="fill" >
                         <mat-label>Choisir une Date</mat-label>
-                        <input #fromInput matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value)" (stateChanges)="test2()" disabled>
+                        <input #fromInput matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value);changeHeure()" (stateChanges)="test2()" disabled>
                         <mat-hint>DD/MM/YYYY</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="dateRes" ></mat-datepicker-toggle>
                         <mat-datepicker #dateRes disabled="false"></mat-datepicker>
