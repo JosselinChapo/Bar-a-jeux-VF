@@ -14,7 +14,7 @@
     max-width: 100%;
     align-items: center;
     height : 80px;
-    background-color: #2C3531;
+    background-color: #19515d;
     font-family: 'Bebas Neue', sans-serif;
     margin: 0;
    }
@@ -62,15 +62,15 @@
 
    a{
      text-decoration: none;
-     color: #D1E8E2;
+     color:  #ebf3f3;
    }
 
   a:hover{
-    color:#D9B08C
+    color:#f8ae2d
   }
 
   .fa {
-  color: #D1E8E2;
+  color:  #ebf3f3;
   }
   
 .active{
@@ -78,8 +78,11 @@
   }
 
   .btn{
-    color:white;
     border: none;
+  }
+
+  .btn:hover{
+    color:#f8ae2d
   }
 
   #logoDeco{
