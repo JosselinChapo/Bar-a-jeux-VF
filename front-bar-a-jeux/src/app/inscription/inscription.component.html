@@ -1,62 +1,63 @@
-<div class="page">
-         <div class="container">
-            <img src="assets/images/bandeau_inscription.png"/>
+<div class="bandeau">
+    <div class="flou">
+        <img src="assets/images/bandeau_inscription.png" alt="bandeau de l'inscription" style="height: 200px;">
+    </div>
+    <div class="page-title">
+        <h2>Inscription</h2>
+    </div>
+</div>
 
-             <h1>Inscription</h1>
-                 <div class="form-row">
-                    <div class="col-md-4 mb-3">
-                        <br>
-                        <strong><label for="civilite">Civilité : * &nbsp;&nbsp;</label></strong> 
-                        <div class="civilite" *ngFor="let item of listCivilites()" >
-                            <label for="{{item}}">
-                                <input id="civilite" [value]='item' type="radio" name="civilite" [(ngModel)]="formClientInscription.civilite"> {{ item }}
-                            </label>
-                        </div>
-                    </div> 
-                    <div class="col-md-3 mb-3">
-                        <strong><label for="nom" for="validationInscription1">Nom : * &nbsp;&nbsp;</label></strong>
-                        <input type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="formClientInscription.nom" >
-                    </div>
+<body style="background-color: #ebf3f3">
+    <div style="Width :25%;">
+            <br>
+                <strong><label class="margin-div" for="civilite">Civilité : * &nbsp;&nbsp;</label></strong> 
+                <br>
+                <div class="civilite margin" *ngFor="let item of listCivilites()" >
+                    <label for="{{item}}">
+                        <input id="civilite" [value]='item' type="radio" name="civilite" [(ngModel)]="formClientInscription.civilite"> {{ item }}
+                    </label>
+                </div>
+                <div class="margin"> 
+                    <strong><label class="margin-div" for="nom" for="validationInscription1">Nom : * &nbsp;&nbsp;</label></strong>
+                    <input type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="formClientInscription.nom" >
+                </div>
 
-                    <div class="col-md-3 mb-3">
-                        <strong><label for="prenom">Prénom : * &nbsp;&nbsp;</label></strong>
-                        <input type="text" class="form-control" id="prenom" placeholder="Prénom" required [(ngModel)]="formClientInscription.prenom">
-                    </div>
+                <div class="margin">
+                    <strong><label class="margin-div" for="prenom">Prénom : * &nbsp;&nbsp;</label></strong>
+                    <input type="text" class="form-control" id="prenom" placeholder="Prénom" required [(ngModel)]="formClientInscription.prenom">
+                </div>
 
-                    <div class="col-md-3 mb-3">
-                        <strong><label for="dateNaissance">Date de Naissance : &nbsp;&nbsp;</label></strong>
-                        <input type="date" class="form-control" id="dateNaissance" placeholder="dateNaissance" [(ngModel)]="formClientInscription.dateNaissance">
-                    </div>
+                <div class="margin">
+                    <strong><label class="margin-div" for="dateNaissance">Date de Naissance : &nbsp;&nbsp;</label></strong>
+                    <input type="date" class="form-control" id="dateNaissance" placeholder="dateNaissance" [(ngModel)]="formClientInscription.dateNaissance">
+                </div>
 
-                    <div class="col-md-3 mb-3">
-                        <strong><label for="tel">Téléphone : * &nbsp;&nbsp;</label></strong>
-                        <input type="tel" class="form-control" id="tel" placeholder="0600000001" pattern="[0-9]{10}" [(ngModel)]="formClientInscription.tel">
-                    </div>
+                <div class="margin">
+                    <strong><label class="margin-div" for="tel">Téléphone : * &nbsp;&nbsp;</label></strong>
+                    <input type="tel" class="form-control" id="tel" placeholder="0600000001" pattern="[0-9]{10}" [(ngModel)]="formClientInscription.tel">
+                </div>
 
-                     <div class="col-md-3 mb-3">
-                        <strong><label for="mail">Mail : * &nbsp;&nbsp;</label></strong>
-                         <input type="email" class="form-control" id="mail" placeholder="nom@gamil.com" required [(ngModel)]="formClientInscription.mail">
-                        </div>
-                     <div class="col-md-3 mb-3">
-                        <strong><label for="password">Mot de passe : * &nbsp;&nbsp;</label></strong>
-                         <input type="password" class="form-control" id="password" required [(ngModel)]="formClientInscription.password">
-                     </div>
-                     <!-- <div class="col-md-3 mb-3">
-                        <strong><label for="password">Vérification Mot de passe : &nbsp;&nbsp;</label></strong>
-                         <input type="password" class="form-control" id="password" required>
-                     </div> -->
-                 </div>
-                 
-                 <button class="btn btn-primary" (click)="save()" [routerLink]="['/client']" routerLinkActive="active" id="client">Valider</button>
-                 <br>
-                 <br>
-                 <p>* : champs obligatoire</p>
-                 <br>
-                 <br>
-                 <br>
-                 <p> </p>
+                <div class="margin">
+                    <strong><label class="margin-div" for="mail">Mail : * &nbsp;&nbsp;</label></strong>
+                    <input type="email" class="form-control" id="mail" placeholder="nom@gamil.com" required [(ngModel)]="formClientInscription.mail">
+                </div>
+            
+                <div class="margin">
+                    <strong><label class="margin-div" for="password">Mot de passe : * &nbsp;&nbsp;</label></strong>
+                    <input type="password" class="form-control" id="password" required [(ngModel)]="formClientInscription.password">
+                </div>
+            
+            <button *ngIf="formClientInscription.civilite==undefined || formClientInscription.nom==undefined || formClientInscription.prenom==undefined || formClientInscription.tel==undefined || formClientInscription.mail==undefined || formClientInscription.password==undefined" class="btn btn-primary color-btn" disabled >Valider</button>
+            
+            <button *ngIf="formClientInscription.civilite!=undefined && formClientInscription.nom!=undefined && formClientInscription.prenom!=undefined && formClientInscription.tel!=undefined && formClientInscription.mail!=undefined && formClientInscription.password!=undefined" class="btn btn-primary" (click)="save()" [routerLink]="['/client']" routerLinkActive="active" id="client">Valider</button>
+            <br>
+            <br>
+            <p>* : champs obligatoire</p>
+            <br>
+            <br>
+            <br>
+            <p> </p>
+    </div>
 
-            </div>
-         </div>
-
-         <footer></footer>
+</body>
+<footer></footer>
