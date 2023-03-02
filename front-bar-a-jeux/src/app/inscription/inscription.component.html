@@ -14,8 +14,8 @@
                         </div>
                     </div> 
                     <div class="col-md-3 mb-3">
-                        <strong><label for="nom">Nom : * &nbsp;&nbsp;</label></strong>
-                        <input type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="formClientInscription.nom">
+                        <strong><label for="nom" for="validationInscription1">Nom : * &nbsp;&nbsp;</label></strong>
+                        <input type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="formClientInscription.nom" >
                     </div>
 
                     <div class="col-md-3 mb-3">
@@ -36,7 +36,7 @@
                      <div class="col-md-3 mb-3">
                         <strong><label for="mail">Mail : * &nbsp;&nbsp;</label></strong>
                          <input type="email" class="form-control" id="mail" placeholder="nom@gamil.com" required [(ngModel)]="formClientInscription.mail">
-                     </div>
+                        </div>
                      <div class="col-md-3 mb-3">
                         <strong><label for="password">Mot de passe : * &nbsp;&nbsp;</label></strong>
                          <input type="password" class="form-control" id="password" required [(ngModel)]="formClientInscription.password">
@@ -46,7 +46,6 @@
                          <input type="password" class="form-control" id="password" required>
                      </div> -->
                  </div>
-                 
                  
                  <button class="btn btn-primary" (click)="save()" [routerLink]="['/client']" routerLinkActive="active" id="client">Valider</button>
                  <br>
@@ -59,3 +58,5 @@
 
             </div>
          </div>
+
+         <footer></footer>

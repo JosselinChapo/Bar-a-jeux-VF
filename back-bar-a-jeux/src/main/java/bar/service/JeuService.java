@@ -153,15 +153,15 @@ public class JeuService {
 			return jeux;	
 			}
 		
-		public List<Jeu> findByTypeJeuDuree(Integer dureeMin,Integer dureeMax,String typeJeu) {
+		public List<Jeu> findByTypeJeuDuree(Integer dureeMin,Integer dureeMax,String typeJeu,double prixMin,double prixMax) {
 			
-			List<Jeu> jeux = jeuRepo.findByTypeJeuDuree(dureeMin,dureeMax,typeJeu);
+			List<Jeu> jeux = jeuRepo.findByTypeJeuDuree(dureeMin,dureeMax,typeJeu,prixMin,prixMax);
 			return jeux;	
 			}
 		
-		public List<Jeu> findByFilter(Integer nombreJoueur,String typeJeu,Integer dureeMin,Integer dureeMax) {
+		public List<Jeu> findByFilter(Integer nombreJoueur,String typeJeu,Integer dureeMin,Integer dureeMax,double prixMin,double prixMax) {
 			
-			List<Jeu> jeux = jeuRepo.findByFilter(nombreJoueur,typeJeu,dureeMin,dureeMax);
+			List<Jeu> jeux = jeuRepo.findByFilter(nombreJoueur,typeJeu,dureeMin,dureeMax,prixMin,prixMax);
 			return jeux;	
 			}
 }

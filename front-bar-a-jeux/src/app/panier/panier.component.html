@@ -1,1 +1,14 @@
-<p>panier works!</p>
+
+<h4>Votre Panier : </h4>
+<div *ngFor="let cmd of list()"> 
+    
+    <div *ngFor="let aj of cmd.achatJeux" style="border-top: 1px solid;">
+        <a class="btn" (click)="removeCmd(cmd.id)" ><i class="bi bi-x-circle-fill"></i></a>
+        <img src={{aj.jeu.image}} alt="logo du jeu" style='display:inline;'>
+        <div style='vertical-align:middle; display:inline ; font-size: 0.8em; '>Jeu : {{aj.jeu.nom}} </div>
+        <div>qte : {{aj.quantite}}  prix : {{aj.jeu.prix}}0 €</div>
+        
+    </div>
+    
+</div>
+<a class="btn" style="color:green" (click)="validateCmd()">Valider</a>

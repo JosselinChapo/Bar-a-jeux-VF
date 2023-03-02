@@ -171,14 +171,7 @@ public class JeuServiceTest {
 //		assertTrue(thrown1.getMessage().contentEquals("id inconnu"));
 //	}
 	
-	@Test
-	void filtreJeu() {
-		List<Jeu> testJeu = jeuSrv.findByFilter(3,"",15,30);
-		System.out.println(testJeu);
-		for(Jeu j : testJeu) {
-		System.out.println(j.getNom());
-		}
-	}
+	
 	
 	@Test
 	void filtreJeuNbjTypeJeu() {
@@ -189,13 +182,5 @@ public class JeuServiceTest {
 		}
 	}
 	
-	@Test
-	void filtreJeuDureeTypeJeu() {
-		List<Jeu> testJeu = jeuSrv.findByTypeJeuDuree(15,30,"logique");
-		System.out.println(testJeu);
-		for(Jeu j : testJeu) {
-		System.out.println(j.getNom());
-		}
-	}
 	
 }

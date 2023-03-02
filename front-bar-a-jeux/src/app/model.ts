@@ -142,6 +142,7 @@ export class CommandeJeu {
     statut: string;
     
     client : Client;
+    achatJeux : Array<AchatJeu>
     
 
     constructor(id?:number, statut?: string){
@@ -156,12 +157,16 @@ export class Filter {
     dureeMin : number;
     dureeMax : number;
     typeJeu : string;
+    prixMin : number;
+    prixMax : number;
 
-    constructor(nbJoueur?:number,dureeMin?: number,dureeMax?: number, typeJeu?: string){
+    constructor(nbJoueur?:number,dureeMin?: number,dureeMax?: number, typeJeu?: string,prixMin?: number,prixMax?: number){
         this.nbJoueur = nbJoueur;
         this.dureeMin = dureeMin;
         this.dureeMax = dureeMax;
         this.typeJeu = typeJeu;
+        this.prixMin = prixMin;
+        this.prixMax = prixMax;
     }
 
 }

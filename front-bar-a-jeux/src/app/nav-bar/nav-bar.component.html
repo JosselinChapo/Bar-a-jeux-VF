@@ -8,16 +8,16 @@
     <div class = "logo"><a [routerLink]="['/accueil']" routerLinkActive="active"><img src="assets/images/logo_w.png" alt="logo du bar"></a></div>
     <ul id="ul1">
         <li><a [routerLink]="['/accueil']" routerLinkActive="active" id="accueil">ACCUEIL</a></li>
-        <li><a [routerLink]="['/reservation']" routerLinkActive="active" id="reservation">RESERVATION</a></li>
+        <li><a [routerLink]="['/reservation']" routerLinkActive="active" id="reservation" (click)="navigationUser('reservation')">RESERVATION</a></li>
         <li><a [routerLink]="['/collection']" routerLinkActive="active" id="collection">COLLECTION</a></li>
         <li><a [routerLink]="['/boutique']" routerLinkActive="active" id="boutique">BOUTIQUE</a></li>
-        <li>
+        <li *ngIf="appComponent.client != undefined">
             <div class="btn-group">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent;border-color: transparent;">
-                <i class="bi bi-cart2"></i>
+            <button class="btn btn-secondary btn-lg dropdown-toggle" (click)="refreshPanier()" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent;border-color: transparent;">
+                <i class="bi bi-cart2" style="color : #D1E8E2"></i>
             </button>
             <ul class="dropdown-menu">
-                C'est le panier
+                <panier></panier>
             </ul>
           </div>
         </li>

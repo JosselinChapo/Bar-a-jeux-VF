@@ -1,66 +1,133 @@
-<div class="card mt-3">
-    <div class="card-header bg-primary text-white display-6">Liste des réservations</div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre de Personne</th>
-                    <th>Date de la réservation</th>
-                    <th>Heure  de la réservation</th>
-                    <th>Numéro de la table</th>
-                    <th>Client</th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr *ngFor="let res of list()">
-                    <td>{{res.id}}</td>
-                    <td>{{res.nbPersonne}}</td>
-                    <td>{{res.dateRes | date:'dd/MM/yyyy'}}</td>
-                    <td>{{res.heureRes}}</td>
-                    <td>{{res.tableBar.idTable}}</td>
-                    <td>{{res.client.prenom}} - {{res.client.nom}}</td>
-                    <td>
-                        <div class="btn-group btn-group-sm">
-                            <a class="btn btn-primary" (click)="edit(res.id)"><i
-                                    class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger" (click)="remove(res.id)"><i class="bi bi-trash"></i></a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-
-        </table>
+<div class="bandeau">
+    <div class="flou">
+    <img src="assets/images/reservation/bandeau_reservation.png" alt="bandeau de la page rerservation" style="height: 200px;">
     </div>
-    <div class="card-footer">
-        <a class="btn btn-success btn-lg" (click)="add()"><i
-            class="bi bi-plus-square"></i></a>
+    <div class="page-title">
+    <h2>Réservation</h2>
     </div>
 </div>
 
-<div class="card mt-3" *ngIf="formReservation">
-    <div class="card-header bg-primary text-white display-6">Edition d'une réservation</div>
-    <div class="card-body">
-        <div class="form-group">
-            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
-        </div>
-        <div class="form-group">
-            <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" />
-        </div>
-        <div class="form-group">
-            <label for="dateRes">Date:</label> <input type="text" class="form-control" id="dateRes" name="dateRes" [(ngModel)]="formReservation.dateRes" />
-        </div>
-        <div class="form-group">
-            <label for="heureRes">Heure:</label> <input type="text" class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" />
+
+<br/>
+<br/>
+
+<div *ngIf="isconnected">
+
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="centrer">
+                <div class="form-group">
+                    <!-- <label for="nbPersonne">Nombre de Personne:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (ngModelChange)="recalculForbidden($event)"/> -->
+                
+                    <label for="nbPersonne">Nombre de Joueurs:</label> <input type="number" class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (click)="changeHeure();changeTable();resetForm()" max="8" min="0"/>
+                    <!-- https://stackoverflow.com/questions/61394048/how-do-i-manually-trigger-angular-material-date-picker-filter -->
+            </div></div>
+          </div>
+          <div class="col-sm">
+            <div class="centrer">
+                <div class="form-group">
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                        <mat-label>Choisir une Date</mat-label>
+                        <input #fromInput matInput [matDatepickerFilter]="myFilter" [matDatepicker]="dateRes" (dateChange)="test($event.value)" (stateChanges)="test2()" disabled>
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="dateRes" ></mat-datepicker-toggle>
+                        <mat-datepicker #dateRes disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                </div></div>
+          </div>
+          <div class="col-sm">
+            <div class="centrer">
+            <div class="form-group">
+                <label for="heureRes">Heures disponible:</label>
+                <select class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" (click)="changeTable()">
+                    <option [value]="undefined">Veuillez sélectionner une heure</option>
+                    <option *ngFor="let item of listHeureDisponible()" [value]="item">{{item}}</option>
+                </select>
+            </div></div>
+          </div>
         </div>
     </div>
-    <div class="card-footer">
-        <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
-            <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+    
+    
+    <div class="form-group" [ngStyle]="(formReservation.heureRes==undefined || formReservation.nbPersonne==undefined || formReservation.dateRes==undefined) && { 'visibility': 'hidden' }">
+        <div class="centrer">
+        <label for="idTable">tables disponible:</label>
+        <select class="form-control" id="idTable" name="idTable" [(ngModel)]="idTable">
+            <option selected value="">Veuillez sélectionner une table</option>
+            <option *ngFor="let item of listTableDisponible()" [value]="item">{{item}}</option>
+        </select>
+    </div></div>
+    
+    <div style="visibility: hidden;">
+        <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
+    </div>
+    
+    <div class="centrer">
+        <div class="parquet">
+            <img [src]="table1" id="tableUne" title="Corelangs link" (click)="changeImage(1)">
+            <img [src]="table2" id="tableDeux" title="Corelangs link" (click)="changeImage(2)">
+            <img [src]="table3" id="tableTrois" title="Corelangs link" (click)="changeImage(3)">
+            <img [src]="table4" id="tableQuatre" title="Corelangs link" (click)="changeImage(4)">
+            <img [src]="table5" id="tableCinq" title="Corelangs link" (click)="changeImage(5)">
+            <img [src]="table6" id="tableSix" title="Corelangs link" (click)="changeImage(6)">
+            <img [src]="table7" id="tableSept" title="Corelangs link" (click)="changeImage(7)">
+            <img [src]="table8" id="tableHuit" title="Corelangs link" (click)="changeImage(8)">
         </div>
     </div>
+    
+    
+    <br/>
+    <br/>
+    <div class="centrer">
+        <span class="button button--pen" (click)="save()">
+            <div class="button__wrapper">
+                <span class="button__text">Valider</span>
+            </div>
+            <div class="characterBox">
+                <div class="character wakeup" [ngStyle]="(formReservation.nbPersonne==undefined || formReservation.nbPersonne==0) && { 'visibility': 'hidden' }">
+                    <div class="character__face"></div>
+                    <div class="charactor__face2"></div>
+                </div>
+                <div class="character wakeup" [ngStyle]="(formReservation.dateRes==undefined || formReservation.dateRes=='' || dateRes==undefined) && { 'visibility': 'hidden' }">
+                    <div class="character__face"></div>
+                    <div class="charactor__face2"></div>
+                </div>
+                <div class="character wakeup"  [ngStyle]="(formReservation.heureRes==undefined) && { 'visibility': 'hidden' }">
+                    <div class="character__face"></div>
+                    <div class="charactor__face2"></div>
+                </div>
+                <div class="character wakeup"  [ngStyle]="(idTable==undefined || idTable==0) && { 'visibility': 'hidden' }">
+                    <div class="character__face"></div>
+                    <div class="charactor__face2"></div>
+                </div>
+            </div>
+        </span>
+    
+    </div>
+    
+
 </div>
 
+
+
+<div *ngIf="isconnected==false">
+
+<div class="centrer" style="color:red">
+    Triche pas, il faut se connecter avant de Réserver
+</div>
+<div class="centrer">
+    <img src="assets/images/reservation/canard_pas_content.jpg" class="canard" alt="canard pas content">
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+
+<footer></footer>
