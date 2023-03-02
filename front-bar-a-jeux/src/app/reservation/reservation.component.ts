@@ -210,6 +210,9 @@ export class ReservationComponent {
 
   changeImage(idImage: number) {
 
+    if (this.formReservation.nbPersonne!=undefined && this.formReservation.dateRes!=undefined && this.formReservation.heureRes!=undefined){
+     
+
     if (idImage==1 && this.table1!="assets/images/reservation/table4rempli.png"){
       if (this.table1=="assets/images/reservation/table4select.png"){
         this.table1="assets/images/reservation/table4vide.png";
@@ -329,6 +332,8 @@ export class ReservationComponent {
         this.idTable=8;
         this.table8="assets/images/reservation/table8select.png";
       }
+    }
+     
     }
 
   }

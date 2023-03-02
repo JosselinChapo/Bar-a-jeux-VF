@@ -13,7 +13,6 @@
     display: flex;
     max-width: 100%;
     align-items: center;
-    justify-content: space-between;
     height : 80px;
     background-color: #2C3531;
     font-family: 'Bebas Neue', sans-serif;
@@ -21,11 +20,13 @@
    }
 
    .logo{
+
      height: 90%;
    }
    .logoC{
     align-items: end;
     align-content: center;
+  
     height: 90%;
     width: 20%;
   }
@@ -49,6 +50,15 @@
      margin: 0 50px;
 
    }
+
+   #ul2 {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 150%;
+  }
 
    a{
      text-decoration: none;
@@ -74,4 +84,20 @@
 
   #logoDeco{
     margin-left: -50px;
+  }
+
+  .first{
+    width: 20%;
+    height: 100%;
+    justify-content: center;
+  }
+  .second{
+    width:60%;
+    display: flex;
+    justify-content: center;
+  }
+  .third{
+    width:20%;
+    display: flex;
+    justify-content: start;
   }
