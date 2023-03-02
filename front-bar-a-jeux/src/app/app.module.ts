@@ -44,8 +44,7 @@ import { BandeauAccueilComponent } from './bandeau-accueil/bandeau-accueil.compo
     FooterComponent,
     InscriptionComponent,
     ConsoComponent,
-    PanierComponent,
-    BandeauAccueilComponent
+    PanierComponent
   ],
   imports: [
     BrowserModule,
