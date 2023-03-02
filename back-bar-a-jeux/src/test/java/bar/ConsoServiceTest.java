@@ -28,9 +28,8 @@ public class ConsoServiceTest {
 	@Test
 	void createTest() {
 		
-		Conso conso = consoServ.create(10.0,2,"cocktail",TypeConso.boisson);
+		Conso conso = consoServ.create("cocktail",10.0,TypeConso.boisson);
 		assertEquals(10.0,conso.getPrix());
-		assertEquals(2,conso.getQtité());
 		assertEquals("cocktail",conso.getNom());
 		assertEquals(TypeConso.boisson,conso.getTypeconso());
 		
@@ -39,7 +38,7 @@ public class ConsoServiceTest {
 	@Test
 	void CheckConstraintTestNom() {
 		ConsoException thrown = assertThrows(ConsoException.class, () -> {
-			consoServ.save(new Conso(10.0,2," ",TypeConso.boisson));
+			consoServ.save(new Conso(" ",10.0,TypeConso.boisson));
 		});
 		assertTrue(thrown.getMessage().contentEquals("nom obligatoire"));
 	}
@@ -47,7 +46,7 @@ public class ConsoServiceTest {
 	@Test
 	void CheckConstraintPrix() {
 		ConsoException thrown = assertThrows(ConsoException.class, () -> {
-			consoServ.save(new Conso((-1),2,"cocktail",TypeConso.boisson));
+			consoServ.save(new Conso("cocktail",(-1),TypeConso.boisson));
 		});
 		assertTrue(thrown.getMessage().contentEquals("prix supérieur à 0"));
 	}
@@ -55,14 +54,14 @@ public class ConsoServiceTest {
 	@Test
 	void CheckConstraintTestTypeConso() {
 		ConsoException thrown = assertThrows(ConsoException.class, () -> {
-			consoServ.save(new Conso(10.0,2,"cocktail",null));
+			consoServ.save(new Conso("cocktail",10.0,null));
 		});
 		assertTrue(thrown.getMessage().contentEquals("Le choix de la conso est obligatoire"));
 	}
 	
 	@Test
 	void deleteTest() {
-	Conso conso3 = consoServ.create(10.0,2,"cocktail",TypeConso.boisson);
+	Conso conso3 = consoServ.create("cocktail",10.0,TypeConso.boisson);
 			consoServ.save(conso3);
 			consoServ.delete(conso3.getId());
 			assertThrows(ConsoException.class, () -> {
@@ -74,7 +73,7 @@ public class ConsoServiceTest {
 	
 	@Test
 	 void deleteById() {
-		 Conso conso2 = consoServ.create(10.0,2,"cocktail",TypeConso.boisson);
+		 Conso conso2 = consoServ.create("cocktail",10.0,TypeConso.boisson);
 			consoServ.delete(conso2.getId());
 			assertThrows(ConsoException.class, () -> {
 				consoServ.findById(conso2.getId());
@@ -83,14 +82,14 @@ public class ConsoServiceTest {
 	
 	@Test
 		void findById() {
-		Conso conso2 = consoServ.create(10.0,2,"cocktail",TypeConso.boisson);
+		Conso conso2 = consoServ.create("cocktail",10.0,TypeConso.boisson);
 			assertNotNull(consoServ.findById(conso2.getId()));
 
 
 	}
 		
 		 void findAll(){
-				Conso conso2 = consoServ.create(10.0,2,"cocktail",TypeConso.boisson);
+				Conso conso2 = consoServ.create("cocktail",10.0,TypeConso.boisson);
 				assertEquals(1, consoServ.findAll().size());
 			
 		}

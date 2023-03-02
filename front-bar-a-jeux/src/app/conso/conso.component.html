@@ -1,0 +1,64 @@
+<div class="card mt-3" id="form" >
+    <div class="card-header bg-warning text-white display-6"> <h2>Consommations</h2></div>
+    <div class="card-body">
+
+        <div class="form_">  
+        <table class="table table-striped"class="form" >
+      
+    
+            <div class="card mt-3" >
+                <div class="card-header bg-warning text-white display-6" ><h2> Les boissons </h2></div>
+                <div class="card-body">
+                    <table class="table table-striped">
+             <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th></th>
+                 </tr>
+                </thead>
+
+             <tbody>
+                    <tr *ngFor="let conso of listBoisson()">
+                        <td>{{conso.nom}}</td>
+                        <td>{{conso.prix}} € </td>
+                     <td></td>
+                    </tr>
+                </tbody>
+            </table>
+               
+            </div>
+            </div>
+         
+        </table>
+
+        <table class="table table-striped" class="form">
+            <div class="card mt-3">
+                <div class="card-header bg-warning text-white display-6"  ><h2 >Les plats</h2></div>
+              <div class="card-body">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th></th>
+                        </tr>
+                   </thead>
+
+                   <tbody>
+                        <tr *ngFor="let conso of listPlat()">
+                            <td>{{conso.nom}}</td>
+                           <td>{{conso.prix}} € </td>
+                            <td></td>
+                     </tr>
+                 </tbody>
+            </table></div>
+            </div>
+        </table>
+    </div>
+    </div>
+</div>
+
+
+<footer></footer>
+

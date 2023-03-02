@@ -49,7 +49,7 @@ class CommandeConsoTest {
 	
 	@Test
 	void createTest() {
-		Conso conso1 = consoServ.create(10.0,2,"cocktail",TypeConso.boisson);
+		Conso conso1 = consoServ.create("cocktail",10.0,TypeConso.boisson);
 		List <Conso> consos =new ArrayList<>();
 		consos.add(conso1);
 		Client client1 = new Client("client1@test.fr","client1","client","client1","client1","0600000001",Civilite.homme);
@@ -58,7 +58,7 @@ class CommandeConsoTest {
 		table1=tableSrv.create(table1);
 		Reservation resa1 = new Reservation(LocalDate.parse("2024-02-22"),LocalTime.parse("10:00:00"),4,table1,client1);
 		resa1 = resaSrv.create(resa1);
-		CommandeConso cmdConso= new CommandeConso(consos,resa1);
+		CommandeConso cmdConso= new CommandeConso(resa1);
 		assertEquals(cmdConso.getId(), CommandeConsoServ.findById(cmdConso.getId()).getId());
 		
 	}

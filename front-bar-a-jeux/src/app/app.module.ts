@@ -24,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { PopupComponent } from './popup/popup.component';
 import { PanierComponent } from './panier/panier.component';
+import { ConsoComponent } from './conso/conso.component';
 
 
 @NgModule({
@@ -39,8 +40,10 @@ import { PanierComponent } from './panier/panier.component';
     CustomDatePipe,
     PopupComponent,
     BanniereAccueilComponent,
-    FooterComponent, 
-    InscriptionComponent, PanierComponent
+    FooterComponent,
+    InscriptionComponent,
+    ConsoComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,

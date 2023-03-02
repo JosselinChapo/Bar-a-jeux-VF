@@ -1,5 +1,6 @@
 package bar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import bar.model.Conso;
+import bar.model.TypeConso;
 import bar.model.Views;
+import bar.repository.IConsoRepository;
 import bar.service.ConsoService;
 
 @RestController
@@ -28,6 +31,10 @@ public class ConsoRestController {
 	
 	@Autowired
 	private ConsoService consoService;
+	
+	@Autowired
+	IConsoRepository consoRepo;
+	
 
 	@GetMapping("")
 	@JsonView(Views.ViewConso.class)
@@ -65,6 +72,32 @@ public class ConsoRestController {
 
 		return conso;
 	}
+	
+
+	@GetMapping("/boisson")
+	@JsonView(Views.ViewConso.class)
+	public List<Conso> findAllByTypeconsoBoisson(){
+		List<Conso> consos= new ArrayList<>();
+		consos = consoRepo.findAllByTypeconsoBoisson();
+//		if(boisson.equals("boisson")) {
+//				
+//		}
+		return consos;
+	}
+	
+	@GetMapping("/plat")
+	@JsonView(Views.ViewConso.class)
+	public List<Conso> findAllByTypeconsoPlat(){
+		List<Conso> consos= new ArrayList<>();
+		consos = consoRepo.findAllByTypeconsoPlat();
+//		if(plat.equals("plat")) {			
+//			
+//				}
+
+		return consos;
+	}
+	
+	
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewConso.class)

@@ -4,6 +4,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AdminComponent } from './admin/admin.component';
 import { ClientComponent } from './client/client.component';
 import { CollectionComponent } from './collection/collection.component';
+import { ConsoComponent } from './conso/conso.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ReservationComponent } from './reservation/reservation.component';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: "client", component: ClientComponent},
   {path: "admin", component: AdminComponent}, 
   {path: "inscription", component: InscriptionComponent},
-  {path: "boutique", component: CollectionComponent}
+  {path: "boutique", component: CollectionComponent},
+  {path: "conso",component:ConsoComponent}
 ];
 
 @NgModule({

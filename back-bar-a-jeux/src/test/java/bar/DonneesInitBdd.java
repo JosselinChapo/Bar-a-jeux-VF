@@ -246,45 +246,45 @@ class DonneesInitBdd {
 	
 		//ajout des conso
 		
-		Conso conso1 = new Conso(3.50, 15, "coca-cola", TypeConso.boisson);
+		Conso conso1 = new Conso( "coca-cola",3.50, TypeConso.boisson);
 		consoService.save(conso1);
-		Conso conso2 = new Conso(3.50, 10, "ice-tea", TypeConso.boisson);
+		Conso conso2 = new Conso( "ice-tea",3.50, TypeConso.boisson);
 		consoService.save(conso2);
-		Conso conso3 = new Conso(6, 20, "bière - Tripel Karmeliet", TypeConso.boisson);
+		Conso conso3 = new Conso( "bière - Tripel Karmeliet",6, TypeConso.boisson);
 		consoService.save(conso3);
-		Conso conso4 = new Conso(3.50, 15, "orangina", TypeConso.boisson);
+		Conso conso4 = new Conso("orangina",3.50, TypeConso.boisson);
 		consoService.save(conso4);
-		Conso conso5 = new Conso(4, 5, "jus d'orange", TypeConso.boisson);
+		Conso conso5 = new Conso("jus d'orange",4, TypeConso.boisson);
 		consoService.save(conso5);
-		Conso conso6 = new Conso(5, 30, "bière blonde", TypeConso.boisson);
+		Conso conso6 = new Conso("bière blonde",5, TypeConso.boisson);
 		consoService.save(conso6);
-		Conso conso7 = new Conso(5, 10, "bière brune", TypeConso.boisson);
+		Conso conso7 = new Conso( "bière brune",5, TypeConso.boisson);
 		consoService.save(conso7);
-		Conso conso8 = new Conso(5.5, 12, "bière rouge", TypeConso.boisson);
+		Conso conso8 = new Conso( "bière rouge",5.5, TypeConso.boisson);
 		consoService.save(conso8);
-		Conso conso9 = new Conso(2, 50, "eau", TypeConso.boisson);
+		Conso conso9 = new Conso( "eau",2, TypeConso.boisson);
 		consoService.save(conso9);
-		Conso conso10 = new Conso(8, 20, "cocktail du moment", TypeConso.boisson);
+		Conso conso10 = new Conso( "cocktail du moment",8, TypeConso.boisson);
 		consoService.save(conso10);
-		Conso conso11 = new Conso(6.5, 5, "Mojito", TypeConso.boisson);
+		Conso conso11 = new Conso( "Mojito",6.5, TypeConso.boisson);
 		consoService.save(conso11);
-		Conso conso12 = new Conso(6, 7, "Sex on the beach", TypeConso.boisson);
+		Conso conso12 = new Conso("Sex on the beach", 6, TypeConso.boisson);
 		consoService.save(conso12);
-		Conso conso13 = new Conso(6, 6, "Caïpirinha", TypeConso.boisson);
+		Conso conso13 = new Conso("Caïpirinha",6, TypeConso.boisson);
 		consoService.save(conso13);
-		Conso conso14 = new Conso(3, 20, "chips", TypeConso.plat);
+		Conso conso14 = new Conso("chips", 3, TypeConso.plat);
 		consoService.save(conso14);
-		Conso conso15 = new Conso(8, 10, "Sandwich au jambon", TypeConso.plat);
+		Conso conso15 = new Conso("Sandwich au jambon",8, TypeConso.plat);
 		consoService.save(conso15);
-		Conso conso16 = new Conso(15, 3, "planche de fromage", TypeConso.plat);
+		Conso conso16 = new Conso("planche de fromage", 15,TypeConso.plat);
 		consoService.save(conso16);
-		Conso conso17 = new Conso(15, 5, "planche de charcuterie", TypeConso.plat);
+		Conso conso17 = new Conso("planche de charcuterie", 15,TypeConso.plat);
 		consoService.save(conso17);
-		Conso conso18 = new Conso(4, 15, "tomates cerises", TypeConso.plat);
+		Conso conso18 = new Conso("tomates cerises", 4,TypeConso.plat);
 		consoService.save(conso18);
-		Conso conso19 = new Conso(5, 15, "Assiette Tex Mex", TypeConso.plat);
+		Conso conso19 = new Conso( "Assiette Tex Mex", 5,TypeConso.plat);
 		consoService.save(conso19);
-		Conso conso20 = new Conso(6, 25, "croque jambon cheddar", TypeConso.plat);
+		Conso conso20 = new Conso( "croque jambon cheddar", 6, TypeConso.plat);
 		consoService.save(conso20);
 		
 	

@@ -20,15 +20,12 @@ public class CommandeConso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@OneToMany(mappedBy="commandeConso")
-	private List<Conso> consos;
 	@ManyToOne
 	@JoinColumn(name="reservation")
 	private Reservation reservation;
 	
 	
-	public CommandeConso(List<Conso> consos, Reservation reservation2) {
+	public CommandeConso( Reservation reservation2) {
 		super();
 	}
 	
@@ -40,13 +37,6 @@ public class CommandeConso {
 	}
 	
 
-	public List<Conso> getConsos() {
-		return consos;
-	}
-
-	public void setConsos(List<Conso> consos) {
-		this.consos = consos;
-	}
 
 	public Reservation getReservation() {
 		return reservation;

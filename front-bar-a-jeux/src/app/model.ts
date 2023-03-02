@@ -170,3 +170,22 @@ export class Filter {
     }
 
 }
+
+export class Conso {
+
+    id: number; 
+    nom : String;
+    prix: number;
+    typeconso: String;
+   
+    
+
+    constructor(id?:number, nom?: string, prix?: number, typeconso?:String ){
+        this.id = id;
+        this.nom= nom;
+        this.prix = prix;
+        this.typeconso = typeconso;
+        
+    }
+}
+
