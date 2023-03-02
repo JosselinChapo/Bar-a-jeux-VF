@@ -3,6 +3,7 @@ package bar.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import bar.exception.AchatJeuException;
@@ -69,8 +70,14 @@ public class AchatJeuService {
 			return achatJeuRepo.findById(id).orElseThrow(IdException::new);
 		}
 		
+		
+		
 		public List<AchatJeu> findAll(){
 			return achatJeuRepo.findAll();
+		}
+		
+		public List<Integer> findAllIdByCommande(Integer id){
+			return achatJeuRepo.findAllAchatJeuIdByCommandeJeu(id);
 		}
 		
 		

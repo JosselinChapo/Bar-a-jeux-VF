@@ -17,8 +17,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import bar.model.AchatJeu;
 import bar.model.CommandeJeu;
 import bar.model.Views;
+import bar.service.AchatJeuService;
 import bar.service.CommandeJeuService;
 
 
@@ -30,7 +32,8 @@ import bar.service.CommandeJeuService;
 public class CommandeJeuRestController {
 		@Autowired
 		private CommandeJeuService commandeJeuService;
-		
+		@Autowired
+		private AchatJeuService achatJeuService;
 
 		@GetMapping("")
 		@JsonView(Views.ViewCommandeJeu.class)
@@ -49,6 +52,24 @@ public class CommandeJeuRestController {
 			return CommandeJeu;
 		}
 		
+		@GetMapping("client/{id}")
+		@JsonView(Views.ViewCommandeJeu.class)
+		public  List<CommandeJeu> findByIdClient(@PathVariable Integer id) {
+			
+			List<CommandeJeu> CommandeJeux = commandeJeuService.findAllByClientId(id);
+			
+			return CommandeJeux;
+		}
+		
+		@GetMapping("client/panier/{id}")
+		@JsonView(Views.ViewCommandeJeu.class)
+		public  List<CommandeJeu> findByIdClientPanier(@PathVariable Integer id) {
+			
+			List<CommandeJeu> CommandeJeux = commandeJeuService.findAllByClientIdPanier(id);
+			
+			return CommandeJeux;
+		}
+		
 		@PostMapping("")
 		@JsonView(Views.ViewCommandeJeu.class)
 		public CommandeJeu create(@RequestBody CommandeJeu CommandeJeu) {
@@ -56,6 +77,8 @@ public class CommandeJeuRestController {
 			
 			return CommandeJeu;
 		}
+		
+		
 		
 		@PutMapping("/{id}")
 		@JsonView(Views.ViewCommandeJeu.class)
@@ -81,6 +104,12 @@ public class CommandeJeuRestController {
 		
 		@DeleteMapping("/{id}")
 		public void delete(@PathVariable Integer id) {
+			List<Integer> idsAchat = achatJeuService.findAllIdByCommande(id);
+			for(Integer idAchat : idsAchat) {
+				
+				achatJeuService.delete(idAchat);
+			
+			}
 			commandeJeuService.delete(id);
 		}
 		

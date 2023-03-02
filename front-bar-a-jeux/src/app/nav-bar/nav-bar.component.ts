@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { CommandeJeuService } from '../panier/commande-jeu.service';
 import { PopupService } from '../popup/popup.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class NavBarComponent {
 
   resaconnected: boolean= false;
 
-  constructor(public popupService: PopupService, public appComponent : AppComponent,public router : Router) {
+  constructor(public popupService: PopupService, public appComponent : AppComponent,public router : Router,private commandeService : CommandeJeuService) {
     
    }
 
@@ -40,4 +41,7 @@ export class NavBarComponent {
 
   }
 
+  refreshPanier(){
+    this.commandeService.load(this.appComponent.client.id);
+  }
 }
