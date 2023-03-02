@@ -74,5 +74,14 @@ export class JeuService {
         this.jeux = resp;
       });
     }
+
+    insertCommandeJeu(commandeJeu: CommandeJeu): Observable<CommandeJeu> {
+      return this.http.post<CommandeJeu>("http://localhost:8888/commandeJeu", commandeJeu)
+    }
+
+    insertAchatJeu(achatJeu: AchatJeu): Observable<AchatJeu> {
+      return this.http.post<AchatJeu>("http://localhost:8888/achatJeu", achatJeu)
+    }
+
   }
 

@@ -14,7 +14,10 @@ export class AuthService {
 
   loginCompte(compteToConnect : Compte){
     if(compteToConnect){
+      console.log("entré en redirect")
+      console.log(compteToConnect.type)
       if(compteToConnect.type){
+        console.log("entré en client")
         this.compteConnecte = compteToConnect;
         if(compteToConnect.type == "client"){
           this.router.navigate(["/client"]);

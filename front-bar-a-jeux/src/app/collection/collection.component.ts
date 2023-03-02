@@ -5,6 +5,9 @@ import { AchatJeu, Client, CommandeJeu, Filter, Jeu } from '../model';
 import { JeuService } from './jeu.service';
 
 import { ClientService } from '../client/client.service';
+import { AppComponent } from '../app.component';
+import { PopupService } from '../popup/popup.service';
+import { interval, timer } from 'rxjs';
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.component.html',
@@ -32,16 +35,17 @@ export class CollectionComponent {
   };
 
   achatJeu : AchatJeu = new AchatJeu();
-  commandeJeu : CommandeJeu = new CommandeJeu(1,"");
+  commandeJeu : CommandeJeu = new CommandeJeu();
   client : Client = new Client();
   
   recherche:string;
   formJeu: Jeu = null;
   
-
+  show : number =-1;
+  id :number;
   
 
-  constructor(private jeuService: JeuService,public router: Router,  private clientService: ClientService) {
+  constructor(private jeuService: JeuService,public router: Router,  private clientService: ClientService,public appComponent : AppComponent,public popupService : PopupService  ) {
   } 
 
   search(): Array<Jeu> {
@@ -78,9 +82,9 @@ export class CollectionComponent {
 
   searchJeu(): void{
     if(this.typeDeJeuDefault=="Type de jeu"){
-      this.formFilter = new Filter(this.nombreJoueur,this.minValue,this.maxValue,"");
+      this.formFilter = new Filter(this.nombreJoueur,this.minValue,this.maxValue,"",this.minPrix,this.maxPrix);
     }else{
-    this.formFilter = new Filter(this.nombreJoueur,this.minValue,this.maxValue,this.typeDeJeuDefault);}
+    this.formFilter = new Filter(this.nombreJoueur,this.minValue,this.maxValue,this.typeDeJeuDefault,this.minPrix,this.maxPrix);}
     this.jeuService.filterTest(this.formFilter);
   }
 
@@ -112,20 +116,38 @@ export class CollectionComponent {
     }
 
 
-  addCommande(idJeu : number,idClient : number){
+  addCommande(idJeu : number,idClient : number,i:number){
     if(idClient != undefined){
       this.jeuService.findById(idJeu).subscribe(resp => {
         this.achatJeu.jeu = resp;
         this.achatJeu.quantite = 1;
-        
+        this.achatJeu.dateAchat = "2023-03-01";
         this.clientService.findById(idClient).subscribe(resp => {
           this.commandeJeu.client = resp;
           this.commandeJeu.statut = "EnCours";
-          this.achatJeu.commandeJeu = this.commandeJeu;
+          this.jeuService.insertCommandeJeu(this.commandeJeu).subscribe(resp => {
+            this.achatJeu.commandeJeu = resp;
+            this.jeuService.insertAchatJeu(this.achatJeu).subscribe(resp => {
+              this.achatJeu = resp;
+              this.commandeJeu = new CommandeJeu;
+              this.achatJeu = new AchatJeu
+              this.showFunc(i);
+            });
+          });
         });
       });
 
+      }else{
+        this.popupService.open('modal-1');
       }
+    }
+
+
+    showFunc(i:number){
+      this.show  = 1;
+      console.log(i)
+      timer(2000).subscribe(() => (this.show = -1));
+      this.id=i;
     }
   }
 

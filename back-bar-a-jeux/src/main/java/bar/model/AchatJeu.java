@@ -25,7 +25,7 @@ public class AchatJeu {
 	
 	@ManyToOne
 	@JoinColumn(name = "jeu_id")
-	@JsonView(Views.ViewAchatJeu.class)
+	@JsonView(Views.ViewCommandeJeu.class)
 	private Jeu jeu;
 	@ManyToOne
 	@JoinColumn(name = "CommandeJeu_id")
