@@ -1,8 +1,20 @@
+@font-face {
+    font-family: "GoodDog";
+    src: url("/assets/font/gooddogc.TTF");
+  }
 
 body {
     display: flex;
     justify-content:center; 
 }
+
+.page-title h2 {
+    font-size: 400%;
+    font-family: 'GoodDog';
+    color : #ebf3f3;
+    text-shadow: rgb(7, 7, 7) 2px 2px;
+  }
+  
 
 .civilite {
     display: inline;
@@ -26,6 +38,7 @@ body {
     height: 20%;
     justify-content:center;
     align-items:center;
+    margin-left:-30px;
 
 
   }
