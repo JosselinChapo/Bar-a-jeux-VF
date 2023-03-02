@@ -317,8 +317,8 @@ class ReservationServiceTest {
 		resaSrv.create(resa2);
 		resaSrv.create(resa3);
 		//System.out.println(heuresDisable);
-		List<Integer> idDate1=resaSrv.findAllIdByDateResandHeureRes(LocalDate.parse("2024-02-22"),LocalTime.parse("10:00:00"));
-		List<Integer> idDate2=resaSrv.findAllIdByDateResandHeureRes(LocalDate.parse("2024-02-22"),LocalTime.parse("11:00:00"));
+		List<Integer> idDate1=resaSrv.findAllIdByDateResandHeureRes(4,LocalDate.parse("2024-02-22"),LocalTime.parse("10:00:00"));
+		List<Integer> idDate2=resaSrv.findAllIdByDateResandHeureRes(4,LocalDate.parse("2024-02-22"),LocalTime.parse("11:00:00"));
 		assertEquals(2, idDate1.size());
 		assertEquals(1, idDate2.size());
 	}
@@ -342,7 +342,7 @@ class ReservationServiceTest {
 		resaSrv.create(resa3);
 		resaSrv.create(resa4);
 		
-		List<LocalTime> heuresEnable = resaSrv.AllEnableHeures();
+		List<LocalTime> heuresEnable = resaSrv.AllEnableHeures(4,LocalDate.parse("2024-02-22"));
 		List<LocalTime> heuresDisable = resaSrv.findAllDisableHeureparDate(4,LocalDate.parse("2024-02-22"));
 
 		System.out.println("1er print");
@@ -355,6 +355,19 @@ class ReservationServiceTest {
 		
 		heuresEnable.forEach(System.out::println);
 		
+//		System.out.println("3eme print");
+//		
+//		List<String> heuresDispo = new ArrayList<>();
+//
+//		System.out.println(heuresEnable.size());
+//		
+//		for(int i=0; i<heuresEnable.size(); i++) {
+//			heuresDispo.add(heuresDispo.get(i).toString());
+//			System.out.println(heuresDispo(i));
+//		};
+		
+
+//		heuresDispo.forEach(System.out::println);
 		
 	}
 	
