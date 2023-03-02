@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "GoodDog";
+    src: url("/assets/font/gooddogc.TTF");
+}
+
+#form{
+    width: 80%;
+    position: center;
+    margin:10%
+}
+
+h2{
+    font-family: "GoodDog";
+    text-align: center;
+    font-size: larger;
+
+}
+

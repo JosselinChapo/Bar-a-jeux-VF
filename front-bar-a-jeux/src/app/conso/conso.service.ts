@@ -24,6 +24,19 @@ export class ConsoService {
     return this.typeConsos;
   }
 
+  FindAllByTypeconsoBoisson(): Observable<Array <Conso>>{
+  
+    return this.http.get<Array<Conso>>("http://localhost:8888/conso/boisson");
+
+  }
+
+  FindAllByTypeconsoPlat(): Observable<Array <Conso>>{
+  
+    return this.http.get<Array<Conso>>("http://localhost:8888/conso/plat");
+
+  }
+
+
   findById(id: number): Observable<Conso> {
     return this.http.get<Conso>("http://localhost:8888/conso/" + id);
   }

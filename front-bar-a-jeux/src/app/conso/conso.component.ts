@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Conso } from '../model';
 import { ConsoService } from './conso.service';
 
@@ -12,26 +13,37 @@ export class ConsoComponent {
   typeconso: string;
   consos : Array<Conso>;
   listBoissons : Array<Conso>;
-
+  listPlats : Array<Conso>;
 
   constructor(private consoService: ConsoService){
   }
 
-  listBoisson(): Array<Conso> {
-  this.consos = this.consoService.findAll();
-    
+  listPlat(): void {
+    this.consoService.FindAllByTypeconsoPlat().subscribe(resp => {
+      this.listPlats = resp;
+    })
+     }
 
-
- return this.listBoisson;
-     
-    
-  }
+     listBoisson (): void {
+      this.consoService.FindAllByTypeconsoBoisson().subscribe(resp => {
+        this.listBoissons = resp;
+      })
+       }
 
   listTypeConso(): Array<string> {
+
     return this.consoService.findAllTypeConso();
   }
 
+  AffichePlat() : Array<Conso> {
+    this.listPlat();
+    return this.listPlats;
+  }
 
+  AfficheBoisson() : Array<Conso> {
+    this.listBoisson();
+    return this.listBoissons;
+  }
 
   add(): void {
     this.creaConso = new Conso();
