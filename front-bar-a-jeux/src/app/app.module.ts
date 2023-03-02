@@ -25,6 +25,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { PopupComponent } from './popup/popup.component';
 import { PanierComponent } from './panier/panier.component';
 import { ConsoComponent } from './conso/conso.component';
+import { BandeauAccueilComponent } from './bandeau-accueil/bandeau-accueil.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ConsoComponent } from './conso/conso.component';
     FooterComponent,
     InscriptionComponent,
     ConsoComponent,
-    PanierComponent
+    PanierComponent,
+    BandeauAccueilComponent
   ],
   imports: [
     BrowserModule,

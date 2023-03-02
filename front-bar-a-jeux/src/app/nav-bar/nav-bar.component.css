@@ -23,6 +23,12 @@
    .logo{
      height: 90%;
    }
+   .logoC{
+    align-items: end;
+    align-content: center;
+    height: 90%;
+    width: 20%;
+  }
 
    img{
     max-width: 100%;
@@ -59,4 +65,13 @@
   
 .active{
     text-decoration: underline;
+  }
+
+  .btn{
+    color:white;
+    border: none;
+  }
+
+  #logoDeco{
+    margin-left: -50px;
   }
