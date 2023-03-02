@@ -4,6 +4,7 @@ import { Component, Inject, inject, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { Reservation, TableBar } from '../model';
 import { ReservationService } from './reservation.service';
@@ -39,7 +40,8 @@ export class ReservationComponent {
     private _adapter: DateAdapter<any>, 
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     public datepipe: DatePipe,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private router: Router
   ) { 
     this._locale = 'fr-FR';
     this._adapter.setLocale(this._locale);
@@ -133,8 +135,12 @@ export class ReservationComponent {
         this.formReservation.tableBar=this.tableBar;
         this.formReservation.client=this.appComponent.client;
         console.log(this.formReservation);
-        this.resetForm();
+        this.reservationService.loadTables(undefined,undefined,undefined);
+        this.reservationService.loadHeures(undefined,undefined);
         this.reservationService.create(this.formReservation);
+        this.resetForm();
+        this.formReservation.nbPersonne=undefined;
+        this.router.navigate(["/client"]);
       });
     }
   }

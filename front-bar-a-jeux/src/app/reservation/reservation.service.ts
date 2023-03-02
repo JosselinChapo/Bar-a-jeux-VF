@@ -95,7 +95,7 @@ export class ReservationService {
     });
   }
 
-  private loadHeures(nbPersonneHeure: number, dateHeure: string): void {
+  loadHeures(nbPersonneHeure: number, dateHeure: string): void {
     if (nbPersonneHeure!== undefined && dateHeure!== undefined){
       this.http.get<Array<string>>("http://localhost:8888/reservation/heures/" + nbPersonneHeure + ":" + dateHeure).subscribe(resp => {
         this.heuresDispo = resp;
@@ -105,7 +105,7 @@ export class ReservationService {
     }  
   }
 
-  private loadTables(nbPersonneTable: number, datetest: string, heureTable: string): void {
+  loadTables(nbPersonneTable: number, datetest: string, heureTable: string): void {
     if (nbPersonneTable!== undefined && datetest!== undefined && heureTable!== undefined){
       this.http.get<Array<number>>("http://localhost:8888/reservation/tables/" + nbPersonneTable + "/" + datetest + "/" + heureTable).subscribe(resp => {
         this.tablesDispo = resp;
