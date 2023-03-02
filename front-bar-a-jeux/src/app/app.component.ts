@@ -18,7 +18,8 @@ export class AppComponent {
   client : Client;
   admin : Admin;
   connected : boolean=false;
-  
+  boutonConnectedPress : boolean=false;
+
   constructor(protected popupService: PopupService, public router: Router, private authService: AuthService) { }
 
   isAccueilRoute() {
@@ -32,24 +33,58 @@ export class AppComponent {
   }
 
   connexion() {
-    if(this.authentification.mail == "admin@test.fr" ){
-      console.log("admin authentification");
-      this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
-        this.admin = resp;
-        this.connected=true;
-       /*  this.authService.loginCompte(resp); */
-        this.popupService.close();
-      });
-    }
-    else{
-      console.log("client authentification");
-      this.popupService.loginClient(this.authentification).subscribe(resp => { 
-        this.client = resp;
-        this.connected=true;
-        console.log(resp);
-        /* this.authService.loginCompte(resp); */
-        this.popupService.close();
-      });
+    if(this.boutonConnectedPress){
+      console.log("entrée if")
+      console.log(this.boutonConnectedPress)
+      if(this.authentification.mail == "admin@test.fr" ){
+        console.log("admin authentification");
+        this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
+          this.admin = resp;
+          this.connected=true;
+         this.authService.loginCompte(resp);
+          this.popupService.close();
+        });
+      }
+      else{
+        console.log("client authentification");
+        this.popupService.loginClient(this.authentification).subscribe(resp => { 
+          this.client = resp;
+          this.connected=true;
+          console.log(resp);
+          this.authService.loginCompte(resp);
+          this.popupService.close();
+        });
+      }
+
+
+      this.boutonConnectedPress=false;
+
+    }else{
+      console.log("entrée else")
+      console.log(this.boutonConnectedPress)
+      if(this.authentification.mail == "admin@test.fr" ){
+        console.log("admin authentification");
+        this.popupService.loginAdmin(this.authentification).subscribe(resp => { 
+          this.admin = resp;
+          this.connected=true;
+       
+          this.popupService.close();
+        });
+      }
+      else{
+        console.log("client authentification");
+        this.popupService.loginClient(this.authentification).subscribe(resp => { 
+          this.client = resp;
+          this.connected=true;
+          console.log(resp);
+         
+          this.popupService.close();
+        });
+      }
+
+
+
+
     }
   }
 
@@ -72,4 +107,6 @@ export class AppComponent {
           this.router.navigate(["/reservation"]);
         }
   }
+
+
 }
