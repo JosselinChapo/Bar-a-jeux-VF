@@ -11,6 +11,7 @@ import { Client } from '../model';
 export class InscriptionComponent {
 
   formClientInscription: Client = new Client();
+  clientType: string = "client";
 
   constructor(private clientService: ClientService) {
   }
@@ -23,6 +24,7 @@ export class InscriptionComponent {
     if(this.formClientInscription.id) { // UPDATE
       this.clientService.update(this.formClientInscription);
     } else { // CREATE
+      this.formClientInscription.type=this.clientType;
       this.clientService.create(this.formClientInscription);
     }
   }
