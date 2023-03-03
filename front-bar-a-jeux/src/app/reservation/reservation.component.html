@@ -13,7 +13,7 @@
     <br/>
     <br/>
     <div class="centrer">
-    <div class="center borderText">4 Pinguins sont nécessaire pour réussir cette étape, un indice : il faut commencer par donner la taille de la table que vous voulez ;)</div>
+    <div class="center borderText">4 Pinguins sont nécessaires pour réussir cette étape, un indice : il faut commencer par donner la taille de la table que vous voulez ;)</div>
     </div>
     <br/>
     <div class="container">
@@ -21,9 +21,9 @@
           <div class="col-sm">
             <div class="centrer">
                 <div class="form-group">
-                    <label for="nbPersonne" class="centrer">Nombres de places à la Table :</label>
+                    <label for="nbPersonne" class="centrer">Nombre de places à la Table :</label>
                     <select class="form-control" id="nbPersonne" name="nbPersonne" [(ngModel)]="formReservation.nbPersonne" (change)="changeHeure();changeTable();resetForm()">
-                        <option [value]="undefined">Selectionnez le nombre de place</option>
+                        <option [value]="undefined">Selectionnez le nombre de places</option>
                         <option *ngFor="let item of listNbPersonneDisponible()" [value]="item">{{item}}</option>
                         <!-- <option [value]="formReservation.nbPersonne">4</option>
                         <option [value]="formReservation.nbPersonne">6</option>
@@ -54,7 +54,7 @@
           <div class="col-sm">
             <div class="centrer">
             <div class="form-group">
-                <label for="heureRes" class="centrer">Heures disponible :</label>
+                <label for="heureRes" class="centrer">Heures disponibles :</label>
                 <select class="form-control" id="heureRes" name="heureRes" [(ngModel)]="formReservation.heureRes" (click)="changeTable()">
                     <option [value]="undefined">Selectionnez une heure</option>
                     <option *ngFor="let item of listHeureDisponible()" [value]="item">{{item}}</option>
