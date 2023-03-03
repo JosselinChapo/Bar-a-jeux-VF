@@ -1,5 +1,6 @@
 .bandeau_accueil{
     display:flex;
+    justify-content: center;
     background-color:#93dada8e;
     height:10%
 }
