@@ -221,6 +221,7 @@ export class ReservationComponent {
         this.table1="assets/images/reservation/table4vide.png";
         this.seletedTable=false;
         this.selectedNumber=undefined;
+        this.idTable=undefined;
       }else {
         if(this.seletedTable==true){
           this.changeImage(this.selectedNumber);
@@ -236,6 +237,7 @@ export class ReservationComponent {
         this.table2="assets/images/reservation/table4vide.png";
         this.seletedTable=false;
         this.selectedNumber=undefined;
+        this.idTable=undefined;
       }else {
         if(this.seletedTable==true){
           this.changeImage(this.selectedNumber);
@@ -251,6 +253,7 @@ export class ReservationComponent {
         this.table3="assets/images/reservation/table6vide.png";
         this.seletedTable=false;
         this.selectedNumber=undefined;
+        this.idTable=undefined;
       }else {
         if(this.seletedTable==true){
           this.changeImage(this.selectedNumber);
@@ -266,6 +269,7 @@ export class ReservationComponent {
         this.table4="assets/images/reservation/table8vide.png";
         this.seletedTable=false;
         this.selectedNumber=undefined;
+        this.idTable=undefined;
       }else {
         if(this.seletedTable==true){
           this.changeImage(this.selectedNumber);
@@ -281,6 +285,7 @@ export class ReservationComponent {
         this.table5="assets/images/reservation/table6vide.png";
         this.seletedTable=false;
         this.selectedNumber=undefined;
+        this.idTable=undefined;
       }else {
         if(this.seletedTable==true){
           this.changeImage(this.selectedNumber);
@@ -296,6 +301,7 @@ export class ReservationComponent {
         this.table6="assets/images/reservation/table4vide.png";
         this.seletedTable=false;
         this.selectedNumber=undefined;
+        this.idTable=undefined;
       }else {
         if(this.seletedTable==true){
           this.changeImage(this.selectedNumber);
@@ -311,6 +317,7 @@ export class ReservationComponent {
         this.table7="assets/images/reservation/table4vide.png";
         this.seletedTable=false;
         this.selectedNumber=undefined;
+        this.idTable=undefined;
       }else {
         if(this.seletedTable==true){
           this.changeImage(this.selectedNumber);
@@ -326,6 +333,7 @@ export class ReservationComponent {
         this.table8="assets/images/reservation/table8vide.png";
         this.seletedTable=false;
         this.selectedNumber=undefined;
+        this.idTable=undefined;
       }else {
         if(this.seletedTable==true){
           this.changeImage(this.selectedNumber);
