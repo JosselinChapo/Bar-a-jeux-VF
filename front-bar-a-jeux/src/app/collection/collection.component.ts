@@ -20,7 +20,7 @@ export class CollectionComponent {
   nombreJoueur:number = 0;
   typeDeJeuDefault : string = "Type de jeu";
   minValue: number = 0;
-  maxValue: number = 60;
+  maxValue: number = 90;
   minPrix: number = 0;
   maxPrix: number = 100;
   options: Options = {
@@ -93,7 +93,7 @@ export class CollectionComponent {
     this.nombreJoueur=0;
     this.typeDeJeuDefault = "Type de jeu";
     this.minValue = 0;
-    this.maxValue  = 60;
+    this.maxValue  = 90;
     this.minPrix = 0;
     this.maxPrix  = 100;
   }
