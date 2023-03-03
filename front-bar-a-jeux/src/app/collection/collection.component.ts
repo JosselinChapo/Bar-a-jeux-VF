@@ -94,6 +94,8 @@ export class CollectionComponent {
     this.typeDeJeuDefault = "Type de jeu";
     this.minValue = 0;
     this.maxValue  = 60;
+    this.minPrix = 0;
+    this.maxPrix  = 100;
   }
 
   removeJeu(id: number): void {
