@@ -1,12 +1,15 @@
 package bar.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bar.exception.CompteException;
 import bar.exception.IdException;
 import bar.exception.TableException;
+import bar.model.Client;
 import bar.model.TableBar;
 import bar.repository.ITableRepository;
 
@@ -87,6 +90,18 @@ public class TableService {
 
 		public List<Integer> findAllId(){
 			return tableRepo.findAllId();
+		}
+		
+		public TableBar findByIdTable(Integer idTable) {
+			
+			Optional<TableBar>  newTable =  tableRepo.findByIdTable(idTable);
+			
+			if(newTable.isEmpty()) {
+				throw new CompteException("client absent");
+				
+			}
+			
+			return  newTable.get();
 		}
 
 }

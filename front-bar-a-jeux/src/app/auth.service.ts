@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClientService } from './client/client.service';
 import { Compte } from './model';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class AuthService {
 
   private compteConnecte : Compte = undefined;
 
-  constructor( private router: Router) { }
+  constructor( private router: Router, private navComp: ClientService) { }
 
   loginCompte(compteToConnect : Compte){
     if(compteToConnect){

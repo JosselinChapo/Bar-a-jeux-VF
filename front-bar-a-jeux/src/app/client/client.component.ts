@@ -64,18 +64,18 @@ export class ClientComponent {
   }
   
   ViewInformationClient(id :number) : void {
-    this.clientService.findById(this.id).subscribe(response => {
-      this.currentClient = response;
-    });
+     if(id==undefined) {
+      this.clientService.findById(this.id).subscribe(response => {
+        this.currentClient = response;
+      });
+    } else {
+      this.clientService.findById(id).subscribe(response => {
+           this.currentClient = response;
+         });
+    }
 
     this.menuClient = "information";
   }
-  
-    // editResa(id: number): void {
-    //   this.resaService.findById(id).subscribe(resp => {
-    //     this.formReservation = resp;
-    //   });
-    // }
 
   removeResa(id: number): void {
     this.menuClient = null;

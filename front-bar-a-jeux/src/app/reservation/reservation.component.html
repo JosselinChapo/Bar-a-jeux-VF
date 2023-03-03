@@ -7,11 +7,11 @@
     </div>
 </div>
 
+<div *ngIf="appComponent.client!=undefined" class="couleurFond">
 
-<br/>
-<br/>
 
-<div *ngIf="appComponent.client!=undefined">
+    <br/>
+    <br/>
     <div class="centrer">
     <div class="center borderText">4 Pinguins sont nécessaire pour réussir cette étape, un indice : il faut commencer par donner la taille de la table que vous voulez ;)</div>
     </div>
@@ -64,15 +64,16 @@
         </div>
     </div>
     
-    
-    <div class="form-group" [ngStyle]="(formReservation.heureRes==undefined || formReservation.nbPersonne==undefined || formReservation.dateRes==undefined) && { 'visibility': 'hidden' }">
-        <div class="centrer">
-        <label for="idTable">tables disponible:</label>
-        <select class="form-control" id="idTable" name="idTable" [(ngModel)]="idTable">
-            <option selected value="">Veuillez sélectionner une table</option>
-            <option *ngFor="let item of listTableDisponible()" [value]="item">{{item}}</option>
-        </select>
-    </div></div>
+    <div hidden>
+        <div class="form-group" [ngStyle]="(formReservation.heureRes==undefined || formReservation.nbPersonne==undefined || formReservation.dateRes==undefined) && { 'visibility': 'hidden' }">
+            <div class="centrer">
+            <label for="idTable">tables disponible:</label>
+            <select class="form-control" id="idTable" name="idTable" [(ngModel)]="idTable">
+                <option selected value="">Veuillez sélectionner une table</option>
+                <option *ngFor="let item of listTableDisponible()" [value]="item">{{item}}</option>
+            </select>
+        </div></div>
+    </div>
     
     <!-- <div style="visibility: hidden;">
         <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formReservation.id" readonly/>
@@ -136,7 +137,11 @@
 
 
 
-<div *ngIf="appComponent.client==undefined">
+<div *ngIf="appComponent.client==undefined"  class="couleurFond">
+
+
+    <br/>
+    <br/>
 
 <div class="centrer" style="color:red">
     Triche pas, il faut se connecter avant de Réserver

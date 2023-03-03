@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "GoodDog";
+    src: url("/assets/font/gooddogc.TTF");
+}
+
 #nbPersonne {
     width: 270px;
     height: 57px;
@@ -40,7 +45,9 @@
 }
 
 .page-title h2{
-    color : white;
+    font-size: 400%;
+    font-family: 'GoodDog';
+    color : #ebf3f3;
     text-shadow: rgb(7, 7, 7) 2px 2px;
 }
 
@@ -103,6 +110,11 @@
 
 .decallage{
     margin-left: 30px;
+}
+
+
+.couleurFond{
+    background-color: #ebf3f3;
 }
 
 

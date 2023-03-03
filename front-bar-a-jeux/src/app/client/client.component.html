@@ -1,142 +1,121 @@
-<!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="margin-top: 80px;">
-    <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <ul>
-          <li><a class="btn" (click)="ViewReservation(currentClient.id)">Mes réservations</a></li>
-          <!-- <li><a class="btn">Mes achats</a></li>
-          <li><a class="btn">Mes consommations</a></li> -->
-          <li><a class="btn" (click)="ViewInformationClient(currentClient.id)">Mes informations</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-<!--Main layout-->
-<main>
-  
+<body>
+<div class="sidebar">
+  <div class="list-group list-group-flush mx-3 mt-4">
+    <ul>
+      <li><a class="btn btn-color" (click)="ViewReservation(currentClient.id)">Mes réservations</a></li>
+      <li><a class="btn btn-color" (click)="ViewInformationClient(currentClient.id)">Mes informations</a></li>
+    </ul>
+  </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</div>
+<div class="corps-page">
   <br>
   <h1 class="bonjour" *ngIf="currentClient">Bonjour {{currentClient?.prenom}}</h1>
+  <br>
+  <div class="table-center">
+  <div class="card mt-6" *ngIf="menuClient == 'reservation'" >
+    <div class="card-header" ><h1 class="titre-table">Mes réservations</h1></div>
+      <div class="card-body">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Identifiant</th>
+                      <th>Date</th>
+                      <th>Heure</th>
+                      <th>Nombre de Personne</th>
+                      <th></th>
+                      <th></th>
+                  </tr>
+              </thead>
+  
+              <tbody>
+                  <tr *ngFor="let resa of listResaByIdClient()">
+                      <td>{{resa.id}}</td>
+                      <td>{{resa.dateRes | date:"dd/MM/yyyy"}}</td>
+                      <td>{{resa.heureRes}}</td>
+                      <td>{{resa.nbPersonne}}</td>
+                      <td><button class="btn btn-primary btn-color-table" [routerLink]="['/collection']" routerLinkActive="active" id="collection">Voir la colleciton de jeu</button></td>
+                      <td>
+                          <div class="btn-group btn-group-sm">
+                              <a class="btn btn-danger"  
+                              (click)="removeResa(resa.id)"  ><i class="bi bi-trash"></i></a>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <div *ngIf="menuClient == 'information'" >
+
+    <h2>Informations Personnelles</h2>
     <div class="container pt-4"></div>
-    <div class="card mt-3 col-md-10" *ngIf="menuClient == 'reservation'" >
-      <div class="card-header" >Liste des réservations</div>
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Identifiant</th>
-                        <th>Date</th>
-                        <th>Heure</th>
-                        <th>Nombre de Personne</th>
-                        <th>Jeu</th>
-                        <th></th>
-                    </tr>
-                </thead>
-    
-                <tbody>
-                    <tr *ngFor="let resa of listResaByIdClient()">
-                        <td>{{resa.id}}</td>
-                        <td>{{resa.dateRes | date:"dd/MM/yyyy"}}</td>
-                        <td>{{resa.heureRes}}</td>
-                        <td>{{resa.nbPersonne}}</td>
-                        <td>{{resa.jeu}}</td>
-                        <td>
-                            <div class="btn-group btn-group-sm">
-                                <!-- <a class="btn btn-primary" (click)="editResa(resa.id)"><i
-                                        class="bi bi-pencil-square"></i></a> -->
-                                <a class="btn btn-danger"  
-                                (click)="removeResa(resa.id)"  ><i class="bi bi-trash"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-    
-            </table>
-        </div>
-        
-    </div>
+    <p><strong>Civilite :</strong> {{ currentClient.civilite }}</p>
+    <p><strong>Nom :</strong> {{ currentClient.nom }}</p>
+    <p><strong>Prenom :</strong> {{ currentClient.prenom }}</p>
+    <p><strong>Mail :</strong> {{ currentClient.mail }}</p>
+    <p><strong>Téléphone :</strong> {{ currentClient.tel }}</p>
+    <p><strong>Date de Naissance :</strong> {{ currentClient.dateNaissance }}</p>
+    <p><strong>Mot de passe :</strong> {{ currentClient.password}}</p>
 
-    <div *ngIf="menuClient == 'information'" >
+    <button class="btn btn-primary btn-color-table" (click)="edit(currentClient.id) ">Modifier mes informations</button>
+  </div>
 
-      <h2>Informations Personnelles</h2>
-      <div class="container pt-4"></div>
-      <p><strong>Civilite :</strong> {{ currentClient.civilite }}</p>
-      <p><strong>Nom :</strong> {{ currentClient.nom }}</p>
-      <p><strong>Prenom :</strong> {{ currentClient.prenom }}</p>
-      <p><strong>Mail :</strong> {{ currentClient.mail }}</p>
-      <p><strong>Téléphone :</strong> {{ currentClient.tel }}</p>
-      <p><strong>Date de Naissance :</strong> {{ currentClient.dateNaissance }}</p>
-      <p><strong>Mot de passe :</strong> {{ currentClient.password}}</p>
-
-      <button (click)="edit(currentClient.id) ">Modifier mes informations</button>
-    </div>
-
-
-    <div *ngIf="menuClient == 'modifInformations'" >
-      <h2>Modification des informations personnelles</h2>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
+  <div class="card mt-4" *ngIf="menuClient == 'modifInformations'" >
+    <div class="card-header" ><h1 class="titre-table">Modification de mes informations personnelles</h1></div>
+    <div >
             <br>
-            <strong><label for="civilite">Civilité : * &nbsp;&nbsp;</label></strong> 
-            <div class="civilite" *ngFor="let item of listCivilites()" >
-                <label for="{{item}}">
-                    <input id="civilite" [value]='item' type="radio" name="civilite" [(ngModel)]="formClient.civilite"> {{ item }}
-                </label>
-            </div>
-        </div> 
-        <div class="col-md-3 mb-3">
-            <strong><label for="nom">Nom : * &nbsp;&nbsp;</label></strong>
-            <input type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="formClient.nom">
-        </div>
+                <strong><label class="margin-civilite " for="civilite">Civilité : * &nbsp;&nbsp;</label></strong> 
+                <div class="civilite margin" style="display: inline" *ngFor="let item of listCivilites()" >
+                    <label for="{{item}}">
+                        <input id="civilite" [value]='item' type="radio" name="civilite" [(ngModel)]="formClient.civilite"> {{ item }}
+                    </label>
+                </div>
+                <div class="margin"> 
+                    <strong><label class="margin-div" for="nom" for="validationInscription1">Nom : * &nbsp;&nbsp;</label></strong>
+                    <input type="text" class="form-control" id="nom" placeholder="Nom" required [(ngModel)]="formClient.nom" >
+                </div>
 
-        <div class="col-md-3 mb-3">
-            <strong><label for="prenom">Prénom : * &nbsp;&nbsp;</label></strong>
-            <input type="text" class="form-control" id="prenom" placeholder="Prénom" required [(ngModel)]="formClient.prenom">
-        </div>
+                <div class="margin">
+                    <strong><label class="margin-div" for="prenom">Prénom : * &nbsp;&nbsp;</label></strong>
+                    <input type="text" class="form-control" id="prenom" placeholder="Prénom" required [(ngModel)]="formClient.prenom">
+                </div>
 
-        <div class="col-md-3 mb-3">
-            <strong><label for="dateNaissance">Date de Naissance : &nbsp;&nbsp;</label></strong>
-            <input type="date" class="form-control" id="dateNaissance" placeholder="dateNaissance" [(ngModel)]="formClient.dateNaissance">
-        </div>
+                <div class="margin">
+                    <strong><label class="margin-div" for="dateNaissance">Date de Naissance : &nbsp;&nbsp;</label></strong>
+                    <input type="date" class="form-control" id="dateNaissance" placeholder="dateNaissance" [(ngModel)]="formClient.dateNaissance">
+                </div>
 
-        <div class="col-md-3 mb-3">
-            <strong><label for="tel">Téléphone : * &nbsp;&nbsp;</label></strong>
-            <input type="tel" class="form-control" id="tel" placeholder="0600000001" pattern="[0-9]{10}" [(ngModel)]="formClient.tel">
-        </div>
+                <div class="margin">
+                    <strong><label class="margin-div" for="tel">Téléphone : * &nbsp;&nbsp;</label></strong>
+                    <input type="tel" class="form-control" id="tel" placeholder="0600000001" pattern="[0-9]{10}" [(ngModel)]="formClient.tel">
+                </div>
 
-         <div class="col-md-3 mb-3">
-            <strong><label for="mail">Mail : * &nbsp;&nbsp;</label></strong>
-             <input type="email" class="form-control" id="mail" placeholder="nom@gamil.com" required [(ngModel)]="formClient.mail">
-         </div>
-         <div class="col-md-3 mb-3">
-            <strong><label for="password">Mot de passe : * &nbsp;&nbsp;</label></strong>
-             <input type="password" class="form-control" id="password" required [(ngModel)]="formClient.password">
-         </div>
-         <!-- <div class="col-md-3 mb-3">
-            <strong><label for="password">Vérification Mot de passe : &nbsp;&nbsp;</label></strong>
-             <input type="password" class="form-control" id="password" required>
-         </div> -->
-     </div>
-
-     <button class="btn btn-primary" (click)="saveClient()" [routerLink]="['/client']" routerLinkActive="active" id="client" >Valider</button>
-     <br>
-     <br>
-     <p>* : champs obligatoire</p>
-     <br>
-     <br>
-     <br>
-     <p> </p>
+                <div class="margin">
+                    <strong><label class="margin-div" for="mail">Mail : * &nbsp;&nbsp;</label></strong>
+                    <input type="email" class="form-control" id="mail" placeholder="nom@gamil.com" required [(ngModel)]="formClient.mail">
+                </div>
+            
+                <div class="margin">
+                    <strong><label class="margin-div" for="password">Mot de passe : * &nbsp;&nbsp;</label></strong>
+                    <input type="password" class="form-control" id="password" required [(ngModel)]="formClient.password">
+                </div>
+            
+            <button *ngIf="formClient.civilite==undefined || formClient.nom==undefined || formClient.prenom==undefined || formClient.tel==undefined || formClient.mail==undefined || formClient.password==undefined" class="btn btn-primary color-btn margin" disabled >Valider</button>
+            
+            <button *ngIf="formClient.civilite!=undefined && formClient.nom!=undefined && formClient.prenom!=undefined && formClient.tel!=undefined && formClient.mail!=undefined && formClient.password!=undefined" class="btn btn-primary color-btn margin" (click)="saveClient()" [routerLink]="['/client']" routerLinkActive="active" id="client">Valider</button>
+            <br>
+            <br>
+            <p class="margin">* : champs obligatoire</p>
+            <br>
+            <br>
+            <br>
+            <p> </p>
     </div>
+  </div>
+</div>
+  </div>
+</body>
 
-
-    <br>
-    <p></p>
-  </main>
-
-
-
-  <footer></footer>
-
-
-
-
+<footer></footer>
